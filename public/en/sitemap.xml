@@ -3,7 +3,7 @@
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
     <loc>http://localhost:1313/en/</loc>
-    <lastmod>2024-11-10T13:24:50+02:00</lastmod>
+    <lastmod>2025-05-25T21:18:50+02:00</lastmod>
     <xhtml:link
                 rel="alternate"
                 hreflang="fr"
@@ -15,8 +15,21 @@
                 href="http://localhost:1313/en/"
                 />
   </url><url>
+    <loc>http://localhost:1313/en/posts/chess-analyser/</loc>
+    <lastmod>2025-05-25T21:18:50+02:00</lastmod>
+    <xhtml:link
+                rel="alternate"
+                hreflang="fr"
+                href="http://localhost:1313/posts/chess-analyser/"
+                />
+    <xhtml:link
+                rel="alternate"
+                hreflang="en"
+                href="http://localhost:1313/en/posts/chess-analyser/"
+                />
+  </url><url>
     <loc>http://localhost:1313/en/posts/</loc>
-    <lastmod>2024-11-10T13:24:50+02:00</lastmod>
+    <lastmod>2025-05-25T21:18:50+02:00</lastmod>
     <xhtml:link
                 rel="alternate"
                 hreflang="fr"

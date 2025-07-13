@@ -2,8 +2,21 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
+    <loc>http://localhost:1313/posts/chess-analyser/</loc>
+    <lastmod>2025-05-25T21:18:50+02:00</lastmod>
+    <xhtml:link
+                rel="alternate"
+                hreflang="en"
+                href="http://localhost:1313/en/posts/chess-analyser/"
+                />
+    <xhtml:link
+                rel="alternate"
+                hreflang="fr"
+                href="http://localhost:1313/posts/chess-analyser/"
+                />
+  </url><url>
     <loc>http://localhost:1313/</loc>
-    <lastmod>2024-11-10T13:24:50+02:00</lastmod>
+    <lastmod>2025-05-25T21:18:50+02:00</lastmod>
     <xhtml:link
                 rel="alternate"
                 hreflang="en"
@@ -16,7 +29,7 @@
                 />
   </url><url>
     <loc>http://localhost:1313/posts/</loc>
-    <lastmod>2024-11-10T13:24:50+02:00</lastmod>
+    <lastmod>2025-05-25T21:18:50+02:00</lastmod>
     <xhtml:link
                 rel="alternate"
                 hreflang="en"
@@ -40,9 +53,6 @@
                 hreflang="fr"
                 href="http://localhost:1313/posts/zamp/"
                 />
-  </url><url>
-    <loc>http://localhost:1313/posts/chess-analyser/</loc>
-    <lastmod>2024-05-25T21:18:50+02:00</lastmod>
   </url><url>
     <loc>http://localhost:1313/posts/programme-parcoursup/</loc>
     <lastmod>2022-07-20T21:18:50+02:00</lastmod>

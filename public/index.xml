@@ -13,7 +13,7 @@
       <pubDate>Sun, 25 May 2025 21:18:50 +0200</pubDate>
       
       <guid>http://localhost:1313/posts/chess-analyser/</guid>
-      <description>Cette extension analyse vos parties directement sur Chess.com grâce à stockfish 17 lite, en affichant les meilleurs coups, des évaluations en temps réel et des superpositions visuelles minimalistes pour mieux comprendre chaque coup.</description>
+      <description>Cette extension permet d&amp;#39;analyser les parties directement sur Chess.com grâce à stockfish 17 lite et à mon algorithme de classification de coups.</description>
     </item>
     
     <item>

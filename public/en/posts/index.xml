@@ -6,7 +6,16 @@
     <description>Recent content in Posts on Axel Thauvin</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
-    <lastBuildDate>Sun, 10 Nov 2024 13:24:50 +0200</lastBuildDate><atom:link href="http://localhost:1313/en/posts/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Sun, 25 May 2025 21:18:50 +0200</lastBuildDate><atom:link href="http://localhost:1313/en/posts/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>chess.com games analyser</title>
+      <link>http://localhost:1313/en/posts/chess-analyser/</link>
+      <pubDate>Sun, 25 May 2025 21:18:50 +0200</pubDate>
+      
+      <guid>http://localhost:1313/en/posts/chess-analyser/</guid>
+      <description>This extension analyzes your games directly on Chess.com using Stockfish 17 Lite. It displays smart arrows, real-time evaluations, and minimal visual overlays to help you better understand each move.</description>
+    </item>
+    
     <item>
       <title>ZAMP</title>
       <link>http://localhost:1313/en/posts/zamp/</link>
