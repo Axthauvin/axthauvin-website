@@ -30,6 +30,7 @@ export interface CVData {
     skills: {
       name: string;
       icon: IconType;
+      iconName: string;
       url?: string; // Optional URL for linking to more info
     }[];
   };
@@ -64,41 +65,111 @@ export async function getCVData(): Promise<CVData> {
         {
           name: "JavaScript",
           icon: SiJavascript,
+          iconName: "SiJavascript",
           url: "https://developer.mozilla.org/fr/docs/Web/JavaScript",
         },
         {
           name: "TypeScript",
           icon: SiTypescript,
+          iconName: "SiTypescript",
           url: "https://www.typescriptlang.org/",
         },
-        { name: "React", icon: SiReact, url: "https://react.dev/" },
-        { name: "Next.js", icon: SiNextdotjs, url: "https://nextjs.org/" },
-        { name: "Node.js", icon: SiNodedotjs, url: "https://nodejs.org/" },
-        { name: "Python", icon: SiPython, url: "https://www.python.org/" },
-        { name: "Java", icon: RiJavaFill, url: "https://www.java.com/" },
-        { name: "PHP", icon: SiPhp, url: "https://www.php.net/" },
+        {
+          name: "React",
+          icon: SiReact,
+          iconName: "SiReact",
+          url: "https://react.dev/",
+        },
+        {
+          name: "Next.js",
+          icon: SiNextdotjs,
+          iconName: "SiNextdotjs",
+          url: "https://nextjs.org/",
+        },
+        {
+          name: "Node.js",
+          icon: SiNodedotjs,
+          iconName: "SiNodedotjs",
+          url: "https://nodejs.org/",
+        },
+        {
+          name: "Python",
+          icon: SiPython,
+          iconName: "SiPython",
+          url: "https://www.python.org/",
+        },
+        {
+          name: "Java",
+          icon: RiJavaFill,
+          iconName: "RiJavaFill",
+          url: "https://www.java.com/",
+        },
+        {
+          name: "PHP",
+          icon: SiPhp,
+          iconName: "SiPhp",
+          url: "https://www.php.net/",
+        },
         {
           name: "C#",
           icon: TbBrandCSharp,
+          iconName: "TbBrandCSharp",
           url: "https://learn.microsoft.com/en-us/dotnet/csharp/",
         },
-        { name: "C", icon: SiC, url: "https://en.cppreference.com/w/c" },
-        { name: "SQL", icon: FaDatabase, url: "https://www.mysql.com/" },
-        { name: "Git", icon: SiGit, url: "https://git-scm.com/" },
-        { name: "Unity", icon: SiUnity, url: "https://unity.com/" },
+        {
+          name: "C",
+          icon: SiC,
+          iconName: "SiC",
+          url: "https://en.cppreference.com/w/c",
+        },
+        {
+          name: "SQL",
+          icon: FaDatabase,
+          iconName: "FaDatabase",
+          url: "https://www.mysql.com/",
+        },
+        {
+          name: "Git",
+          icon: SiGit,
+          iconName: "SiGit",
+          url: "https://git-scm.com/",
+        },
+        {
+          name: "Unity",
+          icon: SiUnity,
+          iconName: "SiUnity",
+          url: "https://unity.com/",
+        },
         {
           name: "Tailwind CSS",
           icon: SiTailwindcss,
+          iconName: "SiTailwindcss",
           url: "https://tailwindcss.com/",
         },
         {
           name: "PostgreSQL",
           icon: SiPostgresql,
+          iconName: "SiPostgresql",
           url: "https://www.postgresql.org/",
         },
-        { name: "MySQL", icon: SiMysql, url: "https://www.mysql.com/" },
-        { name: "Docker", icon: SiDocker, url: "https://www.docker.com/" },
-        { name: "Linux", icon: SiLinux, url: "https://www.kernel.org/" },
+        {
+          name: "MySQL",
+          icon: SiMysql,
+          iconName: "SiMysql",
+          url: "https://www.mysql.com/",
+        },
+        {
+          name: "Docker",
+          icon: SiDocker,
+          iconName: "SiDocker",
+          url: "https://www.docker.com/",
+        },
+        {
+          name: "Linux",
+          icon: SiLinux,
+          iconName: "SiLinux",
+          url: "https://www.kernel.org/",
+        },
       ],
     },
     experience: {

@@ -170,7 +170,7 @@ export const FroggerSkillsGame = (tempCvData: FroggerSkillsGameProps) => {
   return (
     <section className="mb-12">
       <div className="mb-6">
-        <h2 className="text-lg mb-6 border-b border-gray-800 pb-2 dark:border-gray-800 border-gray-300">
+        <h2 className="text-lg mb-6 border-b pb-2 dark:border-gray-800 border-gray-200">
           {!gameActive
             ? tempCvData.title
             : "Cliquez dans la zone pour faire avancer la grenouille !"}
@@ -234,7 +234,7 @@ export const FroggerSkillsGame = (tempCvData: FroggerSkillsGameProps) => {
                 key={`row${row}-${idx}`}
                 href={gameActive ? undefined : skill.url}
                 target="_blank"
-                className="flex items-center gap-2 px-4 py-2 bg-gray-800/50 border border-gray-600 rounded-full text-sm text-gray-300 whitespace-nowrap flex-shrink-0 hover:bg-gray-700/50 hover:text-white transition-all duration-300 dark:bg-gray-800/50 dark:border-gray-600 bg-gray-100/50 border-gray-300 skill-item select-none"
+                className="flex items-center gap-2 px-4 py-2 bg-[hsl(0, 0%, 95%)] dark:bg-gray-800/50 border border-gray-600 rounded-full text-sm text-gray-800 dark:text-gray-300 whitespace-nowrap flex-shrink-0 hover:bg-gray-700/50 hover:text-white transition-all duration-300 dark:bg-gray-800/50 dark:border-gray-600 bg-gray-100/50 border-gray-300 skill-item select-none"
               >
                 {React.createElement(skill.icon)}
                 <span>{skill.name}</span>
