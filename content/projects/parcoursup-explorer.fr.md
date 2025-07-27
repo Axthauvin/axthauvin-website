@@ -3,7 +3,7 @@ title: "parcoursup-explorer.fr"
 description: "Programme d'analyse des parcours Parcoursup, permettant aux lycéens de visualiser les formations obtenues selon leurs spécialités, et d'explorer les statistiques d'admission. Utilisation d'Excel, PHP, Javascript et ChartJS pour optimiser la présentation des données."
 date: 2022-07-20T21:18:50+02:00
 featured: false
-image: "projects_images/parcoursup-explorer/Parcoursup-app-icon.png"
+image: "projects/parcoursup-explorer/Parcoursup-app-icon.png"
 technologies: ["PHP", "Javascript", "ChartJS", "Excel"]
 author: ["Axel Thauvin"]
 draft: false
@@ -14,7 +14,7 @@ Le lycée qui souhaite disposer du programme doit alors remplir un fichier excel
 
 Une version de se site Internet a été vendue à l'Institut Notre Dame de Bourg la reine, et le site internet est disponible à cette adresse [ParcoursupExplorer pour l'Institut Notre Dame](https://programme-ind-sup.alwaysdata.net/)
 
-![Page d'acceuil](projects_images/parcoursup-explorer/parcoursup-app%20main%20page.png)
+![Page d'acceuil](/projects/parcoursup-explorer/parcoursup-app%20main%20page.png)
 _Interface de l'application_
 
 # Description :
@@ -27,7 +27,7 @@ Le programme se découpe en 2 parties distinctes :
 
 ## Propositions acceptées par les élèves
 
-![Formation acceptées](projects_images/parcoursup-explorer/parcoursup-app%20accepted.png)
+![Formation acceptées](/projects/parcoursup-explorer/parcoursup-app%20accepted.png)
 _Graphique montrant toutes les propositions acceptées par les élèves de la promotion 2023_
 
 Ce graphique permet aux élèves de voir quels sont les choix principaux des élèves, et donc d'avoir une idée des catégories de formations.
@@ -38,15 +38,15 @@ Cette information est aussi utile pour le lycée, car cela lui donne une informa
 
 C'est cette partie qui est au centre du programme. Afin de mieux la comprendre, je vais décomposer l'interface.
 
-![Page principale](projects_images/parcoursup-explorer/parcoursup-app%20propositions%20main.png)
+![Page principale](/projects/parcoursup-explorer/parcoursup-app%20propositions%20main.png)
 _Page principale du programme_
 
 Ainsi, l'élève doit sélectionner 2 spécialités, afin que le programme soit en mesure de ressortir toutes les formations qui ont été obtenues par les élèves avec les mêmes spécialités sur une année précédente.
 
-![Choix spécialités](projects_images/parcoursup-explorer/parcoursup-app%20spes.png)
+![Choix spécialités](/projects/parcoursup-explorer/parcoursup-app%20spes.png)
 _Choix des spécialités_
 
 Le programme trouve alors 64 alèves avec ces spécialités dans les années précédantes.
 
-![Statistiques](projects_images/parcoursup-explorer/parcoursup-app%20all%20forma.png)
+![Statistiques](/projects/parcoursup-explorer/parcoursup-app%20all%20forma.png)
 _Il est alors possible de sélectionner différents filtres tel que : le choix de l'option, rt le choix de la 3ème spécialité abandonnée._

@@ -3,7 +3,7 @@ title: "Word2pdf"
 description: "Application qui permet de convertir facilement des fichiers Word (.docx) en PDF via une interface graphique simple. Conversion individuelle ou par lot pour simplifier l'expérience utilisateur."
 date: 2021-07-15T14:45:35+01:00
 featured: false
-image: "projects_images/word2pdf/Word2pdf.png"
+image: "projects/word2pdf/Word2pdf.png"
 technologies: ["Python", "Tkinter", "docx2pdf"]
 author: ["Axel Thauvin"]
 draft: true
@@ -20,12 +20,12 @@ Ce projet est une interface graphique du module [docx2pdf](https://pypi.org/proj
 Devoir chercher un site pour convertir ses words en PDF était trop pénible.
 Aujourd'hui, je peux en quelques clics 🖱️ palier à ce problème.
 
-![Illustration comment trouver Word2pdf](projects_images/word2pdf/Recherche-word2pdf.png)
+![Illustration comment trouver Word2pdf](/projects/word2pdf/Recherche-word2pdf.png)
 Comme on peut le voir, il est très facilement accessible
 
 ### L'interface
 
-![L'interface](projects_images/word2pdf/word2pdf-interface.png)
+![L'interface](/projects/word2pdf/word2pdf-interface.png)
 Je l'accorde, ce n'est pas l'interface la plus _sexy_ au monde
 
 {{< encadres-markdown type="note" titre="L'idée est simple, j'ai 2 options qui s'ouvrent à moi : " >}}
@@ -34,4 +34,4 @@ Je l'accorde, ce n'est pas l'interface la plus _sexy_ au monde
 - Convertir **_tous les fichiers d'un dossier_** qui sont en DOCX en PDF
   {{< /encadres-markdown >}}
 
-![Process](projects_images/word2pdf/word2pdf-process.png)
+![Process](/projects/word2pdf/word2pdf-process.png)

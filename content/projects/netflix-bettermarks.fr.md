@@ -3,7 +3,7 @@ title: "Netflix BetterMarks, extension chrome"
 description: "Extension Chrome qui affiche les notes IMDB, Metacritique et AlloCiné sur Netflix. Manipulation des APIs pour enrichir l'expérience utilisateur."
 date: 2021-04-22T22:01:06Z
 featured: false
-image: "projects_images/netflix-bettermarks/Netflix-icon.png"
+image: "projects/netflix-bettermarks/Netflix-icon.png"
 technologies: ["HTML", "CSS", "JavaScript"]
 author: ["Axel Thauvin"]
 draft: false

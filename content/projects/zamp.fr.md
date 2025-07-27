@@ -3,7 +3,7 @@ title: "ZAMP"
 description: "Application qui installe et gère un environnement de développement local avec Apache, MySQL et PHP en un clic. Manipulation automatisée des services pour simplifier l'expérience utilisateur."
 date: 2024-11-10T13:24:50+02:00
 featured: false
-image: "/projects_images/zamp/zamp-icon.png"
+image: "/projects/zamp/zamp-icon.png"
 technologies: ["Electron", "HTML", "CSS", "Apache", "MySQL", "PHP"]
 author: ["Axel Thauvin"]
 draft: false
@@ -20,7 +20,7 @@ ZAMP est une application qui simplifie l'installation d'un environnement de dév
 **ZAMP** est une pile de développement tout-en-un pour les développeurs web, **fournissant tout ce dont vous avez besoin** pour le développement web **_local_**. Il intègre de manière transparente Apache, MySQL et PHP, éliminant ainsi le besoin d'installations individuelles.
 Avec **aucune configuration requise**, ZAMP simplifie votre processus de développement, vous permettant de vous concentrer uniquement sur la création de votre application. De plus, démarrer tous les services est aussi simple qu'un seul clic, améliorant ainsi votre productivité et votre efficacité.
 
-![Zamp avec des projets chargés](/projects_images/zamp/ZAMP-interface.png)
+![Zamp avec des projets chargés](/projects/zamp/ZAMP-interface.png)
 
 ## Fonctionnalités
 
@@ -50,14 +50,14 @@ Actuellement, ZAMP est uniquement disponible pour Windows. Nous travaillons acti
 Une fois installé, vous pouvez accéder aux services suivants :
 
 - **Apache** : Cliquez sur le bouton de démarrage
-  ![Bouton de démarrage](/projects_images/zamp/Startbutton.png)
+  ![Bouton de démarrage](/projects/zamp/Startbutton.png)
 
 - **PHPMyAdmin** : PHP se configurera automatiquement dans l'application.
   Vous pouvez toujours changer la version ou les extensions en utilisant les zones dédiées.
-  ![Configuration PHP](/projects_images/zamp/PHPConfig.png)
+  ![Configuration PHP](/projects/zamp/PHPConfig.png)
 
 - **MySQL / MariaDB** : ZAMP utilise MariaDB pour exécuter SQL car il dispose de binaires. MariaDB est rétrocompatible avec MySQL, vous pouvez donc toujours utiliser Workbench pour accéder à votre serveur.
 
 Vous pouvez accéder au serveur SQL dans la zone dédiée
 
-![Boutons SQL](/projects_images/zamp/MYSQL.png)
+![Boutons SQL](/projects/zamp/MYSQL.png)

@@ -1,7 +1,7 @@
 ---
 title: "Analyseur de parties Chess.com"
 description: "Cette extension permet d'analyser les parties directement sur Chess.com grâce à stockfish 17 lite et à mon algorithme de classification de coups."
-image: "projects_images/chess-analyser/chess-analyser-icon-rectangle.png"
+image: "/projects/chess-analyser/chess-analyser-icon-rectangle.png"
 date: 2025-05-25T21:18:50+02:00
 featured: true
 technologies:
@@ -37,7 +37,7 @@ Ce projet est une extension Chrome/Firefox que j’ai développé en [TypeScript
 
 Elle embarque une version allégée du moteur Stockfish 17 (Lite), directement dans le navigateur, permettant de faire tourner des évaluations en local, **sans dépendre d’une API externe**.
 
-![Gif de présentation](projects_images/chess-analyser/presentation.gif)
+![Gif de présentation](/projects/chess-analyser/presentation.gif)
 
 ## Explication du fonctionnement de l'extension
 
@@ -96,13 +96,13 @@ Elle peut ainsi comparer le winrate avant et après le coup du joueur, pour iden
 
 Une des particularités notables de l’extension, c’est qu’elle ne s’appuie sur aucune bibliothèque externe pour classer les coups joués (Meilleur coup, coup Brillant, Erreur, etc.). J’ai conçu un algorithme de classification entièrement maison, pensé pour être à la fois simple, transparent et personnalisable.
 
-![Classification des coups](projects_images/chess-analyser/chess-classifications.png)
+![Classification des coups](/projects/chess-analyser/chess-classifications.png)
 
 Le critère principal utilisé est la variation du pourcentage de victoire entre deux positions successives. Si un coup améliore nettement les chances de gain ou, au contraire, les fait chuter brutalement, il est classé en conséquence. Mais cette variation n’est pas analysée seule.
 
 L’algorithme prend aussi en compte le type de pièce jouée, voire sacrifiée. Un sacrifice de dame, par exemple, n’aura pas le même impact qu’un simple échange de pions, même si la variation d’évaluation est identique. Cela permet de mieux refléter la valeur stratégique ou tactique du coup.
 
-![Coup brillant !!](projects_images/chess-analyser/brillant-move.png)
+![Coup brillant !!](/projects/chess-analyser/brillant-move.png)
 
 > Ici par exemple, le coup est brillant parce que si l'adversaire prend mon fou, je peux forcer l'échec et maths !
 
@@ -110,7 +110,7 @@ Le contexte du coup est également pris en compte : s’agit-il d’un coup forc
 
 Enfin, certains motifs spécifiques sont reconnus : des sacrifices brillants ou des mats manqués peuvent déclencher des classifications spéciales comme “Brilliant”, “Miss” ou “Forced”. Cela donne à l’analyse une dimension plus fine et plus humaine, au-delà des simples chiffres.
 
-![Blunder ??](projects_images/chess-analyser/blunder.png)
+![Blunder ??](/projects/chess-analyser/blunder.png)
 
 > Ici, j'ai donné ma reine en 1 coup à cause du manque de temps, d'où la classification en 'Grosse Erreur'...
 
@@ -118,12 +118,12 @@ Enfin, certains motifs spécifiques sont reconnus : des sacrifices brillants ou 
 
 L’interface utilisateur a été conçue pour s’intégrer naturellement à l’esthétique de Chess.com, sans perturber l’expérience de jeu. L’extension superpose les informations de manière subtile, mais lisible et immédiate. Les coups joués sont enrichis par un **système de flèches colorées directement dessinées sur l’échiquier** (similaire à celles du site original).
 
-![Flèches de couleur](projects_images/chess-analyser/arrows.png)
+![Flèches de couleur](/projects/chess-analyser/arrows.png)
 
 À cela s’ajoutent des icônes discrètes placées à côté des coups dans la notation, qui reprennent le style de Chess.com (étoiles, point d’exclamation, etc.) pour identifier rapidement les “Blunder”, “Best Move”, “Miss”, ou encore les coups brillants. L’objectif est de garder un rendu épuré, mais expressif : le joueur peut d’un coup d’œil visualiser l’impact de chaque décision sans quitter la partie des yeux.
 
 Le style graphique est donc directement inspiré de l’UI de Chess.com, avec une volonté forte de rester dans leurs codes visuels, pour que l’extension semble presque native à la plateforme. Tout est pensé pour ne pas surcharger, mais enrichir l’interface.
 
-![Flèches de couleur](projects_images/chess-analyser/recap.png)
+![Flèches de couleur](/projects/chess-analyser/recap.png)
 
 > J'ai codé tout un sytème de graphique en svg afin d'afficher le 'momentum' de la partie et de visualiser qui gagne à quel momment dans la partie

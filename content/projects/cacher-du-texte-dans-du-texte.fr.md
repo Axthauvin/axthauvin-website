@@ -3,7 +3,7 @@ title: "Cacher du texte dans du texte"
 description: Comment j'ai caché du texte dans du texte. En manipulant les bits du texte, j'ai réussi à cacher du texte dans du texte avec des caractères cachés.
 date: 2021-11-04T22:35:57Z
 featured: false
-image: "projects_images/cacher-du-texte-dans-du-texte/icon.png"
+image: "projects/cacher-du-texte-dans-du-texte/icon.png"
 technologies: ["HTML", "CSS", "JavaScript"]
 author: ["Axel Thauvin"]
 ---
