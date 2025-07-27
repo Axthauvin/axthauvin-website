@@ -128,7 +128,11 @@ export default async function CVPage() {
                   {/* En-tête avec titre et période */}
                   <div className="flex flex-col lg:flex-row lg:items-start lg:justify-between gap-3 mb-6">
                     <h3 className="text-xl font-semibold leading-tight flex-1">
-                      {job.title}
+                      {job.title.split("\n").map((line, i) => (
+                        <span key={i} className="block">
+                          {line}
+                        </span>
+                      ))}
                     </h3>
                     <span className="text-muted-foreground font-medium text-sm px-3 py-1 rounded-md border border-gray-600 dark:border-gray-600 border-gray-300 whitespace-nowrap">
                       {job.period}

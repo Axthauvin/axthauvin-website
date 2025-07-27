@@ -176,8 +176,16 @@ export async function getCVData(): Promise<CVData> {
       title: "Mon expérience professionnelle",
       jobs: [
         {
-          title:
-            "Auto-entrepreneur création et vente du programme Parcoursup Explorer",
+          title: "Trésorier de l'association BackToBasics (EPITA)",
+          period: "Avril 2023 - Aujourd'hui",
+          description: [
+            "Gestion des finances de l'association",
+            "Organisation d'événements et de formations pour les étudiants de classe préparatoire en Physique, Algorithmie, Programmation et Architecture des Ordinateurs.",
+          ],
+        },
+        {
+          title: `Auto-entrepreneur
+            Création et vente du programme Parcoursup Explorer`,
           period: "03/2022 – Aujourd'hui",
           description: [
             "Outil de statistiques interactives pour orienter les lycéens pour Parcoursup",
@@ -201,14 +209,6 @@ export async function getCVData(): Promise<CVData> {
             "Cours individuel en ligne sur Scratch et Unity",
           ],
         },
-        {
-          title:
-            "Déclaration du statut d'auto entrepreneur pour donner des cours de programmation",
-          period: "Août 2020",
-          description: [
-            "Pour partager ma passion, je me suis déclaré en tant qu'auto entrepreneur. Ainsi, je donne des cours en ligne sur Scratch pour apprendre la programmation aux plus jeunes.",
-          ],
-        },
       ],
     },
     education: {
@@ -221,6 +221,12 @@ export async function getCVData(): Promise<CVData> {
             "Programmation – gestion de projets – intelligence artificielle – projets de groupe",
             "Développement d'un client BitTorrent, d'un terminal conforme aux normes POSIX et d'un jeu vidéo multijoueur avec gestion du réseau",
           ],
+        },
+        {
+          title:
+            "Licence d'informatique à l'Université Paris-Est Créteil (UPEC)",
+          period: "09/2022 – 06/2025",
+          description: [],
         },
         {
           title:
