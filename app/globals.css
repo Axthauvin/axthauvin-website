@@ -14,6 +14,7 @@
 @layer base {
   :root {
     --background: 0, 0%, 100%;
+    --normal-bg: 0, 0%, 100%;
     --foreground: 0 0% 10%;
     --card: 0 0% 100%;
     --card-foreground: 0 0% 10%;
@@ -44,6 +45,7 @@
     --background-end-rgb: 0, 0, 0;
 
     --background: 0 2.4% 8%;
+    --normal-bg: 0 2.4% 8%;
     --foreground: 0 0% 95%;
     --card: 0 0% 6%;
     --card-foreground: 0 0% 95%;
@@ -234,4 +236,16 @@
   animation-name: marquee;
   animation-timing-function: linear;
   animation-iteration-count: infinite;
+}
+
+[data-sonner-toast][data-type="success"] {
+  background-color: #00c49a !important; /* Light theme */
+  border-color: #00b894 !important;
+  color: white !important;
+}
+
+.dark [data-sonner-toast][data-type="success"] {
+  background-color: #136f63 !important; /* Dark theme */
+  border-color: #0a645f !important;
+  color: white !important;
 }

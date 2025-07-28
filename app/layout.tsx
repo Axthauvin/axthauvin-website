@@ -2,6 +2,8 @@ import ThemeSwitcher from "@/components/ThemeSwitcher";
 import "./globals.css";
 import type { Metadata } from "next";
 import Footer from "@/components/Footer";
+import { Toaster } from "sonner";
+import { useTheme } from "next-themes";
 
 export const metadata: Metadata = {
   metadataBase: new URL("https://axelthauvin.dev"),
@@ -42,6 +44,7 @@ export default function RootLayout({
       <body className="min-h-screen">
         <ThemeSwitcher />
         {children}
+        <Toaster position="top-right" theme="system" />
         <Footer />
       </body>
     </html>

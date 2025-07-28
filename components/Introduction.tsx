@@ -1,10 +1,21 @@
+"use client";
+
 import Image from "next/image";
 import { FileText, Mail } from "lucide-react";
 
 import { TfiLinkedin, TfiGithub } from "react-icons/tfi";
+import { FaXTwitter } from "react-icons/fa6";
 import Link from "next/link";
+import { toast } from "sonner";
 
 export default function Introduction() {
+  const handleEmailClick = () => {
+    console.log("Email button clicked");
+    // copy email to clipboard
+    navigator.clipboard.writeText("axthauvin@gmail.com");
+    toast.success("L'email a bien été copié !");
+  };
+
   return (
     <section
       className="mb-16 mx-auto px-6 py-20 max-w-4xl"
@@ -75,9 +86,11 @@ export default function Introduction() {
             />
             LinkedIn
           </a>
-          <a
-            href="mailto:axthauvin@gmail.com"
-            className="text-muted-foreground hover:text-blue-400 transition-colors flex items-center gap-2 group"
+
+          <button
+            type="button"
+            onClick={handleEmailClick}
+            className="text-muted-foreground hover:text-blue-400 transition-colors flex items-center gap-2 group bg-transparent border-none p-0 cursor-pointer"
           >
             <Mail
               width={20}
@@ -85,6 +98,19 @@ export default function Introduction() {
               className="group-hover:scale-110 transition-transform"
             />
             Email
+          </button>
+          <a
+            href="https://twitter.com/axthauvin"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="text-muted-foreground hover:text-blue-400 transition-colors flex items-center gap-2 group"
+          >
+            <FaXTwitter
+              width={20}
+              height={20}
+              className="group-hover:scale-110 transition-transform"
+            />
+            Twitter
           </a>
         </div>
       </div>
