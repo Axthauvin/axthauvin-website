@@ -40,6 +40,7 @@ export default function RootLayout({
           href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap"
           rel="stylesheet"
         />
+        <meta name="google-site-verification" content="DlYHTWv1xnFpn5B_r5ckuQ95lTi1_RaYPuSqD06MLqI" />
       </head>
       <body className="min-h-screen">
         <ThemeSwitcher />
