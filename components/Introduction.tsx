@@ -55,9 +55,8 @@ export default function Introduction() {
         </div>
 
         <p className="text-base italic mt-2 text-muted-foreground">
-          Je conçois des outils simples et accessibles, et je transmets ma
-          passion pour l’informatique à travers des cours en ligne et des
-          projets open source.
+          J'essaye de d'inventer des outils simples et accessibles,
+          tout en partageant ma passion pour l’informatique par l’enseignement et mes projets. 
         </p>
         <div className="flex gap-6 text-sm">
           <a
