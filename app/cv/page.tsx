@@ -38,11 +38,11 @@ export default async function CVPage() {
       {/* En-tête */}
       <header className="mb-1 flex justify-center gap-4">
         <Image
-          src="/moi au soleil.jpg"
+          src="/moi dans la nature.jpg"
           alt="Axel Thauvin"
           width={100}
           height={100}
-          className="rounded-full border-2 border- shadow-lg mb-4 text-muted"
+          className="rounded-full shadow-lg mb-4 text-muted max-h-[100px]"
           priority
         />
         <div>

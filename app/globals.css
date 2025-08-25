@@ -144,20 +144,20 @@
   }
 
   .prose {
-    @apply text-muted-foreground;
+    @apply text-muted-foreground text-lg;
   }
 
   .prose h1 {
-    @apply text-foreground font-bold tracking-tight text-4xl mt-8 mb-4;
+    @apply text-foreground font-bold tracking-tight text-5xl mt-8 mb-4;
   }
   .prose h2 {
-    @apply text-foreground font-bold tracking-tight text-3xl mt-6 mb-3;
+    @apply text-foreground font-bold tracking-tight text-4xl mt-6 mb-3;
   }
   .prose h3 {
-    @apply text-foreground font-bold tracking-tight text-2xl mt-5 mb-2;
+    @apply text-foreground font-bold tracking-tight text-3xl mt-5 mb-2;
   }
   .prose h4 {
-    @apply text-foreground font-bold tracking-tight text-xl mt-4 mb-2;
+    @apply text-foreground font-bold tracking-tight text-2xl mt-4 mb-2;
   }
   .prose h5 {
     @apply text-foreground font-bold tracking-tight text-lg mt-3 mb-1;
@@ -168,6 +168,10 @@
 
   .prose a {
     @apply text-foreground underline decoration-muted-foreground underline-offset-4 hover:decoration-foreground transition-colors;
+  }
+
+  .prose p {
+    @apply leading-7 mb-4;
   }
 
   .prose code {
@@ -193,6 +197,18 @@
 
   .prose em {
     margin-bottom: 2rem;
+  }
+
+  .prose ul {
+    @apply list-disc pl-8 my-4;
+  }
+
+  .prose ol {
+    @apply list-decimal pl-8 my-4;
+  }
+
+  .prose li {
+    @apply mb-2;
   }
 }
 

@@ -27,7 +27,7 @@ export default function Introduction() {
       <div className="flex flex-col gap-4 mb-8">
         <div className="flex flex-col md:flex-row items-center gap-4 w-full">
           <Image
-            src="/moi au soleil.jpg"
+            src="/moi dans la nature.jpg"
             alt="Axel Thauvin"
             width={100}
             height={100}
@@ -55,8 +55,9 @@ export default function Introduction() {
         </div>
 
         <p className="text-base italic mt-2 text-muted-foreground">
-          J'essaye de d'inventer des outils simples et accessibles,
-          tout en partageant ma passion pour l’informatique par l’enseignement et mes projets. 
+          J&apos;essaye de d&apos;inventer des outils simples et accessibles,
+          tout en partageant ma passion pour l’informatique par l’enseignement
+          et mes projets.
         </p>
         <div className="flex gap-6 text-sm">
           <a

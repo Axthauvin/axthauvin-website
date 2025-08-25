@@ -6,6 +6,7 @@ featured: false
 image: "projects/parcoursup-explorer/Parcoursup-app-icon.png"
 technologies: ["PHP", "Javascript", "ChartJS", "Excel"]
 author: ["Axel Thauvin"]
+demo: "https://parcoursup-explorer.fr"
 draft: false
 ---
 

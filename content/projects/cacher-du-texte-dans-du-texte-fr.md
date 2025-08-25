@@ -6,6 +6,7 @@ featured: false
 image: "projects/cacher-du-texte-dans-du-texte/icon.png"
 technologies: ["HTML", "CSS", "JavaScript"]
 author: ["Axel Thauvin"]
+demo: "https://cacherdutexte.github.io"
 ---
 
 > Le projet est actuellement hébergé sur [https://cacherdutexte.github.io](https://cacherdutexte.github.io)

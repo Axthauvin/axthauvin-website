@@ -6,6 +6,7 @@ featured: false
 image: "/projects/zamp/zamp-icon.png"
 technologies: ["Electron", "HTML", "CSS", "Apache", "MySQL", "PHP"]
 author: ["Axel Thauvin"]
+github: "https://github.com/axthauvin/zamp"
 draft: false
 ---
 
