@@ -45,7 +45,7 @@ function HobbiesCard() {
 
   return (
     <div className="border border-neutral-800 bg-neutral-950 p-6 rounded-lg h-full flex flex-col justify-between">
-      <h3 className="font-semibold text-white uppercase tracking-wider mb-4">
+      <h3 className="font-semibold text-white tracking-wider mb-4">
         Mes hobbies
       </h3>
       <p className="text-sm text-neutral-400 mb-4">
