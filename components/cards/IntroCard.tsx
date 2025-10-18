@@ -7,7 +7,7 @@ const IntroCard = () => (
       <div className="absolute top-1/4 left-1/3 w-64 h-64 bg-amber-900/10 rounded-full blur-3xl group-hover:blur-2xl transition-all duration-500"></div>
       <div className="absolute bottom-1/4 right-1/3 w-72 h-72 bg-neutral-700/5 rounded-full blur-3xl group-hover:blur-2xl transition-all duration-500"></div>
     </div>
-    <div className="relative p-8 flex flex-col lg:flex-row lg:justify-around h-full min-h-80 items-center lg:space-y-0 space-y-6">
+    <div className="relative p-8 flex flex-col md:flex-row md:justify-around h-full min-h-80 items-center md:space-y-0 space-y-6">
       <div className="transform group-hover:scale-105 transition-transform duration-500">
         <div className="relative w-32 h-32 mx-auto flex items-center justify-center">
           <div className="absolute inset-0 bg-gradient-to-br from-amber-700/15 via-transparent to-orange-800/10 rounded-full blur-2xl group-hover:blur-3xl group-hover:from-amber-600/20 group-hover:to-orange-700/15 transition-all duration-500"></div>
@@ -29,7 +29,7 @@ const IntroCard = () => (
             Axel Thauvin
           </h1>
         </div>
-        <p className="text-sm sm:text-lg text-neutral-300 leading-relaxed max-w-sm mx-auto lg:mx-0 group-hover:text-neutral-200 transition-colors duration-300">
+        <p className="text-sm sm:text-lg text-neutral-300 leading-relaxed max-w-sm mx-auto md:mx-0 group-hover:text-neutral-200 transition-colors duration-300">
           J&apos;aime transformer des idées techniques en outils simples et
           concrets.
           <br />
