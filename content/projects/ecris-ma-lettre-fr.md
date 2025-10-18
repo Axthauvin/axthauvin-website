@@ -4,6 +4,7 @@ description: "L'outil fait la lettre de motivation parfaite. Dépose ton CV, col
 image: "/projects/ecrismalettre/ecrismalettre-card.png"
 date: 2025-07-25
 featured: true
+accentColor: "black"
 technologies:
   [
     "TypeScript",

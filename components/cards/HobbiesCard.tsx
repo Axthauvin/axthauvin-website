@@ -5,13 +5,14 @@ import { Button } from "@/components/ui/button";
 import ChessGame from "@/components/Hobbies/ChessGame";
 import Link from "next/link";
 import Image from "next/image";
-import { ExternalLink } from "lucide-react";
-import { SiSteam } from "react-icons/si";
+import { Book } from "lucide-react";
+import { SiChessdotcom } from "react-icons/si";
 import { FaSteam } from "react-icons/fa";
-import { TbSteam } from "react-icons/tb";
+import Book3D from "../Hobbies/Book";
 
 function HobbiesCard() {
   const [showGame, setShowGame] = useState(false);
+  const [openBook, setOpenBook] = useState(false);
   const [fullscreen, setFullscreen] = useState(false);
 
   if (showGame) {
@@ -24,6 +25,19 @@ function HobbiesCard() {
           }}
           isFullscreen={fullscreen}
           setFullscreen={setFullscreen}
+        />
+      </div>
+    );
+  }
+
+  if (openBook) {
+    return (
+      <div className="col-span-1 md:col-span-3">
+        <Book3D
+          coverImage="/favBook.jpg"
+          quote="J'ai peur. Pas de la vie ou de la mort , ou du néant mais de tout perdre comme si je n'avais jamais été."
+          author="Daniel Keyes"
+          setOpenBook={setOpenBook}
         />
       </div>
     );
@@ -55,24 +69,28 @@ function HobbiesCard() {
           />
           Jouer aux échecs
         </Button>
-        <Button variant="outline">
-          <Link
-            href="https://www.bibliothequesonore.ch/livre/31726"
-            target="_blank"
-            className="flex items-center gap-2"
-          >
-            <ExternalLink size={12} />
-            Mon livre préféré
-          </Link>
+        <Button variant="outline" onClick={() => setOpenBook(true)}>
+          <Book size={16} className="mr-1" />
+          Mon livre préféré
         </Button>
-        <Button>
+        <Button className="bg-[#171a21] text-white hover:text-black">
           <Link
             href="https://steamcommunity.com/id/dovahkciin"
             target="_blank"
             className="flex items-center gap-2"
           >
-            <FaSteam />
+            <FaSteam size={16} />
             Chasseur de trophées
+          </Link>
+        </Button>
+        <Button className="bg-[#80b54b] text-white hover:bg-[#6fa43e]">
+          <Link
+            href="https://www.chess.com/member/axthauvin"
+            target="_blank"
+            className="flex items-center gap-2"
+          >
+            <SiChessdotcom size={16} />
+            Chess.com
           </Link>
         </Button>
       </div>

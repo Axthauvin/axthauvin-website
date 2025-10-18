@@ -7,6 +7,7 @@ image: "projects/app-absence/Absence-app-icon.png"
 technologies:
   ["PHP", "HTML", "CSS", "JavaScript", "MySQL", "SMTP (Email)", "Bootstrap"]
 author: ["Axel Thauvin"]
+accentColor: "black"
 ---
 
 # Fonctionnement du programme :

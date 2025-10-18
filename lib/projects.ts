@@ -43,6 +43,7 @@ export function getAllProjects(): Project[] {
         github: data.github,
         demo: data.demo,
         content,
+        accentColor: data.accentColor,
       } as Project;
     });
 

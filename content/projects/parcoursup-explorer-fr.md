@@ -8,6 +8,7 @@ technologies: ["PHP", "Javascript", "ChartJS", "Excel"]
 author: ["Axel Thauvin"]
 demo: "https://parcoursup-explorer.fr"
 draft: false
+accentColor: "black"
 ---
 
 Afin d'aider les lycéens dans leur orientation, j'ai réalisé un programme de statistiques, qui se basant sur les résultats des élèves des promotions ultérieures, de savoir quelles formations ont étées obtenues par les élèves en fonctions de leur spécialitées.
