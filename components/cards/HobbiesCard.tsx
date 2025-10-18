@@ -67,7 +67,7 @@ function HobbiesCard() {
         </Button>
         <Button>
           <Link
-            href="https://steamcommunity.com/id/dovahkciin/games/?tab=perfect"
+            href="https://steamcommunity.com/id/dovahkciin"
             target="_blank"
             className="flex items-center gap-2"
           >
