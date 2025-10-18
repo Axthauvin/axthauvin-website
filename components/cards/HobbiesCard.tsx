@@ -39,7 +39,7 @@ function HobbiesCard() {
         dispo, donc je vais laisser Stockfish jouer pour moi)
       </p>
 
-      <div className="flex gap-4 mt-6">
+      <div className="flex gap-4 mt-6 flex-wrap">
         <Button
           onClick={() => {
             setShowGame(true);
