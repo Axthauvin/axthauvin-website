@@ -4,7 +4,6 @@ import { getCVData } from "@/lib/cv";
 import Image from "next/image";
 import React from "react";
 import { FroggerSkillsGame } from "@/components/Frogger";
-import { IconType } from "react-icons/lib";
 
 export default async function CVPage() {
   const cvData = await getCVData();
@@ -69,45 +68,6 @@ export default async function CVPage() {
 
       {/* Compétences */}
       <FroggerSkillsGame title={cvData.skills.title} skills={skills} />
-      {/* <section className="mb-12">
-        <h2 className="text-lg  mb-6 border-b border-gray-800 pb-2">
-          {cvData.skills.title}
-        </h2>
-        <div className="relative w-full overflow-hidden">
-          {[0, 1, 2].map((row) => (
-            <div
-              key={row}
-              className="flex gap-6 animate-marquee py-4"
-              style={{
-                animationDuration: `${100}s`, // Slower animation
-                animationDirection: row % 2 === 0 ? "normal" : "reverse",
-              }}
-            >
-              {[
-                ...cvData.skills.skills.slice(
-                  row * Math.ceil(cvData.skills.skills.length / 3),
-                  (row + 1) * Math.ceil(cvData.skills.skills.length / 3)
-                ),
-                ...cvData.skills.skills.slice(
-                  row * Math.ceil(cvData.skills.skills.length / 3),
-                  (row + 1) * Math.ceil(cvData.skills.skills.length / 3)
-                ),
-              ].map((skill, idx) => (
-                <a
-                  href={skill.url}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  key={`row${row}-${idx}`}
-                  className="flex items-center gap-2 px-4 py-2 bg-gray-800/50 dark:bg-gray-800/50 bg-gray-200/60 border border-gray-600 dark:border-gray-600 border-gray-300 rounded-full text-sm text-gray-300 dark:text-gray-300 text-gray-800 whitespace-nowrap flex-shrink-0 hover:bg-green-700/50 dark:hover:bg-green-700/50 hover:bg-gray-300/80 hover:text-black dark:hover:text-white transition-all duration-300"
-                >
-                  {React.createElement(skill.icon)}
-                  <span>{skill.name}</span>
-                </a>
-              ))}
-            </div>
-          ))}
-        </div>
-      </section> */}
 
       {/* Expérience */}
       <section className="mb-12">
@@ -147,7 +107,17 @@ export default async function CVPage() {
                         className="flex items-start gap-3 text-muted-foreground leading-relaxed"
                       >
                         <div className="w-1.5 h-1.5 bg-gray-500 dark:bg-gray-500 bg-gray-400 rounded-full mt-2.5 flex-shrink-0"></div>
-                        <p className="text-sm">{desc}</p>
+                        <div
+                          className="text-sm"
+                          dangerouslySetInnerHTML={{
+                            __html: desc.replace(
+                              /<a\s+href="([^"]*)"[^>]*>(.*?)<\/a>/gi,
+                              (match, href, text) => {
+                                return `<a href="${href}" rel="noopener noreferrer">${text}</a>`;
+                              }
+                            ),
+                          }}
+                        />
                       </div>
                     ))}
                   </div>

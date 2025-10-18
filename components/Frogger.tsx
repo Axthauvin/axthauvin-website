@@ -60,7 +60,7 @@ export const FroggerSkillsGame = (tempCvData: FroggerSkillsGameProps) => {
     }, 50); // Vérifier toutes les 50ms
 
     return () => clearInterval(checkCollisionInterval);
-  }, [gameActive, frogPosition]);
+  }, [gameActive, frogPosition, checkCollision]);
 
   // Gérer les clics dans la zone de jeu
   const handleGameClick = (e: {
@@ -208,40 +208,57 @@ export const FroggerSkillsGame = (tempCvData: FroggerSkillsGameProps) => {
         )}
 
         {/* Carrousel de skills avec espacement pour le jeu */}
-        {[0, 1, 2].map((row) => (
-          <div
-            key={row}
-            className={`flex animate-marquee py-4 ${
-              gameActive ? "gap-20 py-8" : "gap-6"
-            }`}
-            style={{
-              animationDuration: gameActive ? "60s" : "100s",
-              animationDirection: row % 2 === 0 ? "normal" : "reverse",
-              marginTop: gameActive && row === 0 ? "2rem" : "0",
-            }}
-          >
-            {[
-              ...skills.slice(
-                row * Math.ceil(skills.length / 3),
-                (row + 1) * Math.ceil(skills.length / 3)
-              ),
-              ...skills.slice(
-                row * Math.ceil(skills.length / 3),
-                (row + 1) * Math.ceil(skills.length / 3)
-              ),
-            ].map((skill, idx) => (
+
+        {gameActive ? (
+          [0, 1, 2].map((row) => (
+            <div
+              key={row}
+              className={`flex animate-marquee py-4 ${
+                gameActive ? "gap-20 py-8" : "gap-6"
+              }`}
+              style={{
+                animationDuration: gameActive ? "60s" : "100s",
+                animationDirection: row % 2 === 0 ? "normal" : "reverse",
+                marginTop: gameActive && row === 0 ? "2rem" : "0",
+              }}
+            >
+              {[
+                ...skills.slice(
+                  row * Math.ceil(skills.length / 3),
+                  (row + 1) * Math.ceil(skills.length / 3)
+                ),
+                ...skills.slice(
+                  row * Math.ceil(skills.length / 3),
+                  (row + 1) * Math.ceil(skills.length / 3)
+                ),
+              ].map((skill, idx) => (
+                <a
+                  key={`row${row}-${idx}`}
+                  href={gameActive ? undefined : skill.url}
+                  target="_blank"
+                  className="flex items-center gap-2 px-4 py-2 bg-[hsl(0, 0%, 95%)] dark:bg-gray-800/50 border border-gray-600 rounded-full text-sm text-gray-800 dark:text-gray-300 whitespace-nowrap flex-shrink-0 hover:bg-gray-700/50 hover:text-white transition-all duration-300 dark:bg-gray-800/50 dark:border-gray-600 bg-gray-100/50 border-gray-300 skill-item select-none"
+                >
+                  {React.createElement(skill.icon)}
+                  <span>{skill.name}</span>
+                </a>
+              ))}
+            </div>
+          ))
+        ) : (
+          <div className={`${gameActive ? "py-8" : ""}`}>
+            {skills.map((skill, idx) => (
               <a
-                key={`row${row}-${idx}`}
+                key={idx}
                 href={gameActive ? undefined : skill.url}
                 target="_blank"
-                className="flex items-center gap-2 px-4 py-2 bg-[hsl(0, 0%, 95%)] dark:bg-gray-800/50 border border-gray-600 rounded-full text-sm text-gray-800 dark:text-gray-300 whitespace-nowrap flex-shrink-0 hover:bg-gray-700/50 hover:text-white transition-all duration-300 dark:bg-gray-800/50 dark:border-gray-600 bg-gray-100/50 border-gray-300 skill-item select-none"
+                className="inline-flex items-center gap-2 px-4 py-2 bg-[hsl(0, 0%, 95%)] dark:bg-gray-800/50 border border-gray-600 rounded-full text-sm text-gray-800 dark:text-gray-300 whitespace-nowrap flex-shrink-0 hover:bg-gray-700/50 hover:text-white transition-all duration-300 dark:bg-gray-800/50 dark:border-gray-600 bg-gray-100/50 border-gray-300 skill-item select-none mr-2 mb-2"
               >
                 {React.createElement(skill.icon)}
                 <span>{skill.name}</span>
               </a>
             ))}
           </div>
-        ))}
+        )}
 
         {/* Grenouille */}
         {gameActive && (

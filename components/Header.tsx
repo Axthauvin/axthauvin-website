@@ -3,7 +3,6 @@
 import Link from "next/link";
 import { ArrowLeft } from "lucide-react";
 import { usePathname } from "next/navigation";
-import ThemeSwitcher from "./ThemeSwitcher";
 
 export default function Header() {
   const pathname = usePathname();

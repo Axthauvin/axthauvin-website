@@ -1,6 +1,6 @@
 ---
 title: "parcoursup-explorer.fr"
-description: "Programme d'analyse des parcours Parcoursup, permettant aux lycéens de visualiser les formations obtenues selon leurs spécialités, et d'explorer les statistiques d'admission. Utilisation d'Excel, PHP, Javascript et ChartJS pour optimiser la présentation des données."
+description: "Programme d'analyse des parcours Parcoursup, permettant aux lycéens de visualiser les formations obtenues selon leurs spécialités, et d'explorer les statistiques d'admission."
 date: 2022-07-20T21:18:50+02:00
 featured: false
 image: "projects/parcoursup-explorer/Parcoursup-app-icon.png"

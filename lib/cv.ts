@@ -176,6 +176,14 @@ export async function getCVData(): Promise<CVData> {
       title: "Mon expérience professionnelle",
       jobs: [
         {
+          title: "Fondateur & CTO – EcrisMaLettre.fr",
+          period: "Juillet 2025 - Aujourd'hui",
+          description: [
+            "Création et développement d'un outil en ligne permettant aux étudiants de générer des lettres de motivation personnalisées en quelques secondes à partir de leur CV et d'une offre",
+            "Site web : <a href='https://ecrismalettre.fr' class='hover:text-blue-500 underline' target='_blank'>ecrismalettre.fr</a>",
+          ],
+        },
+        {
           title: "Trésorier de l'association BackToBasics (EPITA)",
           period: "Avril 2023 - Aujourd'hui",
           description: [

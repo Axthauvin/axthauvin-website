@@ -46,7 +46,7 @@ export default function RootLayout({
         />
       </head>
       <body className="min-h-screen">
-        <ThemeSwitcher />
+        {/* <ThemeSwitcher /> */}
         {children}
         <Toaster position="top-right" theme="system" />
         <Footer />
