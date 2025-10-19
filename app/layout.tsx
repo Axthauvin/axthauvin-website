@@ -1,12 +1,10 @@
-import ThemeSwitcher from "@/components/ThemeSwitcher";
 import "./globals.css";
 import type { Metadata } from "next";
 import Footer from "@/components/Footer";
 import { Toaster } from "sonner";
-import { useTheme } from "next-themes";
 
 export const metadata: Metadata = {
-  metadataBase: new URL("https://axelthauvin.dev"),
+  metadataBase: new URL("https://axthauvin.onrender.com"),
   title: "Axel Thauvin",
   description:
     "Je crée des outils accessibles et partage ma passion via des cours et projets open source.",

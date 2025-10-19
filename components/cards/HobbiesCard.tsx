@@ -61,7 +61,7 @@ function HobbiesCard() {
           }}
         >
           <Image
-            src="/chessIcons/bk.png"
+            src="/chess/icons/bk.png"
             alt="Jouer aux échecs"
             width={16}
             height={16}

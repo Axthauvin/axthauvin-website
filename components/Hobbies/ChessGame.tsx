@@ -4,65 +4,48 @@ import { X } from "lucide-react";
 import { Button } from "../ui/button";
 import Image from "next/image";
 import { toast } from "sonner";
+import { getBestMove } from "@/lib/stockfish";
 
-const playMoveSound = (isCapture: boolean = false) => {
-  const audioContext = new (window.AudioContext ||
-    (window as any).webkitAudioContext)();
-  const oscillator = audioContext.createOscillator();
-  const gainNode = audioContext.createGain();
-
-  oscillator.connect(gainNode);
-  gainNode.connect(audioContext.destination);
-
-  if (isCapture) {
-    // Deux notes pour une capture
-    oscillator.frequency.value = 523.25;
-    gainNode.gain.setValueAtTime(0.3, audioContext.currentTime);
-    gainNode.gain.exponentialRampToValueAtTime(
-      0.01,
-      audioContext.currentTime + 0.1
-    );
-    oscillator.start(audioContext.currentTime);
-    oscillator.stop(audioContext.currentTime + 0.1);
-
-    const osc2 = audioContext.createOscillator();
-    osc2.connect(gainNode);
-    osc2.frequency.value = 392;
-    osc2.start(audioContext.currentTime + 0.05);
-    osc2.stop(audioContext.currentTime + 0.15);
-  } else {
-    // Note simple pour un coup normal
-    oscillator.frequency.value = 784;
-    gainNode.gain.setValueAtTime(0.3, audioContext.currentTime);
-    gainNode.gain.exponentialRampToValueAtTime(
-      0.01,
-      audioContext.currentTime + 0.15
-    );
-    oscillator.start(audioContext.currentTime);
-    oscillator.stop(audioContext.currentTime + 0.15);
+function playMoveSound(moveType: string) {
+  switch (moveType) {
+    case "capture":
+      new Audio("/chess/sounds/capture.mp3").play();
+      break;
+    case "castle":
+      new Audio("/chess/sounds/castle.mp3").play();
+      break;
+    case "check":
+      new Audio("/chess/sounds/check.mp3").play();
+      break;
+    case "checkmate":
+      new Audio("/chess/sounds/checkmate.mp3").play();
+      break;
+    default:
+      new Audio("/chess/sounds/move.mp3").play();
+      break;
   }
-};
+}
 
 interface ChessBoardProps {
   game: Chess;
   onMove: (from: string, to: string) => void;
   isFlipped: boolean;
-  boardSize?: string; // CSS length, e.g. '24rem' or '90vmin'
+  boardSize?: string;
 }
 
 const pieceIcons = {
-  p: "/chessIcons/bp.png",
-  r: "/chessIcons/br.png",
-  n: "/chessIcons/bn.png",
-  b: "/chessIcons/bb.png",
-  q: "/chessIcons/bq.png",
-  k: "/chessIcons/bk.png",
-  P: "/chessIcons/wp.png",
-  R: "/chessIcons/wr.png",
-  N: "/chessIcons/wn.png",
-  B: "/chessIcons/wb.png",
-  Q: "/chessIcons/wq.png",
-  K: "/chessIcons/wk.png",
+  p: "/chess/icons/bp.png",
+  r: "/chess/icons/br.png",
+  n: "/chess/icons/bn.png",
+  b: "/chess/icons/bb.png",
+  q: "/chess/icons/bq.png",
+  k: "/chess/icons/bk.png",
+  P: "/chess/icons/wp.png",
+  R: "/chess/icons/wr.png",
+  N: "/chess/icons/wn.png",
+  B: "/chess/icons/wb.png",
+  Q: "/chess/icons/wq.png",
+  K: "/chess/icons/wk.png",
 };
 
 function ChessPieceIcon(pieceKey: keyof typeof pieceIcons) {
@@ -191,46 +174,15 @@ const ChessGame = ({
   const [isThinking, setIsThinking] = useState(false);
   const [gameHistory, setGameHistory] = useState<string[]>([]);
 
-  const API_TIMEOUT_MS = 5000; // 5s timeout
-
-  const fetchWithTimeout = async (
-    url: string,
-    options: RequestInit = {},
-    timeoutMs = API_TIMEOUT_MS
-  ): Promise<Response> => {
-    const controller = new AbortController();
-    const id = setTimeout(() => controller.abort(), timeoutMs);
-    try {
-      const response = await fetch(url, {
-        ...options,
-        signal: controller.signal,
-      });
-      return response;
-    } finally {
-      clearTimeout(id);
-    }
-  };
-
   const getStockfishMove = async (gameState: Chess): Promise<string | null> => {
     try {
       const fen = gameState.fen();
-      const response = await fetchWithTimeout(`https://chess-api.com/v1/`, {
-        method: "POST",
-        body: JSON.stringify({ fen }),
-        headers: {
-          "Content-Type": "application/json",
-        },
-      });
-
-      if (!response.ok) {
-        throw new Error(`HTTP ${response.status}`);
-      }
-      const data = await response.json();
-
-      if (data.move) {
-        return data.move;
-      }
-      return null;
+      const promise = getBestMove(fen);
+      const timeout = new Promise<null>((_, reject) =>
+        setTimeout(() => reject(new Error("AbortError")), 5000)
+      );
+      const bestMove = await Promise.race([promise, timeout]);
+      return bestMove;
     } catch (error) {
       const isAbort = (error as any)?.name === "AbortError";
       console.error("Error fetching move from chess-api:", error);
@@ -255,12 +207,29 @@ const ChessGame = ({
     if (!legalMove) return;
 
     const isCapture = newGame.get(to as Square) !== undefined;
+    const isCastle = legalMove.san.includes("-");
+
     newGame.move({ from, to, promotion: "q" });
-    playMoveSound(isCapture);
+
+    const isCheck = newGame.isCheck();
+    const isCheckmate = newGame.isCheckmate();
+
+    playMoveSound(
+      isCheckmate
+        ? "checkmate"
+        : isCheck
+        ? "check"
+        : isCapture
+        ? "capture"
+        : isCastle
+        ? "castle"
+        : "move"
+    );
+
     setGame(new Chess(newGame.fen()));
     setGameHistory([...gameHistory, `${from}${to}`]);
 
-    if (newGame.isCheckmate()) {
+    if (isCheckmate) {
       setStatus("Vous avez gagné! 🎉");
       return;
     }
@@ -268,7 +237,7 @@ const ChessGame = ({
       setStatus("Partie nulle! ⚖️");
       return;
     }
-    if (newGame.isCheck()) {
+    if (isCheck) {
       setStatus("Échec!");
     } else {
       setStatus("Au tour de Stockfish...");
@@ -280,18 +249,33 @@ const ChessGame = ({
         const stockfishMove = await getStockfishMove(newGame);
         console.log("Stockfish move:", stockfishMove);
         if (stockfishMove) {
-          const isCapture =
-            newGame.get(stockfishMove.slice(2, 4) as Square) !== undefined;
-          if (isCapture) playMoveSound(true);
+          const stockfishTo = stockfishMove.slice(2, 4);
+          const isCapture = newGame.get(stockfishTo as Square) !== undefined;
+          const isCastle = stockfishMove.includes("-");
           newGame.move(stockfishMove);
           setGame(new Chess(newGame.fen()));
           setGameHistory([...gameHistory, `${from}${to}`, stockfishMove]);
 
-          if (newGame.isCheckmate()) {
+          const isCheck = newGame.isCheck();
+          const isCheckmate = newGame.isCheckmate();
+
+          playMoveSound(
+            isCheckmate
+              ? "checkmate"
+              : isCheck
+              ? "check"
+              : isCapture
+              ? "capture"
+              : isCastle
+              ? "castle"
+              : "move"
+          );
+
+          if (isCheckmate) {
             setStatus("Échec et mat! Stockfish gagne! 🤖");
           } else if (newGame.isDraw()) {
             setStatus("Partie nulle! ⚖️");
-          } else if (newGame.isCheck()) {
+          } else if (isCheck) {
             setStatus("À vous de jouer! (Échec)");
           } else {
             setStatus("À vous de jouer!");
