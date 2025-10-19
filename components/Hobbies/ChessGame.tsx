@@ -3,6 +3,7 @@ import { Chess, Square } from "chess.js";
 import { X } from "lucide-react";
 import { Button } from "../ui/button";
 import Image from "next/image";
+import { toast } from "sonner";
 
 const playMoveSound = (isCapture: boolean = false) => {
   const audioContext = new (window.AudioContext ||
@@ -46,6 +47,7 @@ interface ChessBoardProps {
   game: Chess;
   onMove: (from: string, to: string) => void;
   isFlipped: boolean;
+  boardSize?: string; // CSS length, e.g. '24rem' or '90vmin'
 }
 
 const pieceIcons = {
@@ -63,12 +65,26 @@ const pieceIcons = {
   K: "/chessIcons/wk.png",
 };
 
-function ChessPieceIcon(pieceKey: keyof typeof pieceIcons, size = 32) {
+function ChessPieceIcon(pieceKey: keyof typeof pieceIcons) {
   const src = pieceIcons[pieceKey];
-  return <Image src={src} alt={pieceKey} width={size} height={size} />;
+  // Fill parent square; parent must be position: relative
+  return (
+    <Image
+      src={src}
+      alt={pieceKey}
+      fill
+      className="object-contain p-0.5"
+      sizes="12.5vmin"
+    />
+  );
 }
 
-const ChessBoard = ({ game, onMove, isFlipped }: ChessBoardProps) => {
+const ChessBoard = ({
+  game,
+  onMove,
+  isFlipped,
+  boardSize = "24rem",
+}: ChessBoardProps) => {
   const [selectedSquare, setSelectedSquare] = useState<string | null>(null);
   const [legalMoves, setLegalMoves] = useState<string[]>([]);
 
@@ -114,10 +130,13 @@ const ChessBoard = ({ game, onMove, isFlipped }: ChessBoardProps) => {
     : board;
 
   return (
-    <div className="inline-block border-4 border-amber-900">
-      {displayBoard.map((rank, rankIdx) => (
-        <div key={rankIdx} className="flex">
-          {rank.map((square, fileIdx) => {
+    <div
+      className="inline-block border-4 border-amber-900"
+      style={{ width: boardSize }}
+    >
+      <div className="grid grid-cols-8">
+        {displayBoard.map((rank, rankIdx) =>
+          rank.map((square, fileIdx) => {
             const file = isFlipped ? files[7 - fileIdx] : files[fileIdx];
             const r = isFlipped ? ranks[rankIdx] : ranks[7 - rankIdx];
             const squareId = file + r;
@@ -128,9 +147,10 @@ const ChessBoard = ({ game, onMove, isFlipped }: ChessBoardProps) => {
               <button
                 key={squareId}
                 onClick={() => handleSquareClick(squareId)}
-                className={`w-12 h-12 flex items-center justify-center text-2xl cursor-pointer transition-all relative
-                  ${getSquareColor(file.charCodeAt(0) - 97, r)}
-                  hover:opacity-80`}
+                className={`w-full aspect-square flex items-center justify-center text-2xl cursor-pointer transition-all relative ${getSquareColor(
+                  file.charCodeAt(0) - 97,
+                  r
+                )} hover:opacity-80`}
                 style={{
                   boxShadow: isSelected
                     ? "inset 0 0 0 3px rgb(74, 222, 128)"
@@ -148,9 +168,9 @@ const ChessBoard = ({ game, onMove, isFlipped }: ChessBoardProps) => {
                   : ""}
               </button>
             );
-          })}
-        </div>
-      ))}
+          })
+        )}
+      </div>
     </div>
   );
 };
@@ -171,16 +191,40 @@ const ChessGame = ({
   const [isThinking, setIsThinking] = useState(false);
   const [gameHistory, setGameHistory] = useState<string[]>([]);
 
+  const API_TIMEOUT_MS = 5000; // 5s timeout
+
+  const fetchWithTimeout = async (
+    url: string,
+    options: RequestInit = {},
+    timeoutMs = API_TIMEOUT_MS
+  ): Promise<Response> => {
+    const controller = new AbortController();
+    const id = setTimeout(() => controller.abort(), timeoutMs);
+    try {
+      const response = await fetch(url, {
+        ...options,
+        signal: controller.signal,
+      });
+      return response;
+    } finally {
+      clearTimeout(id);
+    }
+  };
+
   const getStockfishMove = async (gameState: Chess): Promise<string | null> => {
     try {
       const fen = gameState.fen();
-      const response = await fetch(`https://chess-api.com/v1/`, {
+      const response = await fetchWithTimeout(`https://chess-api.com/v1/`, {
         method: "POST",
         body: JSON.stringify({ fen }),
         headers: {
           "Content-Type": "application/json",
         },
       });
+
+      if (!response.ok) {
+        throw new Error(`HTTP ${response.status}`);
+      }
       const data = await response.json();
 
       if (data.move) {
@@ -188,7 +232,17 @@ const ChessGame = ({
       }
       return null;
     } catch (error) {
+      const isAbort = (error as any)?.name === "AbortError";
       console.error("Error fetching move from chess-api:", error);
+      toast.error(
+        isAbort
+          ? "Le service d'IA est indisponible (délai dépassé)."
+          : "Le service d'IA est indisponible pour le moment.",
+        {
+          description:
+            "Impossible de récupérer le coup de Stockfish. Réessayez ou relancez la partie.",
+        }
+      );
       return null;
     }
   };
@@ -267,14 +321,14 @@ const ChessGame = ({
           isFullscreen ? "bg-neutral-900 p-8 rounded-lg w-full h-full" : ""
         }`}
       >
-        {isFullscreen && (
-          <button
-            onClick={onClose}
-            className="absolute top-4 right-4 text-white hover:text-neutral-400"
-          >
-            <X size={24} />
-          </button>
-        )}
+        <button
+          onClick={onClose}
+          className={`${
+            isFullscreen ? "absolute top-4 right-4" : ""
+          } text-white hover:text-neutral-400`}
+        >
+          <X size={24} />
+        </button>
 
         <div className="flex flex-col items-center gap-6">
           <div>
@@ -284,7 +338,12 @@ const ChessGame = ({
             <p className="text-sm text-neutral-400">{status}</p>
           </div>
 
-          <ChessBoard game={game} onMove={handlePlayerMove} isFlipped={false} />
+          <ChessBoard
+            game={game}
+            onMove={handlePlayerMove}
+            isFlipped={false}
+            boardSize={isFullscreen ? "min(92vmin, 85vh, 85vw)" : "24rem"}
+          />
 
           <div className="text-sm text-neutral-400 text-center">
             <p>Vous jouez les blancs • Stockfish joue les noirs</p>
