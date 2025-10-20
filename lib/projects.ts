@@ -18,6 +18,21 @@ export interface Project {
 
 const projectsDirectory = path.join(process.cwd(), "content/projects");
 
+// Ensure image paths are absolute from the public root
+function normalizeImagePath(img?: string): string {
+  if (!img) return "";
+  // Keep remote or data URLs as-is
+  if (
+    img.startsWith("http://") ||
+    img.startsWith("https://") ||
+    img.startsWith("data:")
+  ) {
+    return img;
+  }
+  // Ensure leading slash for assets under public/
+  return img.startsWith("/") ? img : `/${img}`;
+}
+
 export function getAllProjects(): Project[] {
   if (!fs.existsSync(projectsDirectory)) {
     return [];
@@ -36,7 +51,7 @@ export function getAllProjects(): Project[] {
         slug,
         title: data.title,
         description: data.description,
-        image: data.image,
+        image: normalizeImagePath(data.image),
         date: data.date,
         featured: data.featured || false,
         technologies: data.technologies || [],
@@ -62,13 +77,14 @@ export function getProjectBySlug(slug: string): Project | null {
       slug,
       title: data.title,
       description: data.description,
-      image: data.image,
+      image: normalizeImagePath(data.image),
       date: data.date,
       featured: data.featured || false,
       technologies: data.technologies || [],
       github: data.github,
       demo: data.demo,
       content,
+      accentColor: data.accentColor,
     } as Project;
   } catch {
     return null;
