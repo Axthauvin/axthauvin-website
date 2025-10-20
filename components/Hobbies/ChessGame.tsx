@@ -50,7 +50,6 @@ const pieceIcons = {
 
 function ChessPieceIcon(pieceKey: keyof typeof pieceIcons) {
   const src = pieceIcons[pieceKey];
-  // Fill parent square; parent must be position: relative
   return (
     <Image
       src={src}

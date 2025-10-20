@@ -22,9 +22,7 @@ function HobbiesCard() {
         const img = new window.Image();
         img.src = "/favBook.jpg";
       }
-    } catch (_) {
-      // noop – best-effort preload
-    }
+    } catch (_) {}
   };
 
   if (showGame) {
@@ -61,8 +59,10 @@ function HobbiesCard() {
         Mes hobbies
       </h3>
       <p className="text-sm text-neutral-400 mb-4">
-        Passionné par les échecs. On se fait une petite partie ? (je suis pas
-        dispo, donc je vais laisser Stockfish jouer pour moi)
+        Passionné par les échecs et les défis, j’aime me challenger autant sur
+        l’échiquier qu’en code. <br />
+        Juste en dessous, vous trouverez une collection de mes projets
+        personnels.
       </p>
 
       <div className="flex gap-4 mt-6 flex-wrap">

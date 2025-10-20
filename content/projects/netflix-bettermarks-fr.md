@@ -10,21 +10,49 @@ draft: false
 github: "https://github.com/Axthauvin/Netflix-better-marks"
 ---
 
-## [Lien de téléchargement 👇🏻](https://github.com/Axthauvin/Netflix-better-marks/releases)
+## Netflix BetterMarks
 
-**_Netflix better Marks est une [extension Chrome](https://developer.chrome.com/docs/extensions/), qui ajoute des notes de [IMDB](https://www.imdb.com/), [Metacritique](https://www.metacritic.com/) & [AlloCiné](https://www.allocine.fr/)</a> sur Netflix._**
+[**Télécharger l’extension sur GitHub 👇🏻**](https://github.com/Axthauvin/Netflix-better-marks/releases)
 
-`Si vous voulez un accès aux API utilisées, n'hésitez pas à me contacter`
+---
 
-### Image qui montre le résultat sur Netflix :
+### L’histoire
 
-![Image who shows the result on Netflix](https://raw.githubusercontent.com/Axthauvin/Netflix-better-marks/main/NetflixBetterMarks-1.png)
+**Netflix BetterMarks** est **ma toute première extension Chrome**.  
+À l’époque, je voulais rendre Netflix un peu plus “intelligent”, ou du moins, plus transparent.  
+Je sais que quand je cherche un film ou une série, je finit toujours par aller vérifier sa note sur **IMDB**, **Metacritic** ou **AlloCiné**.  
+Alors je me suis dit : _“Pourquoi ne pas les afficher directement sur Netflix ?”_
 
-### Menu de l'extension
+L’idée était simple, mais l’implémentation a été un vrai défi : l’extension devait **analyser les titres affichés sur Netflix**, puis **appeler plusieurs APIs** pour récupérer les notes correspondantes le tout en temps réel, sans ralentir la navigation.
 
-![Menu of the extension](https://raw.githubusercontent.com/Axthauvin/Netflix-better-marks/main/NetflixBetterMarks-5.png)
+C’était mon premier vrai projet à manipuler le DOM d’un site externe et à faire dialoguer plusieurs APIs ensemble, une petite victoire personnelle à l’époque.
 
-{{< encadres type="note" titre="Informations" >}}
-Statut : Terminé <br>
-Language utilisé : <a href="https://nodejs.org/en/">NodeJS (Javascript) </a>, HTML, CSS <br>
-{{< /encadres >}}
+Un autre défi important était de **récupérer le vrai nom du film ou de la série**.  
+Netflix affiche parfois des titres localisés ou modifiés (par exemple, “Very Bad Trip” au lieu du titre original, The Hangover), ce qui compliquait la recherche des notes sur les différentes plateformes.  
+Pour résoudre ce problème, j’ai dû utiliser l’API d’IMDB afin de retrouver le titre original à partir du titre affiché sur Netflix, garantissant ainsi l’exactitude des notes récupérées.
+
+---
+
+### Le résultat
+
+L’extension ajoutait automatiquement les notes IMDB, Metacritic et AlloCiné **directement sur les vignettes Netflix**, dans un petit encart discret mais bien visible.  
+Le but : aider à choisir plus vite quoi regarder, sans ouvrir dix onglets.
+
+![Résultat sur Netflix](https://raw.githubusercontent.com/Axthauvin/Netflix-better-marks/main/NetflixBetterMarks-1.png)
+
+Un petit menu permettait aussi d’activer ou de désactiver les différentes sources de notation, pour personnaliser son expérience :
+
+![Menu de l’extension](https://raw.githubusercontent.com/Axthauvin/Netflix-better-marks/main/NetflixBetterMarks-5.png)
+
+---
+
+### Et aujourd’hui ?
+
+L’extension **n’est plus fonctionnelle**, principalement parce que **les sites utilisés pour le scraping et certaines APIs ont évolué ou sont désormais protégés**.  
+Ce type de projet dépend fortement de l’écosystème, et la moindre modification côté IMDB ou Netflix peut tout remettre en cause.
+
+Malgré cela, **Netflix BetterMarks reste un projet marquant** : c’était ma première extension Chrome, ma première vraie intégration d’APIs, et surtout le déclic qui m’a donné envie de créer des outils pour améliorer le web.
+
+Le code source, forcément, **ne répond plus aux standards actuels** ! À l’époque, il n’y avait pas d’IA pour aider, et à **17 ans**, on ne code pas toujours de manière très rigoureuse.
+
+(Si vous voulez aller voir une scène de crime, [je vous invite à aller voir le repo](https://github.com/Axthauvin/Netflix-better-marks))

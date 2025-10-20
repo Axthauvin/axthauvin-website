@@ -15,6 +15,8 @@ import {
   SiGit,
   SiUnity,
   SiTailwindcss,
+  SiElectron,
+  SiSpring,
 } from "react-icons/si";
 import { RiJavaFill } from "react-icons/ri";
 import { TbBrandCSharp } from "react-icons/tb";
@@ -123,10 +125,10 @@ export async function getCVData(): Promise<CVData> {
           url: "https://en.cppreference.com/w/c",
         },
         {
-          name: "SQL",
-          icon: FaDatabase,
-          iconName: "FaDatabase",
-          url: "https://www.mysql.com/",
+          name: "PostgreSQL",
+          icon: SiPostgresql,
+          iconName: "SiPostgresql",
+          url: "https://www.postgresql.org/",
         },
         {
           name: "Git",
@@ -147,12 +149,6 @@ export async function getCVData(): Promise<CVData> {
           url: "https://tailwindcss.com/",
         },
         {
-          name: "PostgreSQL",
-          icon: SiPostgresql,
-          iconName: "SiPostgresql",
-          url: "https://www.postgresql.org/",
-        },
-        {
           name: "MySQL",
           icon: SiMysql,
           iconName: "SiMysql",
@@ -169,6 +165,18 @@ export async function getCVData(): Promise<CVData> {
           icon: SiLinux,
           iconName: "SiLinux",
           url: "https://www.kernel.org/",
+        },
+        {
+          name: "Spring Boot",
+          icon: SiSpring,
+          iconName: "SiSpring",
+          url: "https://spring.io/projects/spring-boot",
+        },
+        {
+          name: "ElectronJS",
+          icon: SiElectron,
+          iconName: "SiElectron",
+          url: "https://www.electronjs.org/",
         },
       ],
     },

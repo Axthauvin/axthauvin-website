@@ -18,10 +18,8 @@ export interface Project {
 
 const projectsDirectory = path.join(process.cwd(), "content/projects");
 
-// Ensure image paths are absolute from the public root
 function normalizeImagePath(img?: string): string {
   if (!img) return "";
-  // Keep remote or data URLs as-is
   if (
     img.startsWith("http://") ||
     img.startsWith("https://") ||
@@ -29,7 +27,6 @@ function normalizeImagePath(img?: string): string {
   ) {
     return img;
   }
-  // Ensure leading slash for assets under public/
   return img.startsWith("/") ? img : `/${img}`;
 }
 

@@ -3,7 +3,7 @@ import { ArrowLeft, Download, MapPin } from "lucide-react";
 import { getCVData } from "@/lib/cv";
 import Image from "next/image";
 import React from "react";
-import { FroggerSkillsGame } from "@/components/Frogger";
+import { FroggerSkillsGame } from "@/components/Frogger/index";
 
 export default async function CVPage() {
   const cvData = await getCVData();
@@ -71,9 +71,17 @@ export default async function CVPage() {
 
       {/* Expérience */}
       <section className="mb-12">
-        <h2 className="text-lg  mb-6 border-b pb-2 dark:border-gray-800 border-gray-200">
-          {cvData.experience.title}
-        </h2>
+        <div className="flex items-center justify-between mb-6 border-b pb-2 dark:border-gray-800 border-gray-200">
+          <h2 className="text-lg">{cvData.experience.title}</h2>
+          <Link
+            href="/curriculum/axthauvin_cv_2025.pdf"
+            className="inline-flex items-center gap-2 text-muted-foreground hover-fade text-sm"
+            target="_blank"
+          >
+            <Download size={16} />
+            Version PDF
+          </Link>
+        </div>
         <div className="relative">
           {/* Ligne verticale principale */}
           <div className="absolute left-8 top-0 bottom-0 w-0.5 bg-gray-600 dark:bg-gray-600 bg-gray-300"></div>

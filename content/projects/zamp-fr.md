@@ -10,55 +10,91 @@ github: "https://github.com/axthauvin/zamp"
 draft: false
 ---
 
-## Fonctionnement du programme
+## L’histoire derrière ZAMP
 
-ZAMP est une application qui simplifie l'installation d'un environnement de développement web local en un seul clic. Conçue avec [Electron](https://www.electronjs.org/), elle regroupe Apache, MySQL et PHP, ce qui élimine le besoin de configuration manuelle.
+Lorsque j'ai commencé le développement web et à faire du PHP, j’ai toujours utilisé [UwAmp](https://www.uwamp.com/en/). C’est léger, pratique, et ça fait le job.  
+Mais il faut être honnête : **l’interface commence à dater**, et on sent que le projet n’a pas vraiment évolué depuis un moment. À force de jongler entre mes projets, je voulais quelque chose de **plus moderne, plus fluide**, et surtout, **plus simple à gérer au quotidien**.
 
-> Ce projet est encore en cours de développement, et a pour but d'être open source, afin de laisser la communauté l'améliorer et le personnaliser.
+![Image de Uwamp](/projects/zamp/uwamp.png)
 
-## Vue d'ensemble
+> Voici à quoi ressemble UwAmp !
 
-**ZAMP** est une pile de développement tout-en-un pour les développeurs web, **fournissant tout ce dont vous avez besoin** pour le développement web **_local_**. Il intègre de manière transparente Apache, MySQL et PHP, éliminant ainsi le besoin d'installations individuelles.
-Avec **aucune configuration requise**, ZAMP simplifie votre processus de développement, vous permettant de vous concentrer uniquement sur la création de votre application. De plus, démarrer tous les services est aussi simple qu'un seul clic, améliorant ainsi votre productivité et votre efficacité.
+C’est comme ça qu’est né **ZAMP** ! Un clin d’œil à la fois à _WAMP_ et à cette envie de repartir de zéro avec une approche plus intuitive. L'idée était, sans rien connaitre à la configuration d'Apache, de pouvoir créer une application que je pourrais utiliser pour le développement web.
 
 ![Zamp avec des projets chargés](/projects/zamp/ZAMP-interface.png)
 
-## Fonctionnalités
+---
 
-- **Aucune Configuration Nécessaire**: Installez et exécutez. Pas besoin de passer des heures à configurer votre environnement.
-  es- - **Gestion des Extensions**: Activez ou désactivez les extensions PHP avec une simple interface à cases à cocher.
+## Pourquoi ZAMP ?
 
-- **Contrôle des Versions**: Téléchargez et passez facilement d'une version de PHP à une autre.
-  ent.- **Lanceur MySQL / MariaDB**: Cliquez simplement pour ouvrir et fermer votre instance SQL.
-  ce.
-  -- **Configuration de Projet par Glisser-Déposer**: Glissez et déposez simplement vos dossiers de projet dans ZAMP pour commencer.e.
-- **Contrôle des Versions**: Téléchargez et passez facilement d'une version de PHP à une autre.
-- **Lanceur MySQL / MariaDB**: Cliquez simplement pour ouvrir et fermer votre instance SQL.
-- **Configuration de Projet par Glisser-Déposer**: Glissez et déposez simplement vos dossiers de projet dans ZAMP pour commencer.
+Le but était simple : **recréer l’expérience UwAmp**, mais en version **moderne et automatisée**.  
+ZAMP installe et gère un environnement local complet (Apache, MySQL, PHP) en un clic, sans qu’on ait à plonger dans les fichiers de configuration ou à ouvrir une console.
+
+Conçu avec [Electron](https://www.electronjs.org/), le programme repose sur une interface claire et épurée, pensée pour les développeurs qui veulent juste **coder**, pas passer leur temps à configurer leur environnement.
+
+---
+
+## Ce que ZAMP change
+
+L’un des points qui m’a toujours frustré avec les outils classiques, c’est la gestion des projets.  
+Souvent, tout est enfermé dans un unique dossier `www`, et il faut sans cesse déplacer ou copier ses fichiers.
+
+Avec **ZAMP**, j’ai voulu casser cette contrainte : L’application modifie **automatiquement** la configuration d’Apache pour pointer vers n’importe quel dossier de projet.
+
+Résultat : on peut passer **d’un projet à l’autre en un clic**, sans rien déplacer.  
+C’est fluide, rapide, et surtout beaucoup plus naturel.
+
+---
+
+## Un gestionnaire d’extensions PHP intégré
+
+Autre idée que j’avais en tête depuis le début : rendre la configuration de PHP **visuelle**.  
+Fini les lignes à commenter dans le `php.ini`, ZAMP propose une interface avec des **cases à cocher** pour activer ou désactiver les extensions PHP.
+
+![Configuration PHP](/projects/zamp/PHPConfig.png)
+
+---
+
+## Une pile tout-en-un, sans prise de tête
+
+ZAMP regroupe Apache, MySQL (via MariaDB) et PHP, avec un système de gestion entièrement automatisé.  
+Tout peut être **démarré, arrêté ou reconfiguré** depuis l’interface.
+
+Parmi les fonctionnalités principales :
+
+- **Aucune configuration manuelle** : installez, lancez, développez.
+- **Gestion des projets** : basculez d’un projet à un autre sans toucher aux fichiers.
+- **Contrôle des versions PHP** : téléchargez et changez de version facilement.
+- **Lanceur SQL** : démarrez ou arrêtez MariaDB en un clic.
+
+---
+
+## Pourquoi un poisson ? 🐟
+
+Quand j’ai partagé ZAMP pour la première fois sur [Reddit](https://www.reddit.com/r/opensource/comments/1d0synm/comment/l5pyg6k/?utm_source=share&utm_medium=web3x&utm_name=web3xcss&utm_term=1&utm_content=share_button), un utilisateur a commenté que mon projet avait l’air un peu “**fishy**” (suspect, quoi).  
+Ça m’a fait rire, et plutôt que de le prendre mal, j’ai décidé d’en faire **le symbole du projet**.
+
+Depuis, **le logo de ZAMP est un poisson**.  
+C’est devenu une sorte d’autodérision assumée : un petit clin d’œil à cette remarque, mais aussi à l’esprit open source. Je pense que c'est important de savoir **ne pas se prendre trop au sérieux**, même quand on développe des outils techniques.
+
+---
 
 ## Installation
 
-Actuellement, ZAMP est uniquement disponible pour Windows. Nous travaillons activement à rendre ZAMP disponible pour macOS et Linux dans un futur proche. Restez à l'écoute pour les mises à jour !
+ZAMP est pour l’instant disponible uniquement sur **Windows**.
 
 ### Windows
 
-1. Téléchargez la dernière version de [ZAMP pour Windows](https://github.com/Axthauvin/ZAMP/releases/download/Windows-0.0.2/zamp.Setup.0.1.2.exe).
-2. Extrayez l'archive à l'emplacement de votre choix.
-3. Exécutez `zamp.Setup.1.0.0.exe`.
+1. Téléchargez la dernière version depuis [GitHub](https://github.com/Axthauvin/ZAMP/releases/).
+2. Installez simplement le programme.
+3. Lancez **ZAMP** et commencez à développer !
 
-## Utilisation
+---
 
-Une fois installé, vous pouvez accéder aux services suivants :
+## En résumé
 
-- **Apache** : Cliquez sur le bouton de démarrage
-  ![Bouton de démarrage](/projects/zamp/Startbutton.png)
+ZAMP, c’est ma manière de **réconcilier simplicité et modernité** dans le développement local.  
+Un outil pensé pour les développeurs qui aiment comprendre ce qu’ils font, mais qui n’ont pas envie de passer 30 minutes à lancer Apache et MariaDB sans que ça crash (car oui ça arrive souvent avec uWamp 👀).
 
-- **PHPMyAdmin** : PHP se configurera automatiquement dans l'application.
-  Vous pouvez toujours changer la version ou les extensions en utilisant les zones dédiées.
-  ![Configuration PHP](/projects/zamp/PHPConfig.png)
-
-- **MySQL / MariaDB** : ZAMP utilise MariaDB pour exécuter SQL car il dispose de binaires. MariaDB est rétrocompatible avec MySQL, vous pouvez donc toujours utiliser Workbench pour accéder à votre serveur.
-
-Vous pouvez accéder au serveur SQL dans la zone dédiée
-
-![Boutons SQL](/projects/zamp/MYSQL.png)
+Le projet est **open source** et encore en développement toute contribution est la bienvenue !  
+👉 [Voir le projet sur GitHub](https://github.com/axthauvin/zamp)

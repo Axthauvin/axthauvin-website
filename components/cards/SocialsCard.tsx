@@ -19,7 +19,7 @@ export const SocialsCard = () => {
       Icon: TfiGithub,
       href: "https://github.com/axthauvin",
       label: "GitHub",
-      accentColor: "#8b6eb7",
+      accentColor: "#ce48ff",
     },
     {
       Icon: TfiLinkedin,

@@ -28,10 +28,9 @@ Comme on peut le voir, il est très facilement accessible
 ![L'interface](/projects/word2pdf/word2pdf-interface.png)
 Je l'accorde, ce n'est pas l'interface la plus _sexy_ au monde
 
-{{< encadres-markdown type="note" titre="L'idée est simple, j'ai 2 options qui s'ouvrent à moi : " >}}
+L'idée est simple, j'ai 2 options qui s'ouvrent à moi :
 
 - Convertir **_un fichier_** DOCX en PDF
 - Convertir **_tous les fichiers d'un dossier_** qui sont en DOCX en PDF
-  {{< /encadres-markdown >}}
 
 ![Process](/projects/word2pdf/word2pdf-process.png)

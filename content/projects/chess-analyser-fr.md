@@ -33,7 +33,7 @@ Ce projet a rapidement pris une ampleur que je n’aurais pas imaginée au dépa
 
 ## Tech & stack
 
-Ce projet est une extension Chrome/Firefox que j’ai développé en [TypeScript](https://www.typescriptlang.org/) avec [Vite](https://vite.dev/) pour le packaging — une stack moderne, rapide à recharger, très agréable pour le développement d’extensions web.
+Ce projet est une extension Chrome/Firefox que j’ai développé en [TypeScript](https://www.typescriptlang.org/) avec [Vite](https://vite.dev/) pour le packaging: une stack moderne, rapide à recharger, très agréable pour le développement d’extensions web.
 
 Elle embarque une version allégée du moteur Stockfish 17 (Lite), directement dans le navigateur, permettant de faire tourner des évaluations en local, **sans dépendre d’une API externe**.
 
@@ -45,7 +45,7 @@ L’extension détecte automatiquement les coups joués sur une partie en temps 
 
 ### Récupération de l’état de l’échiquier
 
-À chaque coup joué, l’extension intercepte le [FEN (Forsyth-Edwards Notation)](https://fr.wikipedia.org/wiki/Notation_Forsyth-Edwards) directement depuis le DOM de chess.com. Cette chaîne encode la disposition des pièces, le trait, les droits de roque, les prises en passant, etc.
+À chaque coup joué, l’extension intercepte le [FEN (Forsyth-Edwards Notation)](https://fr.wikipedia.org/wiki/Notation_Forsyth-Edwards) directement depuis le DOM de chess.com. Cette chaîne encode la disposition des pièces, le trait (si c'est aux blancs ou noirs de jouer), les droits de roque, les prises en passant, etc.
 
 ```swift
 r1bqkbnr/pppp1ppp/2n5/4p3/2B1P3/5N2/PPPP1PPP/RNBQK2R w KQkq - 2 4
@@ -104,7 +104,7 @@ L’algorithme prend aussi en compte le type de pièce jouée, voire sacrifiée.
 
 ![Coup brillant !!](/projects/chess-analyser/brillant-move.png)
 
-> Ici par exemple, le coup est brillant parce que si l'adversaire prend mon fou, je peux forcer l'échec et maths !
+> Ici par exemple, le coup est brillant parce que si l'adversaire prend mon fou (que j'ai donc sacrifié), je peux **forcer l'échec et mat** !
 
 Le contexte du coup est également pris en compte : s’agit-il d’un coup forcé, d’un enchaînement logique, d’un mat imminent ou d’un retournement inattendu ? L’algorithme adapte dynamiquement ses seuils d’évaluation en fonction de la situation, grâce à une formule à seuils ajustables selon l’évaluation précédente.
 

@@ -179,7 +179,7 @@
   }
 
   .prose pre {
-    @apply bg-muted p-4 rounded-lg overflow-x-auto;
+    @apply bg-muted p-4 rounded-lg overflow-x-auto mb-4;
   }
 
   .prose blockquote {
