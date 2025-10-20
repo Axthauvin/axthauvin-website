@@ -15,6 +15,18 @@ function HobbiesCard() {
   const [openBook, setOpenBook] = useState(false);
   const [fullscreen, setFullscreen] = useState(false);
 
+  // Preload the book cover image when the user shows intent (hover/focus/touch)
+  const preloadBookCover = () => {
+    try {
+      if (typeof window !== "undefined") {
+        const img = new window.Image();
+        img.src = "/favBook.jpg";
+      }
+    } catch (_) {
+      // noop – best-effort preload
+    }
+  };
+
   if (showGame) {
     return (
       <div className="col-span-1 md:col-span-3">
@@ -69,7 +81,13 @@ function HobbiesCard() {
           />
           Jouer aux échecs
         </Button>
-        <Button variant="outline" onClick={() => setOpenBook(true)}>
+        <Button
+          variant="outline"
+          onMouseEnter={preloadBookCover}
+          onFocus={preloadBookCover}
+          onTouchStart={preloadBookCover}
+          onClick={() => setOpenBook(true)}
+        >
           <Book size={16} className="mr-1" />
           Mon livre préféré
         </Button>

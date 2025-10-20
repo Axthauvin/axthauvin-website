@@ -34,6 +34,8 @@ export default function RootLayout({
     <html lang="fr" className="dark">
       <head>
         <link rel="icon" href="/moi dans la nature.jpg" />
+        {/* Preload the book cover to avoid blank on first open */}
+        <link rel="preload" as="image" href="/favBook.jpg" />
         <link
           href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap"
           rel="stylesheet"
