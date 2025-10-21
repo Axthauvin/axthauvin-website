@@ -7,7 +7,7 @@ async function SkillsCard() {
 
   const skills = cvData.skills.skills.map((skill) => ({
     name: skill.name,
-    icon: skill.iconName,
+    iconName: skill.iconName,
     url: skill.url ?? "",
   }));
 

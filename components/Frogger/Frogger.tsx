@@ -26,38 +26,8 @@ import {
 import { update } from "./gameState";
 import { draw } from "./renderer";
 import Link from "next/link";
-import { SiPostgresql } from "react-icons/si";
-
-function nameToIcon(iconName: string) {
-  const icons: { [key: string]: React.ElementType } = {
-    SiJavascript: require("react-icons/si").SiJavascript,
-    SiTypescript: require("react-icons/si").SiTypescript,
-    SiReact: require("react-icons/si").SiReact,
-    SiNextdotjs: require("react-icons/si").SiNextdotjs,
-    SiNodedotjs: require("react-icons/si").SiNodedotjs,
-    SiPython: require("react-icons/si").SiPython,
-    SiPhp: require("react-icons/si").SiPhp,
-    SiC: require("react-icons/si").SiC,
-    SiMysql: require("react-icons/si").SiMysql,
-    SiPostgresql: require("react-icons/si").SiPostgresql,
-    SiDocker: require("react-icons/si").SiDocker,
-    SiLinux: require("react-icons/si").SiLinux,
-    SiGit: require("react-icons/si").SiGit,
-    SiUnity: require("react-icons/si").SiUnity,
-    SiTailwindcss: require("react-icons/si").SiTailwindcss,
-    RiJavaFill: require("react-icons/ri").RiJavaFill,
-    TbBrandCSharp: require("react-icons/tb").TbBrandCSharp,
-    SiElectron: require("react-icons/si").SiElectron,
-    SiSpring: require("react-icons/si").SiSpring,
-    SiDatabase: require("react-icons/si").SiDatabase,
-  };
-
-  if (!iconName || !icons[iconName]) {
-    return require("react-icons/fa").FaQuestion;
-  }
-
-  return icons[iconName];
-}
+import { Button } from "../ui/button";
+import { getIcon } from "@/lib/icons";
 
 export const FroggerSkillsGame = (tempCvData: FroggerSkillsGameProps) => {
   const [gameState, setGameState] = useState<
@@ -72,7 +42,7 @@ export const FroggerSkillsGame = (tempCvData: FroggerSkillsGameProps) => {
     () =>
       tempCvData.skills.map((skill) => ({
         ...skill,
-        icon: nameToIcon(skill.icon),
+        icon: getIcon(skill.iconName),
       })),
     [tempCvData.skills]
   );
@@ -386,12 +356,13 @@ export const FroggerSkillsGame = (tempCvData: FroggerSkillsGameProps) => {
           action. Testez-les directement dans mon jeu{" "}
           <span className="text-green-400">Frogger</span> !
         </p>
-        <button
+        <Button
+          variant="outline"
           onClick={startGame}
-          className="mb-8 px-6 py-3 bg-green-600 hover:bg-green-700 text-white rounded-lg font-semibold transition-colors shadow-md flex items-center gap-2 mx-auto"
+          className="mb-8 border-green-900 hover:bg-green-950 text-green-400 hover:text-green-300 text-sm font-semibold transition-colors shadow-md flex items-center gap-2 mx-auto"
         >
           <Play size={18} /> Jouer à Frogger
-        </button>
+        </Button>
 
         <div className="pb-6 grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-4 p-2">
           {skills.map((skill, i) => {

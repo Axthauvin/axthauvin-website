@@ -18,6 +18,7 @@ const IntroCard = () => (
               width={128}
               height={128}
               className="object-cover w-full h-full"
+              priority
             />
           </div>
           <div className="absolute inset-0 rounded-full opacity-0 group-hover:opacity-15 bg-gradient-to-r from-amber-400/0 via-transparent to-orange-400/0 group-hover:from-amber-400/20 group-hover:to-orange-400/20 transition-all duration-500"></div>

@@ -1,6 +1,6 @@
 export interface FroggerSkillsGameProps {
   title: string;
-  skills: { name: string; icon: string; url: string }[];
+  skills: { name: string; iconName: string; url: string }[];
 }
 
 export type GameState =
