@@ -5,8 +5,15 @@ date: 2025-03-03
 image: "/projects/epitrace/logo.png"
 technologies: ["HTML", "CSS", "JavaScript", "Firefox XPI", "CI-CD"]
 author: ["Axel Thauvin"]
-github: "https://github.com/Axthauvin/epitrace-packs"
-demo: "https://github.com/Axthauvin/epitrace-packs/releases"
+links:
+  - type: "github"
+    url: "https://github.com/Axthauvin/epitrace-packs"
+  - type: "firefox-addon"
+    url: "https://github.com/Axthauvin/epitrace-packs/releases"
+    label: "Télécharger pour Firefox"
+  - type: "chrome-store"
+    url: "https://chromewebstore.google.com/detail/epitrace-packs/nmjfkfbpiimebpnkonnanjiihgkcnoaj"
+    label: "Chrome Web Store"
 ---
 
 ### Une extension qui transforme les résultats de code en expérience ludique

@@ -6,8 +6,13 @@ featured: false
 image: "/projects/zamp/zamp-icon.png"
 technologies: ["Electron", "HTML", "CSS", "Apache", "MySQL", "PHP"]
 author: ["Axel Thauvin"]
-github: "https://github.com/axthauvin/zamp"
 draft: false
+links:
+  - type: "github"
+    url: "https://github.com/axthauvin/zamp"
+  - type: "download"
+    url: "https://github.com/axthauvin/zamp/releases"
+    label: "Télécharger ZAMP"
 ---
 
 ## L’histoire derrière ZAMP

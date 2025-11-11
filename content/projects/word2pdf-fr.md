@@ -7,6 +7,9 @@ image: "projects/word2pdf/Word2pdf.png"
 technologies: ["Python", "Tkinter", "docx2pdf"]
 author: ["Axel Thauvin"]
 draft: true
+links:
+  - type: "github"
+    url: "https://github.com/axthauvin/word2pdf"
 ---
 
 # Introduction

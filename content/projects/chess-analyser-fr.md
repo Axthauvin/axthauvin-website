@@ -15,12 +15,9 @@ technologies:
   ]
 
 author: ["Axel Thauvin"]
-#github: "https://github.com/example/mobile-chat-app"
-#demo: "https://chat-app-demo.com"
 ---
 
-<!-- <div align="center">
-  <img src="img/icon.png" width="128" alt="Extension Icon" /> -->
+> Pour des raisons juridiques, je ne peux pas publier ni mettre en open source le code source de cette extension. Le projet reste toutefois documenté ici (captures d’écran, explications techniques et démonstrations), mais le code et les releases resteront privés.
 
 Quand je me suis remis aux échecs, je suis rapidement devenu addict à l'outil d’analyse proposé par [chess.com](https://www.chess.com/).
 Il permet d’obtenir des évaluations précises des coups joués, de visualiser les meilleurs mouvements, et de progresser efficacement. Mais ce service est payant : il faut débourser environ 17 € par mois pour y avoir accès.

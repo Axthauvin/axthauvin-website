@@ -2,6 +2,23 @@ import fs from "fs";
 import path from "path";
 import matter from "gray-matter";
 
+export type LinkType =
+  | "github"
+  | "demo"
+  | "website"
+  | "chrome-store"
+  | "firefox-addon"
+  | "download"
+  | "documentation"
+  | "npm"
+  | "other";
+
+export interface ProjectLink {
+  type: LinkType;
+  url: string;
+  label?: string;
+}
+
 export interface Project {
   slug: string;
   title: string;
@@ -10,6 +27,8 @@ export interface Project {
   date: string;
   featured?: boolean;
   technologies: string[];
+  links?: ProjectLink[];
+  // Deprecated fields (kept for backward compatibility)
   github?: string;
   demo?: string;
   content: string;
@@ -44,6 +63,21 @@ export function getAllProjects(): Project[] {
       const fileContents = fs.readFileSync(fullPath, "utf8");
       const { data, content } = matter(fileContents);
 
+      // Support for new links format
+      let links: ProjectLink[] = [];
+
+      if (data.links && Array.isArray(data.links)) {
+        links = data.links;
+      } else {
+        // Backward compatibility: convert old github/demo fields to new format
+        if (data.github) {
+          links.push({ type: "github", url: data.github });
+        }
+        if (data.demo) {
+          links.push({ type: "demo", url: data.demo });
+        }
+      }
+
       return {
         slug,
         title: data.title,
@@ -52,8 +86,9 @@ export function getAllProjects(): Project[] {
         date: data.date,
         featured: data.featured || false,
         technologies: data.technologies || [],
-        github: data.github,
-        demo: data.demo,
+        links,
+        github: data.github, // Keep for backward compatibility
+        demo: data.demo, // Keep for backward compatibility
         content,
         accentColor: data.accentColor,
       } as Project;
@@ -70,6 +105,21 @@ export function getProjectBySlug(slug: string): Project | null {
     const fileContents = fs.readFileSync(fullPath, "utf8");
     const { data, content } = matter(fileContents);
 
+    // Support for new links format
+    let links: ProjectLink[] = [];
+
+    if (data.links && Array.isArray(data.links)) {
+      links = data.links;
+    } else {
+      // Backward compatibility: convert old github/demo fields to new format
+      if (data.github) {
+        links.push({ type: "github", url: data.github });
+      }
+      if (data.demo) {
+        links.push({ type: "demo", url: data.demo });
+      }
+    }
+
     return {
       slug,
       title: data.title,
@@ -78,8 +128,9 @@ export function getProjectBySlug(slug: string): Project | null {
       date: data.date,
       featured: data.featured || false,
       technologies: data.technologies || [],
-      github: data.github,
-      demo: data.demo,
+      links,
+      github: data.github, // Keep for backward compatibility
+      demo: data.demo, // Keep for backward compatibility
       content,
       accentColor: data.accentColor,
     } as Project;

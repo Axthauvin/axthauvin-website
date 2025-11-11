@@ -1,8 +1,9 @@
 import { notFound } from "next/navigation";
 import Image from "next/image";
 import Link from "next/link";
-import { Github, ExternalLink, Calendar } from "lucide-react";
+import { Calendar } from "lucide-react";
 import { getProjectBySlug, getAllProjects } from "@/lib/projects";
+import { getLinkConfig } from "@/lib/linkTypes";
 import Header from "@/components/Header";
 import { remark } from "remark";
 import html from "remark-html";
@@ -90,28 +91,78 @@ export default async function ProjectPage({ params }: ProjectPageProps) {
 
             {/* Actions */}
             <div className="flex flex-wrap gap-4">
-              {project.github && (
-                <a
-                  href={project.github}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="inline-flex items-center space-x-2 px-6 py-3 bg-white text-black rounded-lg hover:bg-white/90 transition-colors group"
-                >
-                  <Github size={18} />
-                  <span>Voir le code</span>
-                </a>
-              )}
+              {project.links && project.links.length > 0 ? (
+                (() => {
+                  const links = [...project.links];
 
-              {project.demo && (
-                <a
-                  href={project.demo}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="inline-flex items-center space-x-2 px-6 py-3 border border-white/20 text-foreground rounded-lg hover:bg-white/5 transition-colors group"
-                >
-                  <ExternalLink size={18} />
-                  <span>Voir la démo</span>
-                </a>
+                  // Always put GitHub link first if exists
+                  const githubIndex = links.findIndex(
+                    (l) =>
+                      l.type === "github" ||
+                      (l.url && /github\.com/.test(l.url))
+                  );
+
+                  if (project.github && githubIndex === -1) {
+                    links.unshift({
+                      type: "github",
+                      url: project.github,
+                      label: undefined,
+                    });
+                  } else if (githubIndex > 0) {
+                    const [gh] = links.splice(githubIndex, 1);
+                    links.unshift(gh);
+                  }
+
+                  return links.map((link, index) => {
+                    const config = getLinkConfig(link.type ?? "external");
+                    const Icon = config.icon;
+                    const isPrimary = config.buttonStyle === "primary";
+                    const href = link.url ?? "#";
+
+                    return (
+                      <a
+                        key={index}
+                        href={href}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className={`inline-flex items-center space-x-2 px-6 py-3 rounded-lg transition-colors group ${
+                          isPrimary
+                            ? "bg-white text-black hover:bg-white/90"
+                            : "border border-white/20 text-foreground hover:bg-white/5"
+                        }`}
+                        title={config.description}
+                      >
+                        {Icon ? <Icon size={18} /> : null}
+                        <span>{link.label || config.label}</span>
+                      </a>
+                    );
+                  });
+                })()
+              ) : (
+                // Backward compatibility fallback
+                <>
+                  {project.github && (
+                    <a
+                      href={project.github}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="inline-flex items-center space-x-2 px-6 py-3 bg-white text-black rounded-lg hover:bg-white/90 transition-colors group"
+                    >
+                      <span>Voir le code</span>
+                    </a>
+                  )}
+
+                  {project.demo && (
+                    <a
+                      href={project.demo}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="inline-flex items-center space-x-2 px-6 py-3 border border-white/20 text-foreground rounded-lg hover:bg-white/5 transition-colors group"
+                    >
+                      <span>Voir la démo</span>
+                    </a>
+                  )}
+                </>
               )}
             </div>
           </header>

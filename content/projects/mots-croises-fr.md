@@ -6,9 +6,14 @@ featured: false
 image: "projects/mots-croises/mots-croises-preview.png"
 technologies: ["HTML", "CSS", "JavaScript"]
 author: ["Axel Thauvin"]
-demo: "https://programmemotscroises.github.io/"
 draft: false
 accentColor: "#3b82f6"
+links:
+  - type: "github"
+    url: "https://github.com/programmemotscroises/programmemotscroises.github.io"
+  - type: "demo"
+    url: "https://programmemotscroises.github.io/"
+    label: "Essayer le solveur"
 ---
 
 ## Pourquoi un programme de mots croisés ?

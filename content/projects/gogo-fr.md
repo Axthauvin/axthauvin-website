@@ -1,6 +1,6 @@
 ---
 title: "GoGo"
-description: "Une extension de navigateur qui permet de créer des raccourcis personnalisés vers ses sites favoris, directement depuis la barre d’adresse."
+description: "Une extension de navigateur qui permet de créer des raccourcis personnalisés vers ses sites favoris, directement depuis la barre d'adresse."
 image: "/projects/gogo/gogo-icon-rectangle.png"
 date: 2025-11-08
 featured: true
@@ -13,8 +13,15 @@ technologies:
     "Node.js",
   ]
 author: ["Axel Thauvin"]
-github: "https://github.com/axthauvin/gogo"
-demo: "https://github.com/axthauvin/gogo/releases"
+links:
+  - type: "github"
+    url: "https://github.com/axthauvin/gogo"
+  - type: "chrome-store"
+    url: "https://chromewebstore.google.com/detail/gogo-%E2%80%93-your-shortcut-engi/paagjphnidjcdcekdhoelkmjhknfgiad"
+    label: "Chrome Web Store"
+  - type: "firefox-addon"
+    url: "http://github.com/axthauvin/gogo/releases/latest/download/gogo-firefox.xpi"
+    label: "Télécharger pour firefox"
 ---
 
 ### Chercher les liens lorsqu'on est en entreprise

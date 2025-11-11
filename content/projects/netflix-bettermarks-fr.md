@@ -7,7 +7,12 @@ image: "projects/netflix-bettermarks/Netflix-icon.png"
 technologies: ["HTML", "CSS", "JavaScript"]
 author: ["Axel Thauvin"]
 draft: false
-github: "https://github.com/Axthauvin/Netflix-better-marks"
+links:
+  - type: "github"
+    url: "https://github.com/Axthauvin/Netflix-better-marks"
+  - type: "download"
+    url: "https://github.com/Axthauvin/Netflix-better-marks/releases"
+    label: "Télécharger l'extension"
 ---
 
 ## Netflix BetterMarks

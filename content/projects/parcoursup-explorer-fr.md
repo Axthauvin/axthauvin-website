@@ -4,10 +4,16 @@ description: "Programme d'analyse des parcours Parcoursup, permettant aux lycée
 date: 2022-07-20T21:18:50+02:00
 featured: false
 image: "projects/parcoursup-explorer/Parcoursup-app-icon.png"
-technologies: ["PHP", "Javascript", "ChartJS", "Excel"]
+technologies: ["PHP", "Javascript", "ChartJS", "Excel", "CSV", "JSON"]
 author: ["Axel Thauvin"]
-demo: "https://parcoursup-explorer.fr"
 draft: false
+links:
+  - type: "website"
+    url: "https://parcoursup-explorer.fr"
+    label: "Visiter le site"
+  - type: "demo"
+    url: "https://programme-ind-sup.alwaysdata.net/"
+    label: "Version pour l'Institut Notre Dame"
 ---
 
 Afin d'aider les lycéens dans leur orientation, j'ai réalisé un programme de statistiques, qui se basant sur les résultats des élèves des promotions ultérieures, de savoir quelles formations ont étées obtenues par les élèves en fonctions de leur spécialitées.
