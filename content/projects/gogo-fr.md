@@ -20,8 +20,8 @@ links:
     url: "https://chromewebstore.google.com/detail/gogo-%E2%80%93-your-shortcut-engi/paagjphnidjcdcekdhoelkmjhknfgiad"
     label: "Chrome Web Store"
   - type: "firefox-addon"
-    url: "http://github.com/axthauvin/gogo/releases/latest/download/gogo-firefox.xpi"
-    label: "Télécharger pour firefox"
+    url: "https://addons.mozilla.org/fr/firefox/addon/gogo-web-shortcut-tool/"
+    label: "Firefox addons"
 ---
 
 ### Chercher les liens lorsqu'on est en entreprise
