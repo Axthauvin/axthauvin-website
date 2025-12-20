@@ -9,14 +9,14 @@ const IntroCard = () => (
     </div>
     <div className="relative p-8 flex flex-col md:flex-row md:justify-around h-full min-h-80 items-center md:space-y-0 space-y-6">
       <div className="transform group-hover:scale-105 transition-transform duration-500">
-        <div className="relative w-32 h-32 mx-auto flex items-center justify-center">
+        <div className="relative w-32 h-32 md:w-40 md:h-40 mx-auto flex items-center justify-center">
           <div className="absolute inset-0 bg-gradient-to-br from-amber-700/15 via-transparent to-orange-800/10 rounded-full blur-2xl group-hover:blur-3xl group-hover:from-amber-600/20 group-hover:to-orange-700/15 transition-all duration-500"></div>
-          <div className="relative w-32 h-32 z-10 rounded-full object-cover group-hover:ring-neutral-600 transition-all duration-500 shadow-2xl bg-neutral-800 flex items-center justify-center overflow-hidden">
+          <div className="relative w-full h-full z-10 rounded-full object-cover group-hover:ring-neutral-600 transition-all duration-500 shadow-2xl bg-neutral-800 flex items-center justify-center overflow-hidden">
             <Image
-              src="/moi dans la nature.jpg"
+              src="/axel_big.png"
               alt="Axel Thauvin"
-              width={128}
-              height={128}
+              width={512}
+              height={512}
               className="object-cover w-full h-full"
               priority
             />
@@ -31,10 +31,10 @@ const IntroCard = () => (
           </h1>
         </div>
         <p className="text-sm sm:text-lg text-neutral-300 leading-relaxed max-w-sm mx-auto md:mx-0 group-hover:text-neutral-200 transition-colors duration-300">
-          J&apos;aime transformer des idées techniques en outils simples et
-          concrets.
+          Je code quand je m&apos;ennuie.
           <br />
-          J&apos;adore apprendre, transmettre et créer des solutions utiles.
+          J&apos;essaie de transformer des idées techniques en outils simples et
+          utiles.
         </p>
       </div>
     </div>

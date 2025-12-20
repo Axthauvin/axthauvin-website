@@ -33,7 +33,7 @@ export default function RootLayout({
   return (
     <html lang="fr" className="dark">
       <head>
-        <link rel="icon" href="/moi dans la nature.jpg" />
+        <link rel="icon" href="/axel_big.png" />
         {/* Preload the book cover to avoid blank on first open */}
         <link rel="preload" as="image" href="/favBook.jpg" />
         <link

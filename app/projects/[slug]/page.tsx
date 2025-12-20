@@ -77,6 +77,17 @@ export default async function ProjectPage({ params }: ProjectPageProps) {
               </div>
             </div>
 
+            {/* Image principale */}
+            <div className="relative aspect-video rounded-lg overflow-hidden ring-1 ring-white/10 mb-16">
+              <Image
+                src={project.image}
+                alt={project.title}
+                fill
+                className="object-cover"
+                priority
+              />
+            </div>
+
             {/* Technologies */}
             <div className="flex flex-wrap gap-2">
               {project.technologies.map((tech) => (
@@ -166,17 +177,6 @@ export default async function ProjectPage({ params }: ProjectPageProps) {
               )}
             </div>
           </header>
-
-          {/* Image principale */}
-          <div className="relative aspect-video rounded-lg overflow-hidden ring-1 ring-white/10 mb-16">
-            <Image
-              src={project.image}
-              alt={project.title}
-              fill
-              className="object-cover"
-              priority
-            />
-          </div>
 
           {/* Contenu markdown */}
           <div

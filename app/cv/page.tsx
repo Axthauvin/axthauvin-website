@@ -44,7 +44,7 @@ export default async function CVPage() {
 
       <header className="mb-1 flex flex-col sm:flex-row items-center sm:items-start justify-center sm:justify-start gap-4 text-center sm:text-left">
         <Image
-          src="/moi dans la nature.jpg"
+          src="/axel_big.png"
           alt="Axel Thauvin"
           width={100}
           height={100}
@@ -93,153 +93,148 @@ export default async function CVPage() {
           </TabsList>
 
           <TabsContent value="experience">
-            <div className="space-y-5">
+            <div className="relative space-y-6">
+              {/* Ligne verticale */}
+              <div className="absolute left-[11px] top-6 bottom-6 w-[2px] bg-gradient-to-b from-primary/40 via-primary/20 to-primary/40" />
+
               {cvData.experience.jobs.map((job, index) => (
                 <div
                   key={index}
-                  className="group relative border dark:border-gray-800 border-gray-200 rounded-lg overflow-hidden transition-colors hover:border-gray-400 dark:hover:border-gray-600 hover:bg-gray-50/50 dark:hover:bg-gray-900/30"
+                  className="group relative bg-card rounded-xl p-6 pl-12 shadow-sm border border-border/40 hover:shadow-md hover:border-border transition-all duration-200"
                 >
-                  <div className="absolute left-0 top-0 bottom-0 w-0.5 bg-gray-400 dark:bg-gray-600 group-hover:w-1 transition-all" />
+                  {/* Point de timeline */}
+                  <div className="absolute left-[5px] top-8 w-[14px] h-[14px] rounded-full bg-primary border-4 border-background shadow-sm group-hover:scale-125 transition-transform duration-200" />
 
-                  <div className="p-4 sm:p-5">
-                    <div className="flex items-start justify-start sm:justify-between gap-4 mb-3">
-                      <div className="flex-1">
-                        <div className="flex items-start gap-2.5">
-                          <div>
-                            <h3 className="font-semibold text-sm sm:text-base leading-snug">
-                              {job.title.split("\n").map((line, i) => (
-                                <span key={i} className="block">
-                                  {line}
-                                </span>
-                              ))}
-                            </h3>
-                            <div className="flex flex-wrap items-center gap-2 mt-1.5 text-xs text-muted-foreground">
-                              {job.type && (
-                                <span className="inline-flex items-center px-2 py-0.5 rounded bg-muted font-medium">
-                                  {job.type}
-                                </span>
-                              )}
-                              <span className="inline-flex sm:hidden items-center px-2 py-0.5 rounded bg-muted font-medium">
-                                {job.period}
-                              </span>
-                              {job.location && (
-                                <span className="flex items-center gap-1">
-                                  <MapPin className="w-3 h-3" />
-                                  {job.location}
-                                </span>
-                              )}
-                            </div>
-                          </div>
-                        </div>
-                      </div>
-                      <span className="hidden sm:inline-block text-xs text-muted-foreground font-medium px-2.5 py-1 rounded bg-muted whitespace-nowrap">
-                        {job.period}
-                      </span>
-                    </div>
-
-                    <ul className="space-y-1.5 mb-3 ml-5 sm:ml-6">
-                      {job.description.map((desc, descIndex) => (
-                        <li
-                          key={descIndex}
-                          className="flex items-start gap-2.5 text-muted-foreground text-sm leading-relaxed"
-                        >
-                          <span className="text-muted-foreground">•</span>
-                          <div
-                            dangerouslySetInnerHTML={{
-                              __html: desc.replace(
-                                /<a\s+href="([^"]*)"[^>]*>(.*?)<\/a>/gi,
-                                (match, href, text) => {
-                                  return `<a href="${href}" class="underline hover:text-foreground transition-colors" rel="noopener noreferrer" target="_blank">${text}</a>`;
-                                }
-                              ),
-                            }}
-                            className="break-words"
-                          />
-                        </li>
-                      ))}
-                    </ul>
-
-                    {job.tags && job.tags.length > 0 && (
-                      <div className="flex flex-wrap gap-1.5 ml-5 sm:ml-6">
-                        {job.tags.map((tag, tagIndex) => (
-                          <Badge
-                            key={tagIndex}
-                            variant="secondary"
-                            className="text-xs px-2 py-0.5 font-normal"
-                          >
-                            {tag}
-                          </Badge>
+                  {/* Header avec titre et période */}
+                  <div className="flex items-start justify-between gap-4 mb-4">
+                    <div className="flex-1 min-w-0">
+                      <h3 className="text-lg font-semibold text-foreground mb-1 leading-tight">
+                        {job.title.split("\n").map((line, i) => (
+                          <span key={i} className="block">
+                            {line}
+                          </span>
                         ))}
+                      </h3>
+                      <div className="flex flex-wrap items-center gap-2 text-sm text-muted-foreground">
+                        {job.type && (
+                          <>
+                            <span className="font-medium text-foreground/80">
+                              {job.type}
+                            </span>
+                            {job.location && <span>•</span>}
+                          </>
+                        )}
+                        {job.location && (
+                          <span className="flex items-center gap-1">
+                            <MapPin className="w-3.5 h-3.5" />
+                            {job.location}
+                          </span>
+                        )}
                       </div>
-                    )}
+                    </div>
+                    <div className="flex-shrink-0 text-sm text-muted-foreground font-medium whitespace-nowrap">
+                      {job.period}
+                    </div>
                   </div>
+
+                  {/* Description */}
+                  <ul className="space-y-2 mb-4">
+                    {job.description.map((desc, descIndex) => (
+                      <li
+                        key={descIndex}
+                        className="flex items-start gap-3 text-sm text-muted-foreground leading-relaxed"
+                      >
+                        <span className="text-muted-foreground/60 flex-shrink-0">
+                          •
+                        </span>
+                        <div
+                          dangerouslySetInnerHTML={{
+                            __html: desc.replace(
+                              /<a\s+href="([^"]*)"[^>]*>(.*?)<\/a>/gi,
+                              (match, href, text) => {
+                                return `<a href="${href}" class="text-primary hover:underline font-medium transition-colors" rel="noopener noreferrer" target="_blank">${text}</a>`;
+                              }
+                            ),
+                          }}
+                          className="break-words flex-1"
+                        />
+                      </li>
+                    ))}
+                  </ul>
+
+                  {/* Tags */}
+                  {job.tags && job.tags.length > 0 && (
+                    <div className="flex flex-wrap gap-2 pt-3 border-t border-border/40">
+                      {job.tags.map((tag, tagIndex) => (
+                        <Badge
+                          key={tagIndex}
+                          variant="secondary"
+                          className="text-xs px-2.5 py-1 font-medium bg-muted/60 hover:bg-muted transition-colors"
+                        >
+                          {tag}
+                        </Badge>
+                      ))}
+                    </div>
+                  )}
                 </div>
               ))}
             </div>
           </TabsContent>
 
           <TabsContent value="formation">
-            <div className="space-y-5">
+            <div className="space-y-6">
               {cvData.education.degrees.map((degree, index) => (
                 <div
                   key={index}
-                  className="group relative border dark:border-gray-800 border-gray-200 rounded-lg overflow-hidden transition-colors hover:border-gray-400 dark:hover:border-gray-600 hover:bg-gray-50/50 dark:hover:bg-gray-900/30"
+                  className="group relative bg-card rounded-xl p-6 shadow-sm border border-border/40 hover:shadow-md hover:border-border transition-all duration-200"
                 >
-                  <div className="absolute left-0 top-0 bottom-0 w-0.5 bg-gray-400 dark:bg-gray-600 group-hover:w-1 transition-all" />
-
-                  <div className="p-4 sm:p-5">
-                    <div className="flex items-start justify-start sm:justify-between gap-4 mb-3">
-                      <div className="flex-1">
-                        <div className="flex items-start gap-2.5">
-                          <div>
-                            <h3 className="font-semibold text-sm sm:text-base leading-snug">
-                              {degree.title}
-                            </h3>
-                            <div className="flex flex-wrap items-center gap-2 mt-1.5 text-xs text-muted-foreground">
-                              <span className="inline-flex sm:hidden items-center px-2 py-0.5 rounded bg-muted font-medium">
-                                {degree.period}
-                              </span>
-                              {degree.location && (
-                                <span className="flex items-center gap-1">
-                                  <MapPin className="w-3 h-3" />
-                                  {degree.location}
-                                </span>
-                              )}
-                            </div>
-                          </div>
+                  {/* Header avec titre et période */}
+                  <div className="flex items-start justify-between gap-4 mb-4">
+                    <div className="flex-1 min-w-0">
+                      <h3 className="text-lg font-semibold text-foreground mb-1 leading-tight">
+                        {degree.title}
+                      </h3>
+                      {degree.location && (
+                        <div className="flex items-center gap-1 text-sm text-muted-foreground">
+                          <MapPin className="w-3.5 h-3.5" />
+                          {degree.location}
                         </div>
-                      </div>
-                      <span className="hidden sm:inline-block text-xs text-muted-foreground font-medium px-2.5 py-1 rounded bg-muted whitespace-nowrap">
-                        {degree.period}
-                      </span>
+                      )}
                     </div>
-
-                    <ul className="space-y-1.5 mb-3 ml-5 sm:ml-6">
-                      {degree.description.map((desc, descIndex) => (
-                        <li
-                          key={descIndex}
-                          className="flex items-start gap-2.5 text-muted-foreground text-sm leading-relaxed"
-                        >
-                          <span className="text-muted-foreground">•</span>
-                          <span className="break-words">{desc}</span>
-                        </li>
-                      ))}
-                    </ul>
-
-                    {degree.tags && degree.tags.length > 0 && (
-                      <div className="flex flex-wrap gap-1.5 ml-5 sm:ml-6">
-                        {degree.tags.map((tag, tagIndex) => (
-                          <Badge
-                            key={tagIndex}
-                            variant="secondary"
-                            className="text-xs px-2 py-0.5 font-normal"
-                          >
-                            {tag}
-                          </Badge>
-                        ))}
-                      </div>
-                    )}
+                    <div className="flex-shrink-0 text-sm text-muted-foreground font-medium whitespace-nowrap">
+                      {degree.period}
+                    </div>
                   </div>
+
+                  {/* Description */}
+                  <ul className="space-y-2 mb-4">
+                    {degree.description.map((desc, descIndex) => (
+                      <li
+                        key={descIndex}
+                        className="flex items-start gap-3 text-sm text-muted-foreground leading-relaxed"
+                      >
+                        <span className="text-muted-foreground/60 flex-shrink-0">
+                          •
+                        </span>
+                        <span className="break-words flex-1">{desc}</span>
+                      </li>
+                    ))}
+                  </ul>
+
+                  {/* Tags */}
+                  {degree.tags && degree.tags.length > 0 && (
+                    <div className="flex flex-wrap gap-2 pt-3 border-t border-border/40">
+                      {degree.tags.map((tag, tagIndex) => (
+                        <Badge
+                          key={tagIndex}
+                          variant="secondary"
+                          className="text-xs px-2.5 py-1 font-medium bg-muted/60 hover:bg-muted transition-colors"
+                        >
+                          {tag}
+                        </Badge>
+                      ))}
+                    </div>
+                  )}
                 </div>
               ))}
             </div>

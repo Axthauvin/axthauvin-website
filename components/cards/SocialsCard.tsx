@@ -51,7 +51,7 @@ export const SocialsCard = () => {
               key={label}
               {...(onClickAction ? { onClick: onClickAction } : { href })}
               target="_blank"
-              className="flex items-center gap-3 p-3 rounded-md border border-neutral-800 hover:border-neutral-700 transition-all duration-200 group cursor-pointer hover:bg-[var(--accent-bg)]"
+              className="flex items-center gap-3 p-3 rounded-md border border-neutral-800 hover:border-neutral-700 transition-all duration-300 group cursor-pointer hover:bg-[var(--accent-bg)] hover:-translate-y-0.5"
               style={
                 {
                   "--accent": accentColor,
@@ -59,8 +59,8 @@ export const SocialsCard = () => {
                 } as React.CSSProperties
               }
             >
-              <Icon className="w-4 h-4 text-neutral-400 group-hover:text-white transition-colors" />
-              <span className="text-sm text-neutral-400 group-hover:text-white transition-colors">
+              <Icon className="w-4 h-4 text-neutral-400 group-hover:text-[var(--accent)] transition-all duration-300 group-hover:scale-110 group-hover:rotate-6" />
+              <span className="text-sm text-neutral-400 group-hover:text-white transition-all duration-300 group-hover:translate-x-0.5 group-hover:font-medium">
                 {label}
               </span>
             </a>
