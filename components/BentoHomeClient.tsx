@@ -1,12 +1,30 @@
-import React from "react";
+"use client";
+
+import React, { useEffect, useState } from "react";
 import { Project } from "@/lib/projects";
 import IntroCard from "./cards/IntroCard";
 import { SocialsCard } from "./cards/SocialsCard";
 import CVCard from "./cards/CVCard";
 import ProjectCard from "./cards/ProjectCard";
 import HobbiesCard from "./cards/HobbiesCard";
+import { useI18n } from "@/lib/i18n";
 
-export default function BentoPortfolio({ projects }: { projects: Project[] }) {
+interface BentoPortfolioProps {
+  projectsEn: Project[];
+  projectsFr: Project[];
+}
+
+export default function BentoPortfolio({
+  projectsEn,
+  projectsFr,
+}: BentoPortfolioProps) {
+  const { locale } = useI18n();
+  const [projects, setProjects] = useState<Project[]>(projectsEn);
+
+  useEffect(() => {
+    setProjects(locale === "fr" ? projectsFr : projectsEn);
+  }, [locale, projectsEn, projectsFr]);
+
   return (
     <div className="content min-h-screen bg-black p-4 sm:p-6 md:p-8">
       <div className="max-w-6xl mx-auto">
@@ -34,9 +52,8 @@ export default function BentoPortfolio({ projects }: { projects: Project[] }) {
           {/* Projects Grid */}
           {projects.map((project) => (
             <div
-              key={project.title}
-              className="col-span-1 sm:col-span-1 lg:col-span-2
-              "
+              key={project.slug}
+              className="col-span-1 sm:col-span-1 lg:col-span-2"
             >
               <ProjectCard {...project} />
             </div>

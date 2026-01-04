@@ -9,8 +9,10 @@ import { Book } from "lucide-react";
 import { SiChessdotcom } from "react-icons/si";
 import { FaSteam } from "react-icons/fa";
 import Book3D from "../Hobbies/Book";
+import { useTranslation } from "@/lib/i18n";
 
 function HobbiesCard() {
+  const { t } = useTranslation();
   const [showGame, setShowGame] = useState(false);
   const [openBook, setOpenBook] = useState(false);
   const [fullscreen, setFullscreen] = useState(false);
@@ -45,8 +47,8 @@ function HobbiesCard() {
       <div className="col-span-1 md:col-span-3">
         <Book3D
           coverImage="/favBook.jpg"
-          quote="J'ai peur. Pas de la vie ou de la mort , ou du néant mais de tout perdre comme si je n'avais jamais été."
-          author="Daniel Keyes"
+          quote={t("book.quote")}
+          author={t("book.author")}
           setOpenBook={setOpenBook}
         />
       </div>
@@ -56,13 +58,11 @@ function HobbiesCard() {
   return (
     <div className="border border-neutral-800 bg-neutral-950 p-6 rounded-lg h-full flex flex-col justify-between">
       <h3 className="font-semibold text-white tracking-wider mb-4">
-        Mes hobbies
+        {t("hobbies.title")}
       </h3>
       <p className="text-sm text-neutral-400 mb-4">
-        Passionné par les échecs et les défis, j’aime me challenger autant sur
-        l’échiquier qu’en code. <br />
-        Juste en dessous, vous trouverez une collection de mes projets
-        personnels.
+        {t("hobbies.description")} <br />
+        {t("hobbies.projectsIntro")}
       </p>
 
       <div className="flex gap-4 mt-6 flex-wrap">
@@ -74,12 +74,12 @@ function HobbiesCard() {
         >
           <Image
             src="/chess/icons/bk.png"
-            alt="Jouer aux échecs"
+            alt={t("hobbies.playChess")}
             width={16}
             height={16}
             className="mr-1"
           />
-          Jouer aux échecs
+          {t("hobbies.playChess")}
         </Button>
         <Button
           variant="outline"
@@ -89,7 +89,7 @@ function HobbiesCard() {
           onClick={() => setOpenBook(true)}
         >
           <Book size={16} className="mr-1" />
-          Mon livre préféré
+          {t("hobbies.favoriteBook")}
         </Button>
         <Button className="bg-[#171a21] text-white hover:text-black">
           <Link
@@ -98,7 +98,7 @@ function HobbiesCard() {
             className="flex items-center gap-2"
           >
             <FaSteam size={16} />
-            Chasseur de trophées
+            {t("hobbies.trophyHunter")}
           </Link>
         </Button>
         <Button className="bg-[#80b54b] text-white hover:bg-[#6fa43e]">

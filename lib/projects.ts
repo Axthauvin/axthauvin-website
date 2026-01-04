@@ -35,6 +35,8 @@ export interface Project {
   accentColor?: string;
 }
 
+export type Locale = "en" | "fr";
+
 const projectsDirectory = path.join(process.cwd(), "content/projects");
 
 function normalizeImagePath(img?: string): string {
@@ -49,60 +51,35 @@ function normalizeImagePath(img?: string): string {
   return img.startsWith("/") ? img : `/${img}`;
 }
 
-export function getAllProjects(): Project[] {
+// Extract base slug from filename (e.g., "gogo-fr" -> "gogo")
+function getBaseSlug(filename: string): string {
+  const slug = filename.replace(/\.md$/, "");
+  // Remove language suffix (-en or -fr)
+  return slug.replace(/-(en|fr)$/, "");
+}
+
+// Get all unique project base slugs
+function getUniqueProjectSlugs(): string[] {
   if (!fs.existsSync(projectsDirectory)) {
     return [];
   }
 
   const fileNames = fs.readdirSync(projectsDirectory);
-  const projects = fileNames
+  const slugs = new Set<string>();
+
+  fileNames
     .filter((name) => name.endsWith(".md"))
-    .map((name) => {
-      const slug = name.replace(/\.md$/, "");
-      const fullPath = path.join(projectsDirectory, name);
-      const fileContents = fs.readFileSync(fullPath, "utf8");
-      const { data, content } = matter(fileContents);
-
-      // Support for new links format
-      let links: ProjectLink[] = [];
-
-      if (data.links && Array.isArray(data.links)) {
-        links = data.links;
-      } else {
-        // Backward compatibility: convert old github/demo fields to new format
-        if (data.github) {
-          links.push({ type: "github", url: data.github });
-        }
-        if (data.demo) {
-          links.push({ type: "demo", url: data.demo });
-        }
-      }
-
-      return {
-        slug,
-        title: data.title,
-        description: data.description,
-        image: normalizeImagePath(data.image),
-        date: data.date,
-        featured: data.featured || false,
-        technologies: data.technologies || [],
-        links,
-        github: data.github, // Keep for backward compatibility
-        demo: data.demo, // Keep for backward compatibility
-        content,
-        accentColor: data.accentColor,
-      } as Project;
+    .forEach((name) => {
+      slugs.add(getBaseSlug(name));
     });
 
-  return projects.sort(
-    (a, b) => new Date(b.date).getTime() - new Date(a.date).getTime()
-  );
+  return Array.from(slugs);
 }
 
-export function getProjectBySlug(slug: string): Project | null {
+// Read a project file and parse it
+function parseProjectFile(filePath: string, slug: string): Project | null {
   try {
-    const fullPath = path.join(projectsDirectory, `${slug}.md`);
-    const fileContents = fs.readFileSync(fullPath, "utf8");
+    const fileContents = fs.readFileSync(filePath, "utf8");
     const { data, content } = matter(fileContents);
 
     // Support for new links format
@@ -129,8 +106,8 @@ export function getProjectBySlug(slug: string): Project | null {
       featured: data.featured || false,
       technologies: data.technologies || [],
       links,
-      github: data.github, // Keep for backward compatibility
-      demo: data.demo, // Keep for backward compatibility
+      github: data.github,
+      demo: data.demo,
       content,
       accentColor: data.accentColor,
     } as Project;
@@ -139,7 +116,68 @@ export function getProjectBySlug(slug: string): Project | null {
   }
 }
 
-export function getFeaturedProject(): Project | null {
-  const projects = getAllProjects();
+export function getAllProjects(locale: Locale = "en"): Project[] {
+  const slugs = getUniqueProjectSlugs();
+
+  const projects = slugs
+    .map((slug) => {
+      // Try to find the file with the requested locale
+      let filePath = path.join(projectsDirectory, `${slug}-${locale}.md`);
+
+      // Fallback to the other locale if not found
+      if (!fs.existsSync(filePath)) {
+        const fallbackLocale = locale === "en" ? "fr" : "en";
+        filePath = path.join(projectsDirectory, `${slug}-${fallbackLocale}.md`);
+      }
+
+      // Last fallback: try without locale suffix (for backward compatibility)
+      if (!fs.existsSync(filePath)) {
+        filePath = path.join(projectsDirectory, `${slug}.md`);
+      }
+
+      if (!fs.existsSync(filePath)) {
+        return null;
+      }
+
+      return parseProjectFile(filePath, slug);
+    })
+    .filter((project): project is Project => project !== null);
+
+  return projects.sort(
+    (a, b) => new Date(b.date).getTime() - new Date(a.date).getTime()
+  );
+}
+
+export function getProjectBySlug(
+  slug: string,
+  locale: Locale = "en"
+): Project | null {
+  try {
+    // Try to find the file with the requested locale
+    let filePath = path.join(projectsDirectory, `${slug}-${locale}.md`);
+
+    // Fallback to the other locale if not found
+    if (!fs.existsSync(filePath)) {
+      const fallbackLocale = locale === "en" ? "fr" : "en";
+      filePath = path.join(projectsDirectory, `${slug}-${fallbackLocale}.md`);
+    }
+
+    // Last fallback: try without locale suffix (for backward compatibility)
+    if (!fs.existsSync(filePath)) {
+      filePath = path.join(projectsDirectory, `${slug}.md`);
+    }
+
+    if (!fs.existsSync(filePath)) {
+      return null;
+    }
+
+    return parseProjectFile(filePath, slug);
+  } catch {
+    return null;
+  }
+}
+
+export function getFeaturedProject(locale: Locale = "en"): Project | null {
+  const projects = getAllProjects(locale);
   return projects.find((project) => project.featured) || projects[0] || null;
 }

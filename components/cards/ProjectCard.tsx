@@ -1,10 +1,15 @@
+"use client";
+
 import { Project } from "@/lib/projects";
 import { Card } from "../ui/card";
 import { ExternalLink } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
+import { useTranslation } from "@/lib/i18n";
 
 function ProjectCard(props: Project) {
+  const { locale } = useTranslation();
+
   return (
     <Card className="border-neutral-800 bg-neutral-950 overflow-hidden hover:border-neutral-700 transition-all duration-300 group cursor-pointer h-full flex flex-col">
       <Link href={`/projects/${props.slug}`}>
@@ -30,7 +35,7 @@ function ProjectCard(props: Project) {
               {props.title}
             </h3>
             <time className="text-sm text-muted-foreground whitespace-nowrap">
-              {new Date(props.date).toLocaleDateString("fr-FR", {
+              {new Date(props.date).toLocaleDateString(locale === "fr" ? "fr-FR" : "en-US", {
                 year: "numeric",
                 month: "short",
               })}

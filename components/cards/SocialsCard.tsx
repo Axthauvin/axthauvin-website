@@ -5,38 +5,39 @@ import { Card } from "../ui/card";
 import { Mail } from "lucide-react";
 import { FaXTwitter } from "react-icons/fa6";
 import { toast } from "sonner";
-
-const handleEmailClick = () => {
-  console.log("Email button clicked");
-  // copy email to clipboard
-  navigator.clipboard.writeText("axthauvin@gmail.com");
-  toast.success("L'email a bien été copié !");
-};
+import { useTranslation } from "@/lib/i18n";
 
 export const SocialsCard = () => {
+  const { t } = useTranslation();
+
+  const handleEmailClick = () => {
+    navigator.clipboard.writeText("axthauvin@gmail.com");
+    toast.success(t("common.emailCopied"));
+  };
+
   const socials = [
     {
       Icon: TfiGithub,
       href: "https://github.com/axthauvin",
-      label: "GitHub",
+      label: t("socials.github"),
       accentColor: "#ce48ff",
     },
     {
       Icon: TfiLinkedin,
       href: "https://linkedin.com/in/axthauvin",
-      label: "LinkedIn",
+      label: t("socials.linkedin"),
       accentColor: "#008dd8",
     },
     {
       Icon: FaXTwitter,
       href: "https://twitter.com/axthauvin",
-      label: "Twitter",
+      label: t("socials.twitter"),
       accentColor: "#2e2e2eff",
     },
     {
       Icon: Mail,
       href: "#",
-      label: "Email",
+      label: t("socials.email"),
       onClickAction: handleEmailClick,
       accentColor: "#d14836",
     },

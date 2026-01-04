@@ -2,6 +2,8 @@ import "./globals.css";
 import type { Metadata } from "next";
 import Footer from "@/components/Footer";
 import { Toaster } from "sonner";
+import { I18nProvider } from "@/lib/i18n";
+import LanguageSwitcher from "@/components/LanguageSwitcher";
 
 export const metadata: Metadata = {
   metadataBase: new URL("https://axthauvin.onrender.com"),
@@ -31,7 +33,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="fr" className="dark">
+    <html lang="en" className="dark">
       <head>
         <link rel="icon" href="/axel_big.png" />
         {/* Preload the book cover to avoid blank on first open */}
@@ -46,10 +48,15 @@ export default function RootLayout({
         />
       </head>
       <body className="min-h-screen">
-        {/* <ThemeSwitcher /> */}
-        {children}
-        <Toaster position="top-right" theme="system" />
-        <Footer />
+        <I18nProvider>
+          {/* Language Switcher - Fixed position */}
+          <div className="fixed top-2 right-4 z-[60]">
+            <LanguageSwitcher />
+          </div>
+          {children}
+          <Toaster position="top-right" theme="system" />
+          <Footer />
+        </I18nProvider>
       </body>
     </html>
   );

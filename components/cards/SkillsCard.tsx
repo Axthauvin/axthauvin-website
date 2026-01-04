@@ -1,4 +1,4 @@
-import { getCVData } from "@/lib/cv";
+import { getCVData } from "@/lib/skills";
 import { Card } from "../ui/card";
 import { FroggerSkillsGame } from "../Frogger";
 

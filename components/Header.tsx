@@ -3,10 +3,12 @@
 import Link from "next/link";
 import { ArrowLeft } from "lucide-react";
 import { usePathname } from "next/navigation";
+import { useTranslation } from "@/lib/i18n";
 
 export default function Header() {
   const pathname = usePathname();
   const isHomePage = pathname === "/";
+  const { t } = useTranslation();
 
   if (isHomePage) return null;
 
@@ -24,7 +26,7 @@ export default function Header() {
             size={18}
             className="group-hover:-translate-x-1 transition-transform"
           />
-          <span>Retour</span>
+          <span>{t("header.back")}</span>
         </Link>
       </div>
     </header>
