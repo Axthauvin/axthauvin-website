@@ -182,12 +182,18 @@ export default async function CVPage() {
           </TabsContent>
 
           <TabsContent value="formation">
-            <div className="space-y-6">
+            <div className="relative space-y-6">
+              {/* Ligne verticale */}
+              <div className="absolute left-[11px] top-6 bottom-6 w-[2px] bg-gradient-to-b from-primary/40 via-primary/20 to-primary/40" />
+
               {cvData.education.degrees.map((degree, index) => (
                 <div
                   key={index}
-                  className="group relative bg-card rounded-xl p-6 shadow-sm border border-border/40 hover:shadow-md hover:border-border transition-all duration-200"
+                  className="group relative bg-card rounded-xl p-6 pl-12 shadow-sm border border-border/40 hover:shadow-md hover:border-border transition-all duration-200"
                 >
+                  {/* Point de timeline */}
+                  <div className="absolute left-[5px] top-8 w-[14px] h-[14px] rounded-full bg-primary border-4 border-background shadow-sm group-hover:scale-125 transition-transform duration-200" />
+
                   {/* Header avec titre et période */}
                   <div className="flex items-start justify-between gap-4 mb-4">
                     <div className="flex-1 min-w-0">

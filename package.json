@@ -11,7 +11,7 @@
   },
   "dependencies": {
     "@hookform/resolvers": "^3.9.0",
-    "@next/swc-wasm-nodejs": "13.5.1",
+    "@next/swc-wasm-nodejs": "16.1.1",
     "@radix-ui/react-accordion": "^1.2.0",
     "@radix-ui/react-alert-dialog": "^1.1.1",
     "@radix-ui/react-aspect-ratio": "^1.1.0",
@@ -50,14 +50,13 @@
     "cmdk": "^1.0.0",
     "date-fns": "^3.6.0",
     "embla-carousel-react": "^8.3.0",
-    "eslint": "8.49.0",
-    "eslint-config-next": "13.5.1",
+    "eslint-config-next": "16.1.1",
     "framer-motion": "^12.23.24",
     "gray-matter": "^4.0.3",
     "input-otp": "^1.2.4",
     "lucide-react": "^0.446.0",
     "motion": "^12.23.24",
-    "next": "13.5.1",
+    "next": "16.1.1",
     "next-themes": "^0.3.0",
     "postcss": "8.4.30",
     "react": "18.2.0",
@@ -82,6 +81,9 @@
     "zod": "^3.23.8"
   },
   "devDependencies": {
-    "@types/canvas-confetti": "^1.9.0"
+    "@types/canvas-confetti": "^1.9.0",
+    "@typescript-eslint/eslint-plugin": "^8.51.0",
+    "@typescript-eslint/parser": "^8.51.0",
+    "eslint": "9.39.2"
   }
 }
