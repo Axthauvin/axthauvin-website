@@ -93,7 +93,7 @@ const fr = {
     // Jobs
     jobs: {
       sgDataEngineer: {
-        title: "Data Engineer - Société Générale",
+        title: "AI Engineer (LLM / RAG) - Société Générale",
         period: "Septembre 2025 - Février 2026",
         type: "Stage",
         location: "Paris, France",

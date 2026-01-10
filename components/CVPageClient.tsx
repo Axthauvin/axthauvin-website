@@ -132,7 +132,7 @@ export default function CVPageClient({ skills }: { skills: Skill[] }) {
                     <div className="absolute left-[5px] top-8 w-[14px] h-[14px] rounded-full bg-primary border-4 border-background shadow-sm group-hover:scale-125 transition-transform duration-200" />
 
                     {/* Header with title and period */}
-                    <div className="flex items-start justify-between gap-4 mb-4">
+                    <div className="flex flex-col sm:flex-row sm:items-start sm:justify-between gap-2 sm:gap-4 mb-4">
                       <div className="flex-1 min-w-0">
                         <h3 className="text-lg font-semibold text-foreground mb-1 leading-tight">
                           {t(`cv.jobs.${job.key}.title`)
@@ -154,7 +154,7 @@ export default function CVPageClient({ skills }: { skills: Skill[] }) {
                           </span>
                         </div>
                       </div>
-                      <div className="flex-shrink-0 text-sm text-muted-foreground font-medium whitespace-nowrap">
+                      <div className="text-sm text-muted-foreground font-medium sm:whitespace-nowrap">
                         {t(`cv.jobs.${job.key}.period`)}
                       </div>
                     </div>
@@ -232,7 +232,7 @@ export default function CVPageClient({ skills }: { skills: Skill[] }) {
                     <div className="absolute left-[5px] top-8 w-[14px] h-[14px] rounded-full bg-primary border-4 border-background shadow-sm group-hover:scale-125 transition-transform duration-200" />
 
                     {/* Header with title and period */}
-                    <div className="flex items-start justify-between gap-4 mb-4">
+                    <div className="flex flex-col sm:flex-row sm:items-start sm:justify-between gap-2 sm:gap-4 mb-4">
                       <div className="flex-1 min-w-0">
                         <h3 className="text-lg font-semibold text-foreground mb-1 leading-tight">
                           {t(`cv.degrees.${degree.key}.title`)}
@@ -242,7 +242,7 @@ export default function CVPageClient({ skills }: { skills: Skill[] }) {
                           {t(`cv.degrees.${degree.key}.location`)}
                         </div>
                       </div>
-                      <div className="flex-shrink-0 text-sm text-muted-foreground font-medium whitespace-nowrap">
+                      <div className="text-sm text-muted-foreground font-medium sm:whitespace-nowrap">
                         {t(`cv.degrees.${degree.key}.period`)}
                       </div>
                     </div>
