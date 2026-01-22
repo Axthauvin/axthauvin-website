@@ -16,6 +16,8 @@ import { Badge } from "@/components/ui/badge";
 import { useTranslation } from "@/lib/i18n";
 import en from "@/lib/i18n/translations/en";
 import fr from "@/lib/i18n/translations/fr";
+import SkillsBentoGrid from "@/components/cards/SkillsBentoGrid";
+import { TemplateCard } from "./cards/TemplateCard";
 
 interface Skill {
   name: string;
@@ -88,10 +90,16 @@ export default function CVPageClient({ skills }: { skills: Skill[] }) {
         <div className="space-y-8">
           {/* About Section */}
           <section>
-            <div className="bg-card rounded-lg p-6 border border-border">
-              <div className="flex items-center gap-3 mb-4">
+            <TemplateCard>
+              {/* <div className="flex items-center gap-3 mb-4">
                 <div className="w-1 h-6 bg-foreground/20 rounded-full" />
                 <h2 className="text-2xl font-bold">{t("cv.about.title")}</h2>
+              </div> */}
+              <div className="flex items-start justify-between mb-4">
+                <h3 className="font-semibold text-white group-hover:text-neutral-200 transition-colors">
+                  {t("cv.about.title")}
+                </h3>
+                {/* <ExternalLink className="w-4 h-4 text-neutral-600 opacity-0 group-hover:opacity-100 transition-opacity" /> */}
               </div>
               <p className="text-muted-foreground leading-relaxed">
                 <span
@@ -100,26 +108,32 @@ export default function CVPageClient({ skills }: { skills: Skill[] }) {
                   }}
                 />
               </p>
-            </div>
+            </TemplateCard>
           </section>
 
           {/* Skills Section */}
           <section>
-            <div className="mb-4">
+            {/* <div className="mb-4">
               <div className="flex items-center gap-3">
                 <div className="w-1 h-6 bg-foreground/20 rounded-full" />
                 <h2 className="text-2xl font-bold">{t("cv.skills.title")}</h2>
               </div>
-            </div>
-            <FroggerSkillsGame title="" skills={skills} />
+            </div> */}
+
+            <SkillsBentoGrid skills={skills} />
+
+            {/* Frogger game - full width below the grid */}
+            {/* <div className="mt-8">
+              <FroggerSkillsGame title="" skills={skills} />
+            </div> */}
           </section>
 
           {/* Experience & Education Section */}
           <section>
-            <div className="flex items-center gap-3 mb-6">
+            {/* <div className="flex items-center gap-3 mb-6">
               <div className="w-1 h-6 bg-foreground/20 rounded-full" />
               <h2 className="text-2xl font-bold">{t("cv.path.title")}</h2>
-            </div>
+            </div> */}
 
             <Tabs defaultValue="experience" className="w-full">
               <TabsList className="grid w-full grid-cols-2 mb-8 p-1 bg-muted rounded-lg border border-border h-auto">
@@ -293,7 +307,7 @@ export default function CVPageClient({ skills }: { skills: Skill[] }) {
                                 key={descIndex}
                                 className="flex items-start gap-3 text-sm text-muted-foreground leading-relaxed"
                               >
-                                <span className="text-foreground/60 mt-1 flex-shrink-0">
+                                <span className="text-foreground/60 flex-shrink-0">
                                   •
                                 </span>
                                 <span className="break-words flex-1">

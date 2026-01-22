@@ -1,10 +1,12 @@
 import { useState } from "react";
 import { Chess, Square } from "chess.js";
-import { X } from "lucide-react";
+import { X, Copy, History, ExternalLink } from "lucide-react";
 import { Button } from "../ui/button";
 import Image from "next/image";
 import { toast } from "sonner";
 import { getBestMove } from "@/lib/stockfish";
+import { useTranslation } from "@/lib/i18n/context";
+import { Dialog } from "@/components/ui/dialog";
 
 function playMoveSound(moveType: string) {
   switch (moveType) {
@@ -131,26 +133,26 @@ const ChessBoard = ({
                 onClick={() => handleSquareClick(squareId)}
                 className={`w-full aspect-square flex items-center justify-center text-2xl cursor-pointer transition-all relative ${getSquareColor(
                   file.charCodeAt(0) - 97,
-                  r
+                  r,
                 )} hover:opacity-80`}
                 style={{
                   boxShadow: isSelected
                     ? "inset 0 0 0 3px rgb(74, 222, 128)"
                     : isLegal
-                    ? "inset 0 0 0 3px rgb(96, 165, 250)"
-                    : "none",
+                      ? "inset 0 0 0 3px rgb(96, 165, 250)"
+                      : "none",
                 }}
               >
                 {square
                   ? ChessPieceIcon(
                       (square.color === "w"
                         ? square.type.toUpperCase()
-                        : square.type.toLowerCase()) as keyof typeof pieceIcons
+                        : square.type.toLowerCase()) as keyof typeof pieceIcons,
                     )
                   : ""}
               </button>
             );
-          })
+          }),
         )}
       </div>
     </div>
@@ -160,25 +162,77 @@ const ChessBoard = ({
 interface ChessGameProps {
   onClose: () => void;
   isFullscreen: boolean;
-  setFullscreen: (value: boolean) => void;
 }
 
-const ChessGame = ({
-  onClose,
-  isFullscreen,
-  setFullscreen,
-}: ChessGameProps) => {
+function convertToSan(moveHistory: string[]): string[] {
+  const chess = new Chess();
+  const sanHistory = [];
+
+  for (const move of moveHistory) {
+    // Parse the "from" and "to" from the string (e.g., "a1f8")
+    const from = move.substring(0, 2);
+    const to = move.substring(2, 4);
+
+    // Handle promotion if present (e.g., "a7a8q")
+    const promotion = move.length > 4 ? move.substring(4, 5) : undefined;
+
+    // Execute the move. chess.js handles the validation and SAN generation
+    const result = chess.move({
+      from: from,
+      to: to,
+      promotion: promotion,
+    });
+
+    if (result) {
+      sanHistory.push(result.san);
+    } else {
+      console.error(`Invalid move encountered: ${move}`);
+      break;
+    }
+  }
+
+  return sanHistory;
+}
+
+function getSanHistoryString(moveHistory: string[]): string {
+  const sanMoves = convertToSan(moveHistory);
+  let sanString = "";
+  sanMoves.forEach((san, index) => {
+    if (index % 2 === 0) {
+      sanString += `${Math.floor(index / 2) + 1}. ${san} `;
+    } else {
+      sanString += `${san} `;
+    }
+  });
+  return sanString.trim();
+}
+
+function getChessComUrl(moveHistory: string[]): string {
+  const sanMoves = convertToSan(moveHistory);
+  const baseUrl = "https://www.chess.com/analysis?tab=analysis&moves=";
+  const movesParam = sanMoves.join("%20");
+  return baseUrl + movesParam;
+}
+
+const ChessGame = ({ onClose, isFullscreen }: ChessGameProps) => {
+  const { t } = useTranslation();
   const [game, setGame] = useState(new Chess());
-  const [status, setStatus] = useState("À vous de commencer!");
+  const [status, setStatus] = useState(t("chess.youStart"));
   const [isThinking, setIsThinking] = useState(false);
   const [gameHistory, setGameHistory] = useState<string[]>([]);
+  const [showHistoryDialog, setShowHistoryDialog] = useState(false);
+  const [showGameOverDialog, setShowGameOverDialog] = useState(false);
+
+  const gameEnded = () => {
+    return game.isGameOver();
+  };
 
   const getStockfishMove = async (gameState: Chess): Promise<string | null> => {
     try {
       const fen = gameState.fen();
       const promise = getBestMove(fen);
       const timeout = new Promise<null>((_, reject) =>
-        setTimeout(() => reject(new Error("AbortError")), 5000)
+        setTimeout(() => reject(new Error("AbortError")), 5000),
       );
       const bestMove = await Promise.race([promise, timeout]);
       return bestMove;
@@ -186,13 +240,10 @@ const ChessGame = ({
       const isAbort = (error as any)?.name === "AbortError";
       console.error("Error fetching move from chess-api:", error);
       toast.error(
-        isAbort
-          ? "Le service d'IA est indisponible (délai dépassé)."
-          : "Le service d'IA est indisponible pour le moment.",
+        isAbort ? t("chess.stockfishTimeout") : t("chess.aiServiceUnavailable"),
         {
-          description:
-            "Impossible de récupérer le coup de Stockfish. Réessayez ou relancez la partie.",
-        }
+          description: t("chess.cannotGetStockfishMove"),
+        },
       );
       return null;
     }
@@ -217,29 +268,31 @@ const ChessGame = ({
       isCheckmate
         ? "checkmate"
         : isCheck
-        ? "check"
-        : isCapture
-        ? "capture"
-        : isCastle
-        ? "castle"
-        : "move"
+          ? "check"
+          : isCapture
+            ? "capture"
+            : isCastle
+              ? "castle"
+              : "move",
     );
 
     setGame(new Chess(newGame.fen()));
     setGameHistory([...gameHistory, `${from}${to}`]);
 
     if (isCheckmate) {
-      setStatus("Vous avez gagné! 🎉");
+      setStatus(t("chess.youWon"));
+      setTimeout(() => setShowGameOverDialog(true), 500);
       return;
     }
     if (newGame.isDraw()) {
-      setStatus("Partie nulle! ⚖️");
+      setStatus(t("chess.draw"));
+      setTimeout(() => setShowGameOverDialog(true), 500);
       return;
     }
     if (isCheck) {
-      setStatus("Échec!");
+      setStatus(t("chess.check"));
     } else {
-      setStatus("Au tour de Stockfish...");
+      setStatus(t("chess.stockfishTurn"));
     }
 
     setIsThinking(true);
@@ -262,26 +315,28 @@ const ChessGame = ({
             isCheckmate
               ? "checkmate"
               : isCheck
-              ? "check"
-              : isCapture
-              ? "capture"
-              : isCastle
-              ? "castle"
-              : "move"
+                ? "check"
+                : isCapture
+                  ? "capture"
+                  : isCastle
+                    ? "castle"
+                    : "move",
           );
 
           if (isCheckmate) {
-            setStatus("Échec et mat! Stockfish gagne! 🤖");
+            setStatus(t("chess.stockfishWon"));
+            setTimeout(() => setShowGameOverDialog(true), 500);
           } else if (newGame.isDraw()) {
-            setStatus("Partie nulle! ⚖️");
+            setStatus(t("chess.draw"));
+            setTimeout(() => setShowGameOverDialog(true), 500);
           } else if (isCheck) {
-            setStatus("À vous de jouer! (Échec)");
+            setStatus(t("chess.check"));
           } else {
-            setStatus("À vous de jouer!");
+            setStatus(t("chess.yourTurn"));
           }
         }
       } catch (e) {
-        setStatus("Erreur API Stockfish");
+        setStatus(t("chess.aiServiceUnavailable"));
       }
       setIsThinking(false);
     }, 500);
@@ -289,8 +344,26 @@ const ChessGame = ({
 
   const resetGame = () => {
     setGame(new Chess());
-    setStatus("À vous de commencer!");
+    setStatus(t("chess.youStart"));
     setGameHistory([]);
+    setShowGameOverDialog(false);
+  };
+
+  const copyHistoryToClipboard = async () => {
+    const sanHistory = getSanHistoryString(gameHistory);
+    try {
+      await navigator.clipboard.writeText(sanHistory);
+      toast.success(t("chess.historyCopied") || "History copied to clipboard!");
+    } catch (error) {
+      toast.error(t("chess.copyFailed") || "Failed to copy history");
+    }
+  };
+
+  const analyzeOnChessCom = () => {
+    const sanHistory = getSanHistoryString(gameHistory);
+    const pgn = `[Event "Browser Game"]\n[Site "axthauvin.com"]\n[Date "${new Date().toISOString().split("T")[0]}"]\n[White "You"]\n[Black "Stockfish"]\n\n${sanHistory}`;
+    const encodedPgn = encodeURIComponent(pgn);
+    window.open(`https://www.chess.com/analysis?pgn=${encodedPgn}`, "_blank");
   };
 
   const containerClass = isFullscreen
@@ -298,65 +371,158 @@ const ChessGame = ({
     : "p-6 bg-neutral-950 rounded-lg";
 
   return (
-    <div className={containerClass}>
-      <div
-        className={`${
-          isFullscreen ? "bg-neutral-900 p-8 rounded-lg w-full h-full" : ""
-        }`}
-      >
-        <button
-          onClick={onClose}
+    <>
+      <div className={containerClass}>
+        <div
           className={`${
-            isFullscreen ? "absolute top-4 right-4" : ""
-          } text-white hover:text-neutral-400`}
+            isFullscreen ? "bg-neutral-900 p-8 rounded-lg w-full h-full" : ""
+          }`}
         >
-          <X size={24} />
-        </button>
+          <button
+            onClick={onClose}
+            className={`${
+              isFullscreen ? "absolute top-4 left-4" : ""
+            } text-white hover:text-neutral-400`}
+          >
+            <X size={24} />
+          </button>
 
-        <div className="flex flex-col items-center gap-6">
-          <div>
-            <h2 className="text-xl font-bold text-white mb-2">
-              Échecs vs Stockfish
-            </h2>
-            <p className="text-sm text-neutral-400">{status}</p>
-          </div>
+          <div className="flex flex-col items-center gap-6">
+            <div>
+              <h2 className="text-xl font-bold text-white mb-2">
+                {t("chess.title")}
+              </h2>
+              <p className="text-sm text-neutral-400">{status}</p>
+            </div>
 
-          <ChessBoard
-            game={game}
-            onMove={handlePlayerMove}
-            isFlipped={false}
-            boardSize={isFullscreen ? "min(92vmin, 85vh, 85vw)" : "24rem"}
-          />
+            <ChessBoard
+              game={game}
+              onMove={handlePlayerMove}
+              isFlipped={false}
+              boardSize={"70vmin"}
+            />
 
-          <div className="text-sm text-neutral-400 text-center">
-            <p>Vous jouez les blancs • Stockfish joue les noirs</p>
-            {/* {gameHistory.length > 0 && (
-              <p className="mt-2">Coups: {gameHistory.join(" ")}</p>
-            )} */}
-          </div>
+            <div className="text-sm text-neutral-400 text-center">
+              <p>{t("chess.explanation")}</p>
+            </div>
 
-          <div className="flex justify-between gap-4">
-            <Button
-              onClick={resetGame}
-              disabled={isThinking}
-              className="px-4 py-2 bg-amber-700 hover:bg-amber-600 text-white rounded font-semibold disabled:opacity-50 disabled:cursor-not-allowed transition-colors"
-            >
-              Relancer une partie
-            </Button>
-
-            <Button
-              variant="outline"
-              onClick={() => setFullscreen(!isFullscreen)}
-              className="px-4 py-2"
-            >
-              {isFullscreen
-                ? "Quitter le mode plein écran"
-                : "Mode plein écran"}
-            </Button>
+            <div className="flex justify-between gap-4">
+              <Button
+                onClick={resetGame}
+                disabled={isThinking}
+                className="px-4 py-2 bg-amber-700 hover:bg-amber-600 text-white rounded font-semibold disabled:opacity-50 disabled:cursor-not-allowed transition-colors"
+              >
+                {t("chess.resetGame")}
+              </Button>
+              {gameHistory.length > 0 && (
+                <Button
+                  onClick={() => setShowHistoryDialog(true)}
+                  disabled={isThinking}
+                  className="px-4 py-2 bg-blue-700 hover:bg-blue-600 text-white rounded font-semibold disabled:opacity-50 disabled:cursor-not-allowed transition-colors flex items-center gap-2"
+                >
+                  <History size={16} />
+                  {t("chess.showHistory") || "Show History"}
+                </Button>
+              )}
+            </div>
           </div>
         </div>
       </div>
-    </div>
+
+      {/* History Dialog */}
+      <Dialog
+        isOpen={showHistoryDialog}
+        onClose={() => setShowHistoryDialog(false)}
+        title={t("chess.gameHistory") || "Game History"}
+        description={
+          t("chess.gameHistoryDescription") ||
+          "Copy this to import into chess.com"
+        }
+        footer={
+          <div className="flex gap-2 w-full">
+            <Button
+              onClick={copyHistoryToClipboard}
+              className="flex-1 bg-green-700 hover:bg-green-600 text-white flex items-center justify-center gap-2"
+            >
+              <Copy size={16} />
+              {t("chess.copy") || "Copy"}
+            </Button>
+          </div>
+        }
+      >
+        <div className="bg-zinc-900 p-4 rounded-md border border-zinc-700">
+          <code className="text-sm text-zinc-300 break-words whitespace-pre-wrap">
+            {getSanHistoryString(gameHistory)}
+          </code>
+        </div>
+      </Dialog>
+
+      {/* Game Over Dialog */}
+      {gameEnded() && (
+        <Dialog
+          isOpen={showGameOverDialog}
+          onClose={() => setShowGameOverDialog(false)}
+          title={status}
+          footer={
+            <div className="flex flex-col gap-2 w-full">
+              <Button
+                onClick={analyzeOnChessCom}
+                className="w-full bg-[#80b54b] text-white hover:bg-[#6fa43e] flex items-center justify-center gap-2"
+              >
+                <ExternalLink size={16} />
+                {t("chess.analyzeOnChessCom") || "Analyze on Chess.com"}
+              </Button>
+              <div className="flex gap-2 w-full">
+                <Button
+                  onClick={() => {
+                    resetGame();
+                    setShowGameOverDialog(false);
+                  }}
+                  className="flex-1 bg-amber-700 hover:bg-amber-600 text-white"
+                >
+                  {t("chess.playAgain")}
+                </Button>
+                <Button
+                  onClick={copyHistoryToClipboard}
+                  className="flex-1 bg-green-700 hover:bg-green-600 text-white flex items-center justify-center gap-2"
+                >
+                  <Copy size={16} />
+                  {t("chess.copy") || "Copy"}
+                </Button>
+              </div>
+            </div>
+          }
+        >
+          <div className="space-y-4">
+            <div className="text-center">
+              <p className="text-zinc-300 mb-4">
+                {game.isCheckmate()
+                  ? !status.toLowerCase().includes("stockfish")
+                    ? "🎉 " + t("chess.congratulations")
+                    : "😔 " + t("chess.betterLuckNextTime")
+                  : game.isDraw()
+                    ? "🤝 " + t("chess.drawMessage")
+                    : ""}
+              </p>
+            </div>
+
+            <div>
+              <h3 className="text-sm font-semibold text-zinc-400 mb-2">
+                {t("chess.gameHistory") || "Game History"}
+              </h3>
+              <div className="bg-zinc-900 p-4 rounded-md border border-zinc-700 max-h-40 overflow-y-auto">
+                <code className="text-sm text-zinc-300 break-words whitespace-pre-wrap">
+                  {getSanHistoryString(gameHistory)}
+                </code>
+              </div>
+              <p className="text-xs text-zinc-500 mt-2">
+                {t("chess.copyToChessCom") || "Copy to import on chess.com"}
+              </p>
+            </div>
+          </div>
+        </Dialog>
+      )}
+    </>
   );
 };
 

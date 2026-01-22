@@ -29,7 +29,7 @@ const fr = {
 
   // CV Card
   cvCard: {
-    title: "Développeur full-stack",
+    title: "Ingénieur full-stack",
     description:
       "Étudiant à l’EPITA, stagiaire à la Société Générale, je développe des projets utilisés par de vrais utilisateurs.",
     button: "Voir mon expérience",
@@ -42,7 +42,7 @@ const fr = {
       "Passionné par les échecs et les défis, j'aime me challenger autant sur l'échiquier qu'en code.",
     projectsIntro:
       "Juste en dessous, vous trouverez une collection de mes projets personnels.",
-    playChess: "Jouer aux échecs",
+    playChess: "Affrontez-moi aux échecs",
     favoriteBook: "Mon livre préféré",
     trophyHunter: "Chasseur de trophées",
   },
@@ -78,7 +78,9 @@ J’aime construire des outils simples à utiliser, qui répondent à un vrai be
 En parallèle de mon cursus, je travaille sur des projets personnels, dont <a href='https://ecrismalettre.fr' class='hover:text-blue-500 underline' target='_blank'>ecrismalettre.fr</a>, un service de génération de lettres de motivation à partir d’un CV et d’une offre d’emploi.`,
     },
     skills: {
-      title: "Mes compétences techniques",
+      title: "Stack technique",
+      topSkills: "Langages avec lesquels j’ai le plus travaillé récemment",
+      otherSkills: "Mentions honorables",
     },
     experience: {
       title: "Mon expérience professionnelle",
@@ -253,6 +255,56 @@ En parallèle de mon cursus, je travaille sur des projets personnels, dont <a hr
     quote:
       "J'ai peur. Pas de la vie ou de la mort, ou du néant mais de tout perdre comme si je n'avais jamais été.",
     author: "Daniel Keyes",
+    open: "Cliquer pour ouvrir",
+    close: "Cliquer pour fermer",
+  },
+
+  // Chess
+  chess: {
+    play: "Jouer aux échecs avec moi",
+    title: "Vous vs Stockfish en navigateur",
+    yourMove: "Votre coup",
+    stockfishMove: "Coup de Stockfish",
+    check: "Échec !",
+    checkmate: "Échec et mat !",
+    stalemate: "Pat !",
+    draw: "Match nul !",
+    resign: "Vous avez abandonné. Stockfish gagne !",
+    yourTurn: "C'est votre tour.",
+    stockfishThinking: "Stockfish réfléchit...",
+    explanation:
+      "Vous jouez les blancs. Faites votre coup en cliquant sur une pièce puis sur la case de destination.",
+    playAgain: "Rejouer",
+    resetGame: "Réinitialiser la partie",
+    cannotGetStockfishMove:
+      "Impossible d'obtenir le coup de Stockfish. Veuillez relancer une nouvelle partie.",
+    aiServiceUnavailable:
+      "Le service IA est indisponible pour le moment. Veuillez réessayer plus tard.",
+    enterFullscreen: "Plein écran",
+    exitFullscreen: "Quitter le plein écran",
+    start: "Commencer la partie",
+    youStart: "Vous commencez",
+    youWon: "Vous avez gagné ! Félicitations !",
+    stockfishWon: "Stockfish a gagné ! Plus de chance la prochaine fois.",
+    drawGame: "La partie s'est terminée par un match nul.",
+    stockfishTimeout:
+      "Le service IA est indisponible (timeout). Veuillez réessayer plus tard.",
+    stockfishTurn: "C'est au tour de Stockfish.",
+    showHistory: "Voir l'historique",
+    gameHistory: "Historique de la partie",
+    gameHistoryDescription:
+      "Copiez ceci pour l'importer sur chess.com ou d'autres plateformes d'échecs",
+    copy: "Copier",
+    close: "Fermer",
+    historyCopied: "Historique de la partie copié dans le presse-papiers !",
+    copyFailed: "Échec de la copie de l'historique",
+    gameOverDescription: "La partie est terminée",
+    congratulations: "Félicitations ! Vous avez gagné !",
+    betterLuckNextTime: "Plus de chance la prochaine fois !",
+    drawMessage: "La partie s'est terminée par un match nul",
+    copyToChessCom:
+      "Copiez pour importer sur chess.com ou d'autres plateformes",
+    analyzeOnChessCom: "Analyser sur Chess.com",
   },
 };
 

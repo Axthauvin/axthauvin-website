@@ -1,22 +1,11 @@
 "use client";
 
-import Link from "next/link";
-import { useEffect, useState } from "react";
 import { Home, ArrowLeft } from "lucide-react";
 import { useTranslation } from "@/lib/i18n";
+import { Button } from "@/components/ui/button";
 
 export default function NotFound() {
   const { t } = useTranslation();
-  const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
-  const [isHovering, setIsHovering] = useState(false);
-
-  useEffect(() => {
-    const handleMouseMove = (e: MouseEvent) => {
-      setMousePosition({ x: e.clientX, y: e.clientY });
-    };
-    window.addEventListener("mousemove", handleMouseMove);
-    return () => window.removeEventListener("mousemove", handleMouseMove);
-  }, []);
 
   return (
     <main className="min-h-screen bg-gradient-to-br from-neutral-950 via-neutral-900 to-neutral-950 flex items-center justify-center relative overflow-hidden">
@@ -28,14 +17,11 @@ export default function NotFound() {
         {/* Glitchy 404 */}
         <div className="relative mb-8 group">
           <h1
-            className={`text-[12rem] sm:text-[16rem] font-bold leading-none text-transparent bg-clip-text bg-gradient-to-br from-neutral-200 via-neutral-400 to-neutral-600 select-none transition-all duration-300 ${
-              isHovering ? "scale-105" : ""
-            }`}
+            className={`text-[12rem] sm:text-[16rem] font-bold leading-none text-transparent bg-clip-text bg-gray-400  select-none transition-all duration-300`}
           >
             404
           </h1>
         </div>
-
         {/* Message */}
         <div className="space-y-4 mb-12">
           <h2 className="text-2xl sm:text-3xl font-medium text-white">
@@ -44,35 +30,33 @@ export default function NotFound() {
           <p className="text-neutral-400 max-w-md mx-auto leading-relaxed">
             {t("notFound.message")}
             <br />
-            <span className="text-neutral-500">
-              {t("notFound.subMessage")}
-            </span>
+            <span className="text-neutral-500">{t("notFound.subMessage")}</span>
           </p>
         </div>
 
         {/* Actions */}
         <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
-          <Link
-            href="/"
-            className="group relative inline-flex items-center gap-3 px-8 py-4 bg-gradient-to-br from-neutral-800 to-neutral-900 text-white rounded-xl border border-neutral-700 transition-all duration-300 hover:shadow-lg hover:shadow-amber-900/20 overflow-hidden"
+          <Button
+            variant="outline"
+            className="h-full px-6 py-2.5 flex items-center gap-2 rounded-lg border-neutral-700 hover:border-neutral-500 text-neutral-200 hover:text-white hover:bg-neutral-900/50 transition-all duration-300"
+            onClick={() => {
+              window.location.href = "/";
+            }}
           >
-            <div className="absolute inset-0 bg-gradient-to-r from-amber-900/0 via-amber-800/10 to-orange-900/0 opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
             <Home
               size={20}
-              className="relative z-10 group-hover:scale-110 transition-transform duration-300"
+              className="transition-transform duration-300 group-hover:scale-110"
             />
-            <span className="relative z-10 font-medium">
-              {t("notFound.backHome")}
-            </span>
-          </Link>
+            <span className="font-medium">{t("notFound.backHome")}</span>
+          </Button>
 
-          <button
+          <Button
             onClick={() => window.history.back()}
-            className="inline-flex items-center gap-2 px-6 py-4 text-neutral-400 hover:text-white transition-colors duration-300"
+            className="h-full px-6 py-2.5 flex items-center gap-2 rounded-lg border border-neutral-700"
           >
-            <ArrowLeft size={18} />
-            <span>{t("notFound.previousPage")}</span>
-          </button>
+            <ArrowLeft size={20} />
+            <span className="font-medium">{t("notFound.previousPage")}</span>
+          </Button>
         </div>
       </div>
     </main>

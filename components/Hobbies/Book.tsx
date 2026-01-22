@@ -6,10 +6,14 @@ export default function Book3D({
   quote,
   author,
   setOpenBook,
+  openText,
+  closeText,
 }: {
   coverImage: string;
   quote: string;
   author?: string;
+  openText: string;
+  closeText: string;
   setOpenBook: (value: boolean) => void;
 }) {
   const [isOpen, setIsOpen] = useState(false);
@@ -133,7 +137,7 @@ export default function Book3D({
 
         {/* Status Text */}
         <div className="absolute -bottom-16 left-1/2 transform -translate-x-1/2 text-slate-300 text-sm whitespace-nowrap">
-          {isOpen ? "Cliquer pour fermer" : "Cliquer pour ouvrir"}
+          {isOpen ? closeText : openText}
         </div>
       </div>
     </div>

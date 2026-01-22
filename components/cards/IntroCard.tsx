@@ -36,7 +36,7 @@ const IntroCard = () => {
               Axel Thauvin
             </h1>
           </div>
-          <p className="text-sm sm:text-lg text-neutral-300 leading-relaxed max-w-sm mx-auto md:mx-0 group-hover:text-neutral-200 transition-colors duration-300">
+          <p className="text-sm sm:text-lg text-neutral-300 leading-relaxed max-w-lg mx-auto md:mx-0 group-hover:text-neutral-200 transition-colors duration-300">
             {t("intro.tagline")}
             <br />
             {t("intro.description")}

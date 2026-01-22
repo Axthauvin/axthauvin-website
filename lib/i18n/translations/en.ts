@@ -1,3 +1,5 @@
+import { title } from "node:process";
+
 const en = {
   // Common
   common: {
@@ -23,13 +25,13 @@ const en = {
 
   // Intro Card
   intro: {
-    tagline: "4th year student at EPITA",
+    tagline: "4th year student at EPITA specializing in IMAGE",
     description: "Passionate about AI, web development and chess.",
   },
 
   // CV Card
   cvCard: {
-    title: "Full-stack developer",
+    title: "Full-stack engineer",
     description:
       "Student at EPITA, intern at Société Générale, creator of concrete projects.",
     button: "View my resume",
@@ -42,7 +44,7 @@ const en = {
       "Passionate about chess and challenges, I love to challenge myself both on the chessboard and in code.",
     projectsIntro:
       "Just below, you'll find a collection of my personal projects.",
-    playChess: "Play chess",
+    playChess: "Play chess with me",
     favoriteBook: "My favorite book",
     trophyHunter: "Trophy hunter",
   },
@@ -78,7 +80,9 @@ I like to build easy-to-use tools that meet a real need, from prototype to produ
 Alongside my studies, I work on personal projects, including <a href='https://ecrismalettre.fr' class='hover:text-blue-500 underline' target='_blank'>ecrismalettre.fr</a>, a cover letter generation service based on a CV and a job offer.`,
     },
     skills: {
-      title: "My technical skills",
+      title: "Tech Stack",
+      topSkills: "Languages I've used most recently",
+      otherSkills: "Honorable mentions",
     },
     experience: {
       title: "My professional experience",
@@ -246,6 +250,54 @@ Alongside my studies, I work on personal projects, including <a href='https://ec
     quote:
       "I am afraid. Not of life or death, or of nothingness, but of losing everything as if I had never been.",
     author: "Daniel Keyes",
+    open: "Click to open",
+    close: "Click to close",
+  },
+
+  chess: {
+    play: "Play chess with me",
+    title: "You vs In browser Stockfish",
+    yourMove: "Your move",
+    stockfishMove: "Stockfish's move",
+    check: "Check!",
+    checkmate: "Checkmate!",
+    stalemate: "Stalemate!",
+    draw: "Draw!",
+    resign: "You resigned. Stockfish wins!",
+    yourTurn: "It's your turn.",
+    stockfishThinking: "Stockfish is thinking...",
+    explanation:
+      "You play as White. Make your move by clicking on a piece and then on the destination square.",
+    playAgain: "Play again",
+    resetGame: "Reset game",
+    cannotGetStockfishMove:
+      "Cannot get Stockfish's move. Please restart a new game.",
+    aiServiceUnavailable:
+      "The AI service is unavailable at the moment. Please try again later.",
+    enterFullscreen: "Enter fullscreen",
+    exitFullscreen: "Exit fullscreen",
+    start: "Start Game",
+    youStart: "You start",
+    youWon: "You won! Congratulations!",
+    stockfishWon: "Stockfish won! Better luck next time.",
+    drawGame: "The game ended in a draw.",
+    stockfishTimeout:
+      "The AI service is unavailable (timeout). Please try again later.",
+    stockfishTurn: "It's Stockfish's turn.",
+    showHistory: "Show History",
+    gameHistory: "Game History",
+    gameHistoryDescription:
+      "Copy this to import into chess.com or other chess platforms",
+    copy: "Copy",
+    close: "Close",
+    historyCopied: "Game history copied to clipboard!",
+    copyFailed: "Failed to copy history",
+    gameOverDescription: "The game has ended",
+    congratulations: "Congratulations! You won!",
+    betterLuckNextTime: "Better luck next time!",
+    drawMessage: "The game ended in a draw",
+    copyToChessCom: "Copy to import on chess.com or other platforms",
+    analyzeOnChessCom: "Analyze on Chess.com",
   },
 };
 
