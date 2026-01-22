@@ -23,15 +23,16 @@ const en = {
 
   // Intro Card
   intro: {
-    tagline: "I code when I'm bored.",
-    description: "I try to turn technical ideas into simple and useful tools.",
+    tagline: "4th year student at EPITA",
+    description: "Passionate about AI, web development and chess.",
   },
 
   // CV Card
   cvCard: {
-    title: "4th year student at EPITA",
-    description: "Passionate about developing simple and accessible tools.",
-    button: "View my CV",
+    title: "Full-stack developer",
+    description:
+      "Student at EPITA, intern at Société Générale, creator of concrete projects.",
+    button: "View my resume",
   },
 
   // Hobbies Card
@@ -71,8 +72,10 @@ const en = {
     location: "Paris, France",
     about: {
       title: "About me",
-      content:
-        "4th year student at EPITA, a computer engineering school. Curious, adaptable and comfortable in a team, I thrive in technical projects where collaboration and knowledge sharing are at the heart of the challenges.",
+      content: `A computer engineering student at EPITA, I develop full-stack web applications with a very product-oriented approach.
+
+I like to build easy-to-use tools that meet a real need, from prototype to production deployment.  
+Alongside my studies, I work on personal projects, including <a href='https://ecrismalettre.fr' class='hover:text-blue-500 underline' target='_blank'>ecrismalettre.fr</a>, a cover letter generation service based on a CV and a job offer.`,
     },
     skills: {
       title: "My technical skills",

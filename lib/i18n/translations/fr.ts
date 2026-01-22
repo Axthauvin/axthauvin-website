@@ -23,17 +23,16 @@ const fr = {
 
   // Intro Card
   intro: {
-    tagline: "Je code quand je m'ennuie.",
-    description:
-      "J'essaie de transformer des idées techniques en outils simples et utiles.",
+    tagline: "Étudiant en 4ᵉ année à l’EPITA majeure IMAGE",
+    description: "Passionné par l'IA, le développement web et les échecs.",
   },
 
   // CV Card
   cvCard: {
-    title: "Étudiant en 4ᵉ année à l'EPITA",
+    title: "Développeur full-stack",
     description:
-      "Passionné par le développement d'outils simples et accessibles.",
-    button: "Voir mon CV",
+      "Étudiant à l’EPITA, stagiaire à la Société Générale, je développe des projets utilisés par de vrais utilisateurs.",
+    button: "Voir mon expérience",
   },
 
   // Hobbies Card
@@ -73,8 +72,10 @@ const fr = {
     location: "Paris, France",
     about: {
       title: "À propos de moi",
-      content:
-        "Étudiant en 4ᵉ année à l'EPITA, école d'ingénieur en informatique. Curieux, adaptable et à l'aise en équipe, je m'épanouis dans les projets techniques où la collaboration et la transmission de savoir sont au cœur des enjeux.",
+      content: `Étudiant en école d’ingénieur à l’EPITA, je développe des applications web full-stack avec une approche très orientée produit.
+
+J’aime construire des outils simples à utiliser, qui répondent à un vrai besoin, du prototype jusqu’à la mise en production.  
+En parallèle de mon cursus, je travaille sur des projets personnels, dont <a href='https://ecrismalettre.fr' class='hover:text-blue-500 underline' target='_blank'>ecrismalettre.fr</a>, un service de génération de lettres de motivation à partir d’un CV et d’une offre d’emploi.`,
     },
     skills: {
       title: "Mes compétences techniques",
