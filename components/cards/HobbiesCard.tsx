@@ -15,7 +15,6 @@ function HobbiesCard() {
   const { t } = useTranslation();
   const [showGame, setShowGame] = useState(false);
   const [openBook, setOpenBook] = useState(false);
-  const [fullscreen, setFullscreen] = useState(false);
 
   // Preload the book cover image when the user shows intent (hover/focus/touch)
   const preloadBookCover = () => {
@@ -33,10 +32,8 @@ function HobbiesCard() {
         <ChessGame
           onClose={() => {
             setShowGame(false);
-            setFullscreen(false);
           }}
-          isFullscreen={fullscreen}
-          setFullscreen={setFullscreen}
+          isFullscreen={true}
         />
       </div>
     );
@@ -50,6 +47,8 @@ function HobbiesCard() {
           quote={t("book.quote")}
           author={t("book.author")}
           setOpenBook={setOpenBook}
+          openText={t("book.open")}
+          closeText={t("book.close")}
         />
       </div>
     );
@@ -57,19 +56,20 @@ function HobbiesCard() {
 
   return (
     <div className="border border-neutral-800 bg-neutral-950 p-6 rounded-lg h-full flex flex-col justify-between">
-      <h3 className="font-semibold text-white tracking-wider mb-4">
-        {t("hobbies.title")}
-      </h3>
-      <p className="text-sm text-neutral-400 mb-4">
-        {t("hobbies.description")} <br />
-        {t("hobbies.projectsIntro")}
-      </p>
+      <div>
+        <h3 className="font-semibold text-white tracking-wider mb-4">
+          {t("hobbies.title")}
+        </h3>
+        <p className="text-sm text-neutral-400 mb-4">
+          {t("hobbies.description")} <br />
+          {t("hobbies.projectsIntro")}
+        </p>
+      </div>
 
       <div className="flex gap-4 mt-6 flex-wrap">
         <Button
           onClick={() => {
             setShowGame(true);
-            setFullscreen(false);
           }}
         >
           <Image
