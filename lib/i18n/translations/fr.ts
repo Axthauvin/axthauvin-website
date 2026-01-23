@@ -73,12 +73,13 @@ const fr = {
       content: `Étudiant en école d’ingénieur à l’EPITA, je développe des applications web full-stack avec une approche très orientée produit.
 
 J’aime construire des outils simples à utiliser, qui répondent à un vrai besoin, du prototype jusqu’à la mise en production.  
-En parallèle de mon cursus, je travaille sur des sides-projects, dont <a href='https://ecrismalettre.fr' target='_blank'>ecrismalettre.fr</a>, un service de génération de lettres de motivation à partir d’un CV et d’une offre d’emploi.`,
+En parallèle de mon cursus, je travaille sur des sides-projects, dont <a href='https://ecrismalettre.fr' target='_blank' class='underline'>ecrismalettre.fr</a>, un service de génération de lettres de motivation à partir d’un CV et d’une offre d’emploi.`,
     },
     skills: {
       title: "Stack technique",
       topSkills: "Langages & frameworks que j'utilise le plus en 2026",
-      otherSkills: "Mentions honorables",
+      otherSkills:
+        "Autres langages et technologies avec lesquels j'ai travaillé",
     },
     experience: {
       title: "Mon expérience professionnelle",
@@ -180,7 +181,7 @@ En parallèle de mon cursus, je travaille sur des sides-projects, dont <a href='
     degrees: {
       epita: {
         title: "EPITA école d'ingénieur",
-        period: "09/2022  Aujourd'hui",
+        period: "09/2022 - Aujourd'hui",
         location: "Paris, France",
         tags: [
           "Informatique",
@@ -196,7 +197,7 @@ En parallèle de mon cursus, je travaille sur des sides-projects, dont <a href='
       },
       upec: {
         title: "Licence d'informatique à l'Université Paris-Est Créteil (UPEC)",
-        period: "09/2022  06/2025",
+        period: "09/2022 - 06/2025",
         location: "Créteil, France",
         tags: ["Informatique", "Licence"],
         descriptions: {
@@ -206,7 +207,7 @@ En parallèle de mon cursus, je travaille sur des sides-projects, dont <a href='
       sejong: {
         title:
           "Sejong University - Semestre à l'international en computer sciences en Corée du Sud",
-        period: "02/2024  07/2024",
+        period: "02/2024 - 07/2024",
         location: "Séoul, Corée du Sud",
         tags: [
           "Machine Learning",

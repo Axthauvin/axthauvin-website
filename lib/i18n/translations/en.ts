@@ -77,12 +77,12 @@ const en = {
       content: `A computer engineering student at EPITA, I develop full-stack web applications with a very product-oriented approach.
 
 I like to build easy-to-use tools that meet a real need, from prototype to production deployment.  
-Alongside my studies, I work on side-projects, including <a href='https://ecrismalettre.fr' target='_blank'>ecrismalettre.fr</a>, a cover letter generation service based on a CV and a job offer.`,
+Alongside my studies, I work on side-projects, including <a href='https://ecrismalettre.fr' target='_blank' class='underline'>ecrismalettre.fr</a>, a cover letter generation service based on a CV and a job offer.`,
     },
     skills: {
       title: "Tech Stack",
       topSkills: "Languages I'm using the most in 2026",
-      otherSkills: "Honorable mentions",
+      otherSkills: "Other languages and technologies I've worked with",
     },
     experience: {
       title: "My professional experience",

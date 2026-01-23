@@ -1,7 +1,7 @@
 ---
 title: "ZAMP"
 description: "Application qui installe et gère un environnement de développement local avec Apache, MySQL et PHP en un clic. Manipulation automatisée des services pour simplifier l'expérience utilisateur."
-date: 2024-11-10T13:24:50+02:00
+date: 2024-05-10T13:24:50+02:00
 featured: false
 image: "/projects/zamp/zamp-icon.png"
 technologies: ["Electron", "HTML", "CSS", "Apache", "MySQL", "PHP"]
