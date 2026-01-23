@@ -2,7 +2,7 @@
 
 import { Button } from "@/components/ui/button";
 import { Card } from "../ui/card";
-import { Award, ExternalLink } from "lucide-react";
+import { Award, ExternalLink, BookText } from "lucide-react";
 import Link from "next/link";
 import { useTranslation } from "@/lib/i18n";
 
@@ -25,7 +25,7 @@ const ResumeCard = () => {
           // variant="secondary"
           className="w-full mt-6 border-neutral-800 text-sm"
         >
-          <Award className="w-4 h-4 mr-2" />
+          <BookText className="w-4 h-4 mr-2" />
           {t("cvCard.button")}
         </Button>
       </Link>

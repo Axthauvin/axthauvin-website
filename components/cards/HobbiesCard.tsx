@@ -70,9 +70,10 @@ function HobbiesCard() {
       <div className="flex gap-4 mt-6 flex-wrap">
         <Button
           variant="secondary"
-          className="bg-[#4B7399] hover:bg-[#EAE9D2] text-white hover:text-black transition-all duration-300"
+          className="bg-[#171a21] hover:bg-[#EAE9D2] text-white hover:text-black transition-all duration-300"
           onClick={() => {
             setShowGame(true);
+            setHoveredChess(false);
           }}
           onMouseEnter={() => setHoveredChess(true)}
           onMouseLeave={() => setHoveredChess(false)}
@@ -90,7 +91,7 @@ function HobbiesCard() {
           {t("hobbies.playChess")}
         </Button>
         <Button
-          variant="outline"
+          className="bg-[#171a21] text-white hover:text-black hover:bg-[#b98460]"
           onMouseEnter={preloadBookCover}
           onFocus={preloadBookCover}
           onTouchStart={preloadBookCover}
@@ -109,7 +110,7 @@ function HobbiesCard() {
             {t("hobbies.trophyHunter")}
           </Link>
         </Button>
-        <Button className="bg-[#80b54b] text-white hover:bg-[#6fa43e]">
+        <Button className="bg-[#171a21] hover:bg-[#80b54b] text-white ">
           <Link
             href="https://www.chess.com/member/axthauvin"
             target="_blank"

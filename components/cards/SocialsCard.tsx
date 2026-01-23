@@ -1,8 +1,8 @@
 "use client";
 
-import { TfiGithub, TfiLinkedin } from "react-icons/tfi";
+import { TfiLinkedin } from "react-icons/tfi";
 import { Card } from "../ui/card";
-import { Mail, Github, Linkedin, Twitter, Download } from "lucide-react";
+import { Mail, Github, Download } from "lucide-react";
 import { FaXTwitter } from "react-icons/fa6";
 import { toast } from "sonner";
 import { useTranslation } from "@/lib/i18n";
@@ -23,29 +23,29 @@ export const SocialsCard = () => {
       accentColor: "#ce48ff",
     },
     {
-      Icon: Linkedin,
+      Icon: TfiLinkedin,
       href: "https://linkedin.com/in/axthauvin",
       label: t("socials.linkedin"),
       accentColor: "#008dd8",
     },
     // {
-    //   Icon: Twitter,
+    //   Icon: FaXTwitter,
     //   href: "https://twitter.com/axthauvin",
     //   label: t("socials.twitter"),
     //   accentColor: "#1da1f2",
     // },
-    {
-      Icon: Download,
-      href: t("cv.url"),
-      label: t("socials.downloadCV"),
-      accentColor: "#22c55e",
-    },
     {
       Icon: Mail,
       href: "#",
       label: t("socials.email"),
       onClickAction: handleEmailClick,
       accentColor: "#d14836",
+    },
+    {
+      Icon: Download,
+      href: t("cv.url"),
+      label: t("socials.downloadCV"),
+      accentColor: "#22c55e",
     },
   ];
 
