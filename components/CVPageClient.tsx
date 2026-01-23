@@ -139,14 +139,14 @@ export default function CVPageClient({ skills }: { skills: Skill[] }) {
               <TabsList className="grid w-full grid-cols-2 mb-8 p-1 bg-muted rounded-lg border border-border h-auto">
                 <TabsTrigger
                   value="experience"
-                  className="py-3 rounded data-[state=active]:bg-background"
+                  className="py-3 rounded data-[state=active]:bg-gray-300 data-[state=active]:text-black data-[state=active]:shadow-md data-[state=active]:font-semibold data-[state=active]:border data-[state=active]:border-border transition-all"
                 >
                   <Briefcase className="w-4 h-4 mr-2" />
                   {t("cv.experience.tabLabel")}
                 </TabsTrigger>
                 <TabsTrigger
                   value="formation"
-                  className="py-3 rounded data-[state=active]:bg-background"
+                  className="py-3 rounded data-[state=active]:bg-gray-300 data-[state=active]:text-black data-[state=active]:shadow-md data-[state=active]:font-semibold data-[state=active]:border data-[state=active]:border-border transition-all"
                 >
                   <GraduationCap className="w-4 h-4 mr-2" />
                   {t("cv.education.tabLabel")}

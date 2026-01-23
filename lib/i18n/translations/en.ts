@@ -33,7 +33,7 @@ const en = {
   cvCard: {
     title: "Full-stack engineer",
     description:
-      "Student at EPITA, intern at Société Générale, creator of concrete projects.",
+      "Student at EPITA, intern at Société Générale, I design projects deployed and used in real conditions.",
     button: "View my resume",
   },
 
@@ -77,11 +77,11 @@ const en = {
       content: `A computer engineering student at EPITA, I develop full-stack web applications with a very product-oriented approach.
 
 I like to build easy-to-use tools that meet a real need, from prototype to production deployment.  
-Alongside my studies, I work on personal projects, including <a href='https://ecrismalettre.fr' class='hover:text-blue-500 underline' target='_blank'>ecrismalettre.fr</a>, a cover letter generation service based on a CV and a job offer.`,
+Alongside my studies, I work on side-projects, including <a href='https://ecrismalettre.fr' target='_blank'>ecrismalettre.fr</a>, a cover letter generation service based on a CV and a job offer.`,
     },
     skills: {
       title: "Tech Stack",
-      topSkills: "Languages I've used most recently",
+      topSkills: "Languages I'm using the most in 2026",
       otherSkills: "Honorable mentions",
     },
     experience: {

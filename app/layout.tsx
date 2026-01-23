@@ -37,7 +37,8 @@ export default function RootLayout({
       <head>
         <link rel="icon" href="/axel_big.png" />
         {/* Preload the book cover to avoid blank on first open */}
-        <link rel="preload" as="image" href="/favBook.jpg" />
+        <link rel="preload" as="image" href="/favBook-fr.jpg" />
+        <link rel="preload" as="image" href="/favBook-en.jpg" />
         <link
           href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap"
           rel="stylesheet"

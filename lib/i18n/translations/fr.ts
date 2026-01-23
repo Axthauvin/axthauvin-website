@@ -31,7 +31,7 @@ const fr = {
   cvCard: {
     title: "Ingénieur full-stack",
     description:
-      "Étudiant à l’EPITA, stagiaire à la Société Générale, je développe des projets utilisés par de vrais utilisateurs.",
+      "Étudiant à l’EPITA, stagiaire à la Société Générale, je conçois des solutions déployées et utilisées en conditions réelles.",
     button: "Voir mon expérience",
   },
 
@@ -39,9 +39,7 @@ const fr = {
   hobbies: {
     title: "Mes hobbies",
     description:
-      "Passionné par les échecs et les défis, j'aime me challenger autant sur l'échiquier qu'en code.",
-    projectsIntro:
-      "Juste en dessous, vous trouverez une collection de mes projets personnels.",
+      "Passionné par les échecs et les défis algorithmiques, j'aime me challenger autant sur l'échiquier qu'en code.",
     playChess: "Affrontez-moi aux échecs",
     favoriteBook: "Mon livre préféré",
     trophyHunter: "Chasseur de trophées",
@@ -75,11 +73,11 @@ const fr = {
       content: `Étudiant en école d’ingénieur à l’EPITA, je développe des applications web full-stack avec une approche très orientée produit.
 
 J’aime construire des outils simples à utiliser, qui répondent à un vrai besoin, du prototype jusqu’à la mise en production.  
-En parallèle de mon cursus, je travaille sur des projets personnels, dont <a href='https://ecrismalettre.fr' class='hover:text-blue-500 underline' target='_blank'>ecrismalettre.fr</a>, un service de génération de lettres de motivation à partir d’un CV et d’une offre d’emploi.`,
+En parallèle de mon cursus, je travaille sur des sides-projects, dont <a href='https://ecrismalettre.fr' target='_blank'>ecrismalettre.fr</a>, un service de génération de lettres de motivation à partir d’un CV et d’une offre d’emploi.`,
     },
     skills: {
       title: "Stack technique",
-      topSkills: "Langages avec lesquels j’ai le plus travaillé récemment",
+      topSkills: "Langages & frameworks que j'utilise le plus en 2026",
       otherSkills: "Mentions honorables",
     },
     experience: {
@@ -262,7 +260,7 @@ En parallèle de mon cursus, je travaille sur des projets personnels, dont <a hr
   // Chess
   chess: {
     play: "Jouer aux échecs avec moi",
-    title: "Vous vs Stockfish en navigateur",
+    title: "Vous vs Stockfish en local",
     yourMove: "Votre coup",
     stockfishMove: "Coup de Stockfish",
     check: "Échec !",

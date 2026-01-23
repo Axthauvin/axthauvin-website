@@ -8,7 +8,7 @@ import { useTranslation } from "@/lib/i18n";
 
 const CVCard = () => {
   const { t } = useTranslation();
-  
+
   return (
     <Card className="border-neutral-800 bg-neutral-950 p-6 hover:border-neutral-700 transition-all duration-300 group cursor-pointer h-full flex flex-col">
       <Link href="/cv" className="flex flex-col justify-between">
@@ -22,8 +22,8 @@ const CVCard = () => {
           {t("cvCard.description")}
         </p>
         <Button
-          variant="outline"
-          className="w-full mt-6 border-neutral-800 hover:bg-neutral-900 text-sm"
+          // variant="secondary"
+          className="w-full mt-6 border-neutral-800 text-sm"
         >
           {t("cvCard.button")}
         </Button>

@@ -9,12 +9,14 @@ import { Book } from "lucide-react";
 import { SiChessdotcom } from "react-icons/si";
 import { FaSteam } from "react-icons/fa";
 import Book3D from "../Hobbies/Book";
-import { useTranslation } from "@/lib/i18n";
+import { useI18n, useTranslation } from "@/lib/i18n";
 
 function HobbiesCard() {
+  const { locale } = useI18n();
   const { t } = useTranslation();
   const [showGame, setShowGame] = useState(false);
   const [openBook, setOpenBook] = useState(false);
+  const [hoveredChess, setHoveredChess] = useState(false);
 
   // Preload the book cover image when the user shows intent (hover/focus/touch)
   const preloadBookCover = () => {
@@ -43,7 +45,7 @@ function HobbiesCard() {
     return (
       <div className="col-span-1 md:col-span-3">
         <Book3D
-          coverImage="/favBook.jpg"
+          coverImage={locale === "fr" ? "/favBook-fr.jpg" : "/favBook-en.jpg"}
           quote={t("book.quote")}
           author={t("book.author")}
           setOpenBook={setOpenBook}
@@ -61,24 +63,30 @@ function HobbiesCard() {
           {t("hobbies.title")}
         </h3>
         <p className="text-sm text-neutral-400 mb-4">
-          {t("hobbies.description")} <br />
-          {t("hobbies.projectsIntro")}
+          {t("hobbies.description")}
         </p>
       </div>
 
       <div className="flex gap-4 mt-6 flex-wrap">
         <Button
+          variant="secondary"
+          className="bg-[#4B7399] hover:bg-[#EAE9D2] text-white hover:text-black transition-all duration-300"
           onClick={() => {
             setShowGame(true);
           }}
+          onMouseEnter={() => setHoveredChess(true)}
+          onMouseLeave={() => setHoveredChess(false)}
         >
-          <Image
-            src="/chess/icons/bk.png"
-            alt={t("hobbies.playChess")}
-            width={16}
-            height={16}
-            className="mr-1"
-          />
+          <span className="w-4 h-4 mr-1 flex items-center justify-center">
+            <Image
+              src={hoveredChess ? "/chess/icons/bk.png" : "/chess/icons/wk.png"}
+              alt={t("hobbies.playChess")}
+              width={16}
+              height={16}
+              className="transition-opacity duration-200"
+              priority
+            />
+          </span>
           {t("hobbies.playChess")}
         </Button>
         <Button

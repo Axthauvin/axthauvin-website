@@ -8,6 +8,9 @@ import { getBestMove } from "@/lib/stockfish";
 import { useTranslation } from "@/lib/i18n/context";
 import { Dialog } from "@/components/ui/dialog";
 
+const tileColor1 = "#4B7399";
+const tileColor2 = "#EAE9D2";
+
 function playMoveSound(moveType: string) {
   switch (moveType) {
     case "capture":
@@ -79,9 +82,8 @@ const ChessBoard = ({
     if (typeof file === "number") {
       file = String.fromCharCode(file + 97);
     }
-    return (file.charCodeAt(0) + rank) % 2 === 0
-      ? "bg-green-100"
-      : "bg-green-700";
+
+    return (file.charCodeAt(0) + rank) % 2 === 0 ? tileColor1 : tileColor2;
   };
 
   const handleSquareClick = (square: string) => {
@@ -131,11 +133,9 @@ const ChessBoard = ({
               <button
                 key={squareId}
                 onClick={() => handleSquareClick(squareId)}
-                className={`w-full aspect-square flex items-center justify-center text-2xl cursor-pointer transition-all relative ${getSquareColor(
-                  file.charCodeAt(0) - 97,
-                  r,
-                )} hover:opacity-80`}
+                className={`w-full aspect-square flex items-center justify-center text-2xl cursor-pointer transition-all relative hover:opacity-80`}
                 style={{
+                  backgroundColor: getSquareColor(file.charCodeAt(0) - 97, r),
                   boxShadow: isSelected
                     ? "inset 0 0 0 3px rgb(74, 222, 128)"
                     : isLegal
