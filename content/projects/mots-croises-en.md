@@ -3,7 +3,7 @@ title: "Crossword Puzzle Program"
 description: "Solve crossword grids, find words by pattern, and automatically cross multiple words with a universal solver."
 date: 2021-07-23T18:00:00+02:00
 featured: false
-image: "projects/mots-croises/mots-croises-preview.png"
+image: "projects/mots-croises/mots-croises-logo.png"
 technologies: ["HTML", "CSS", "JavaScript"]
 author: ["Axel Thauvin"]
 draft: false

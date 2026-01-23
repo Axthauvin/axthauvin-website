@@ -13,7 +13,7 @@ interface PodiumSkill extends Skill {
   position: number;
 }
 
-interface SkillsBentoGridProps {
+interface MySkillsProps {
   skills: Skill[];
 }
 
@@ -76,41 +76,49 @@ const SkillsPodium = ({ skills }: { skills: PodiumSkill[] }) => {
   );
 };
 
-const SkillsBentoGrid = ({ skills }: SkillsBentoGridProps) => {
+const MySkills = ({ skills }: MySkillsProps) => {
   // My top 3 technologies
-  const topTechs = [
-    { name: "Next.js", position: 1 },
-    { name: "Python", position: 2 },
-    { name: "Java", position: 3 },
-  ];
+  // const topTechs = {
+  //   "Next.js": 1,
+  //   Python: 2,
+  //   Java: 3,
+  // };
 
-  const podiumSkills = topTechs.map((tech) => ({
-    ...skills.find((s) => s.name === tech.name)!,
-    position: tech.position,
-  }));
+  // const podiumSkills = topTechs.map((tech) => ({
+  //   ...skills.find((s) => s.name === tech.name)!,
+  //   position: tech.position,
+  // }));
 
-  const sortedPodium = [
-    podiumSkills.find((s) => s.position === 2)!,
-    podiumSkills.find((s) => s.position === 1)!,
-    podiumSkills.find((s) => s.position === 3)!,
-  ];
+  // const sortedPodium = [
+  //   podiumSkills.find((s) => s.position === 2)!,
+  //   podiumSkills.find((s) => s.position === 1)!,
+  //   podiumSkills.find((s) => s.position === 3)!,
+  // ];
 
-  const otherSkills = skills.filter(
-    (skill) => !topTechs.some((tech) => tech.name === skill.name),
-  );
+  // const otherSkills = skills.filter(
+  //   (skill) => !topTechs.some((tech) => tech.name === skill.name),
+  // );
 
   const { t } = useTranslation();
 
   return (
-    <div className="space-y-6">
+    <div className="space-y-4">
       {/* Skills Podium */}
-      <SkillsPodium skills={sortedPodium} />
+      {/* <SkillsPodium skills={sortedPodium} /> */}
 
-      <h5>{t("cv.skills.otherSkills")}</h5>
+      <h3 className="font-semibold text-white group-hover:text-neutral-200 transition-colors">
+        {t("cv.skills.title")}
+      </h3>
+      <p
+        className="text-sm text-foreground/70"
+        dangerouslySetInnerHTML={{
+          __html: t("cv.skills.description").replace(/\n/g, "<br/>"),
+        }}
+      />
 
       {/* Other Skills - Compact List */}
-      <div className="flex flex-wrap gap-2 justify-center">
-        {otherSkills.map((skill) => {
+      <div className="flex flex-wrap gap-2 justify-start">
+        {skills.map((skill) => {
           const Icon = getIcon(skill.iconName);
 
           return (
@@ -136,4 +144,4 @@ const SkillsBentoGrid = ({ skills }: SkillsBentoGridProps) => {
   );
 };
 
-export default SkillsBentoGrid;
+export default MySkills;

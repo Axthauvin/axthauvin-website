@@ -55,6 +55,7 @@ const en = {
     linkedin: "LinkedIn",
     twitter: "Twitter",
     email: "Email",
+    downloadCV: "Download CV",
   },
 
   // 404 Page
@@ -69,7 +70,8 @@ const en = {
   // CV Page
   cv: {
     back: "Back",
-    pdfVersion: "PDF Version",
+    url: "/curriculum/axthauvin_cv_2025.pdf",
+    pdfVersion: "Download PDF version",
     role: "Computer engineering student",
     location: "Paris, France",
     about: {
@@ -80,9 +82,9 @@ I like to build easy-to-use tools that meet a real need, from prototype to produ
 Alongside my studies, I work on side-projects, including <a href='https://ecrismalettre.fr' target='_blank' class='underline'>ecrismalettre.fr</a>, a cover letter generation service based on a CV and a job offer.`,
     },
     skills: {
-      title: "Tech Stack",
-      topSkills: "Languages I'm using the most in 2026",
-      otherSkills: "Other languages and technologies I've worked with",
+      title: "Technical stack",
+      description: `Throughout my projects and experiences, I've had the opportunity to work with a variety of technologies.
+        Here's an overview of my technical skills:`,
     },
     experience: {
       title: "My professional experience",

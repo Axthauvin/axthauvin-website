@@ -3,7 +3,7 @@ title: "Programme Mots Croisés"
 description: "Résoudre des grilles de mots croisés, trouver des mots par motif et croiser automatiquement plusieurs mots grâce à un solveur universel."
 date: 2021-07-23T18:00:00+02:00
 featured: false
-image: "projects/mots-croises/mots-croises-preview.png"
+image: "projects/mots-croises/mots-croises-logo.png"
 technologies: ["HTML", "CSS", "JavaScript"]
 author: ["Axel Thauvin"]
 draft: false

@@ -10,14 +10,15 @@ import {
   Calendar,
 } from "lucide-react";
 import Image from "next/image";
-import { FroggerSkillsGame } from "@/components/Frogger/index";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { Badge } from "@/components/ui/badge";
 import { useTranslation } from "@/lib/i18n";
 import en from "@/lib/i18n/translations/en";
 import fr from "@/lib/i18n/translations/fr";
-import SkillsBentoGrid from "@/components/cards/SkillsBentoGrid";
 import { TemplateCard } from "./cards/TemplateCard";
+import MySkills from "@/components/MySkills";
+import { useState } from "react";
+import { Dialog } from "./ui/dialog";
 
 interface Skill {
   name: string;
@@ -25,7 +26,7 @@ interface Skill {
   url: string;
 }
 
-export default function CVPageClient({ skills }: { skills: Skill[] }) {
+export default function ResumePage({ skills }: { skills: Skill[] }) {
   const { t, locale } = useTranslation();
 
   // Automatically detect jobs from translations
@@ -51,7 +52,7 @@ export default function CVPageClient({ skills }: { skills: Skill[] }) {
               {t("cv.back")}
             </Link>
             <Link
-              href="/curriculum/axthauvin_cv_2025.pdf"
+              href={t("cv.url")}
               className="inline-flex items-center gap-2 px-4 py-2 bg-muted hover:bg-muted/80 text-foreground rounded-lg transition-colors text-sm font-medium border border-border"
               target="_blank"
             >
@@ -77,10 +78,10 @@ export default function CVPageClient({ skills }: { skills: Skill[] }) {
               <p className="text-xl text-foreground/80 font-semibold mb-4">
                 {t("cv.role")}
               </p>
-              <div className="inline-flex items-center gap-2 px-3 py-1.5 bg-muted rounded-full text-sm border border-border">
+              <button className="inline-flex items-center gap-2 px-3 py-1.5 bg-muted rounded-full text-sm border border-border hover:bg-muted/80 hover:text-foreground transition-colors font-medium">
                 <MapPin size={16} className="text-foreground/60" />
                 <span>{t("cv.location")}</span>
-              </div>
+              </button>
             </div>
           </div>
         </div>
@@ -91,15 +92,10 @@ export default function CVPageClient({ skills }: { skills: Skill[] }) {
           {/* About Section */}
           <section>
             <TemplateCard>
-              {/* <div className="flex items-center gap-3 mb-4">
-                <div className="w-1 h-6 bg-foreground/20 rounded-full" />
-                <h2 className="text-2xl font-bold">{t("cv.about.title")}</h2>
-              </div> */}
               <div className="flex items-start justify-between mb-4">
                 <h3 className="font-semibold text-white group-hover:text-neutral-200 transition-colors">
                   {t("cv.about.title")}
                 </h3>
-                {/* <ExternalLink className="w-4 h-4 text-neutral-600 opacity-0 group-hover:opacity-100 transition-opacity" /> */}
               </div>
               <p className="text-muted-foreground leading-relaxed">
                 <span
@@ -112,29 +108,12 @@ export default function CVPageClient({ skills }: { skills: Skill[] }) {
           </section>
 
           {/* Skills Section */}
-          <section>
-            {/* <div className="mb-4">
-              <div className="flex items-center gap-3">
-                <div className="w-1 h-6 bg-foreground/20 rounded-full" />
-                <h2 className="text-2xl font-bold">{t("cv.skills.title")}</h2>
-              </div>
-            </div> */}
-
-            <SkillsBentoGrid skills={skills} />
-
-            {/* Frogger game - full width below the grid */}
-            {/* <div className="mt-8">
-              <FroggerSkillsGame title="" skills={skills} />
-            </div> */}
+          <section className="px-6">
+            <MySkills skills={skills} />
           </section>
 
           {/* Experience & Education Section */}
           <section>
-            {/* <div className="flex items-center gap-3 mb-6">
-              <div className="w-1 h-6 bg-foreground/20 rounded-full" />
-              <h2 className="text-2xl font-bold">{t("cv.path.title")}</h2>
-            </div> */}
-
             <Tabs defaultValue="experience" className="w-full">
               <TabsList className="grid w-full grid-cols-2 mb-8 p-1 bg-muted rounded-lg border border-border h-auto">
                 <TabsTrigger

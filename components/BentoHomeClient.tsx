@@ -4,7 +4,7 @@ import React, { useEffect, useState } from "react";
 import { Project } from "@/lib/projects";
 import IntroCard from "./cards/IntroCard";
 import { SocialsCard } from "./cards/SocialsCard";
-import CVCard from "./cards/CVCard";
+import ResumeCard from "./cards/ResumeCard";
 import ProjectCard from "./cards/ProjectCard";
 import HobbiesCard from "./cards/HobbiesCard";
 import { useI18n } from "@/lib/i18n";
@@ -41,7 +41,7 @@ export default function BentoPortfolio({
 
           {/* CV Card */}
           <div className="col-span-1">
-            <CVCard />
+            <ResumeCard />
           </div>
 
           {/* Hobbies Card - Full width on mobile, normal on larger */}
