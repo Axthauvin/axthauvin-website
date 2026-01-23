@@ -161,7 +161,7 @@ Alongside my studies, I work on side-projects, including <a href='https://ecrism
         title: "Intern at Nomadia",
         period: "06/2023 - 07/2023",
         type: "Internship",
-        location: "Lyon, France",
+        location: "Bagneux, France",
         tags: ["Python", "AI", "LLM", "Embeddings", "Automation"],
         descriptions: {
           0: "Automation of ticket processing and resolution through AI (LLM)",

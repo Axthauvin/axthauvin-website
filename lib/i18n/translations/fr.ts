@@ -158,7 +158,7 @@ En parallèle de mon cursus, je travaille sur des sides-projects, dont <a href='
         title: "Stagiaire à Nomadia",
         period: "06/2023 - 07/2023",
         type: "Stage",
-        location: "Lyon, France",
+        location: "Bagneux, France",
         tags: ["Python", "IA", "LLM", "Embeddings", "Automatisation"],
         descriptions: {
           0: "Automatisation des processus de traitement et résolution des tickets grâce à une IA (LLM)",
