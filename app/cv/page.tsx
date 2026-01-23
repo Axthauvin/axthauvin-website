@@ -1,5 +1,5 @@
 import { getSkills } from "@/lib/skills";
-import CVPageClient from "@/components/CVPageClient";
+import ResumePage from "@/components/ResumePage";
 
 export default async function CVPage() {
   const skillsData = await getSkills();
@@ -9,5 +9,5 @@ export default async function CVPage() {
     url: skill.url ?? "",
   }));
 
-  return <CVPageClient skills={skills} />;
+  return <ResumePage skills={skills} />;
 }

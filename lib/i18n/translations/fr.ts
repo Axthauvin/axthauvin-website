@@ -51,6 +51,7 @@ const fr = {
     linkedin: "LinkedIn",
     twitter: "Twitter",
     email: "Email",
+    downloadCV: "Télécharger mon CV",
   },
 
   // 404 Page
@@ -65,7 +66,8 @@ const fr = {
   // CV Page
   cv: {
     back: "Retour",
-    pdfVersion: "Version PDF",
+    url: "/curriculum/axthauvin_cv_2025.pdf",
+    pdfVersion: "Télécharger la version PDF",
     role: "Étudiant ingénieur en informatique",
     location: "Paris, France",
     about: {
@@ -77,9 +79,8 @@ En parallèle de mon cursus, je travaille sur des sides-projects, dont <a href='
     },
     skills: {
       title: "Stack technique",
-      topSkills: "Langages & frameworks que j'utilise le plus en 2026",
-      otherSkills:
-        "Autres langages et technologies avec lesquels j'ai travaillé",
+      description: `Au cours de mes projets et expériences, j'ai eu l'occasion de travailler avec une variété de technologies.
+        Voici un aperçu de mes compétences techniques :`,
     },
     experience: {
       title: "Mon expérience professionnelle",

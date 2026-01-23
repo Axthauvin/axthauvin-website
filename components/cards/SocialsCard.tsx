@@ -2,7 +2,7 @@
 
 import { TfiGithub, TfiLinkedin } from "react-icons/tfi";
 import { Card } from "../ui/card";
-import { Mail } from "lucide-react";
+import { Mail, Github, Linkedin, Twitter, Download } from "lucide-react";
 import { FaXTwitter } from "react-icons/fa6";
 import { toast } from "sonner";
 import { useTranslation } from "@/lib/i18n";
@@ -17,22 +17,28 @@ export const SocialsCard = () => {
 
   const socials = [
     {
-      Icon: TfiGithub,
+      Icon: Github,
       href: "https://github.com/axthauvin",
       label: t("socials.github"),
       accentColor: "#ce48ff",
     },
     {
-      Icon: TfiLinkedin,
+      Icon: Linkedin,
       href: "https://linkedin.com/in/axthauvin",
       label: t("socials.linkedin"),
       accentColor: "#008dd8",
     },
+    // {
+    //   Icon: Twitter,
+    //   href: "https://twitter.com/axthauvin",
+    //   label: t("socials.twitter"),
+    //   accentColor: "#1da1f2",
+    // },
     {
-      Icon: FaXTwitter,
-      href: "https://twitter.com/axthauvin",
-      label: t("socials.twitter"),
-      accentColor: "#2e2e2eff",
+      Icon: Download,
+      href: t("cv.url"),
+      label: t("socials.downloadCV"),
+      accentColor: "#22c55e",
     },
     {
       Icon: Mail,
