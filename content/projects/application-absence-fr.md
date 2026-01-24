@@ -3,7 +3,7 @@ title: "Application Absence"
 description: "Application web permettant de signaler l'absence d'un personnel en un clic via un trombinoscope, avec notifications par email et gestion simplifiée de la base de données."
 date: 2022-03-24T21:18:50+02:00
 featured: false
-image: "projects/app-absence/Absence-app-icon.png"
+image: "projects/app-absence/Absence-app-icon-new.png"
 technologies:
   ["PHP", "HTML", "CSS", "JavaScript", "MySQL", "SMTP (Email)", "Bootstrap"]
 author: ["Axel Thauvin"]
