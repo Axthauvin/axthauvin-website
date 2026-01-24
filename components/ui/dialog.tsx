@@ -31,14 +31,14 @@ export function Dialog({
     <div className="relative z-50">
       {/* Backdrop / Overlay */}
       <div
-        className={`fixed inset-0 bg-black/80 backdrop-blur-sm transition-all duration-200 
+        className={`fixed inset-0 bg-black/80 backdrop-blur-sm transition-all duration-200
           ${isOpen ? "animate-in fade-in-0" : "animate-out fade-out-0"}`}
         onClick={onClose}
       />
 
       {/* Dialog Content */}
       <div
-        className={`fixed left-[50%] top-[50%] z-50 grid w-full max-w-lg translate-x-[-50%] translate-y-[-50%] gap-4 border border-zinc-800 bg-zinc-950 p-6 shadow-2xl duration-200 sm:rounded-lg
+        className={`fixed left-[50%] top-[50%] z-50 grid w-full max-w-md md:max-w-lg translate-x-[-50%] translate-y-[-50%] gap-4 border border-zinc-800 bg-zinc-950 p-6 shadow-2xl duration-200 sm:rounded-lg
         ${
           isOpen
             ? "animate-in fade-in-0 zoom-in-95 slide-in-from-left-1/2 slide-in-from-top-[48%]"

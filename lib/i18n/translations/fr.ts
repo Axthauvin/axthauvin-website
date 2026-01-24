@@ -38,8 +38,8 @@ const fr = {
   // Hobbies Card
   hobbies: {
     title: "Mes hobbies",
-    description:
-      "Passionné par les échecs et les défis algorithmiques, j'aime me challenger autant sur l'échiquier qu'en code.",
+    description: `Passionné par les échecs et les défis algorithmiques, j'aime me challenger autant sur l'échiquier qu'en code.
+      Juste en dessous, vous pouvez jouer une partie d'échecs contre moi directement depuis le site !`,
     playChess: "Affrontez-moi aux échecs",
     favoriteBook: "Mon livre préféré",
     trophyHunter: "Chasseur de trophées",
@@ -285,7 +285,8 @@ En parallèle de mon cursus, je travaille sur des sides-projects, dont <a href='
     start: "Commencer la partie",
     youStart: "Vous commencez",
     youWon: "Vous avez gagné ! Félicitations !",
-    stockfishWon: "Stockfish a gagné ! Plus de chance la prochaine fois.",
+    stockfishWon:
+      "Stockfish a gagné ! Vous aurez plus de chance la prochaine fois.",
     drawGame: "La partie s'est terminée par un match nul.",
     stockfishTimeout:
       "Le service IA est indisponible (timeout). Veuillez réessayer plus tard.",
@@ -305,6 +306,48 @@ En parallèle de mon cursus, je travaille sur des sides-projects, dont <a href='
     copyToChessCom:
       "Copiez pour importer sur chess.com ou d'autres plateformes",
     analyzeOnChessCom: "Analyser sur Chess.com",
+    // P2P
+    gameMode: "Mode de jeu",
+    chooseOpponent: "Choisissez votre adversaire",
+    playAgainstAI: "Jouer contre Stockfish (local)",
+    playP2P: "Jouer en P2P",
+    faceStockfish:
+      "Affrontez Stockfish (malheureusement, je ne suis pas disponible en ce moment, Stockfish va bien s'occuper de vous !)",
+    playWithFriend:
+      "Contre un ami en ligne (pourquoi utiliser chess.com quand on peut jouer ici ?)",
+    p2pMode: "Mode P2P",
+    createOrJoin: "Créez ou rejoignez une partie",
+    createGame: "Créer une partie",
+    generateCode: "Générer un code à partager",
+    or: "ou",
+    enterRoomId: "Entrez le Room ID",
+    joinGame: "Rejoindre la partie",
+    waitingForOpponent: "En attente d'un adversaire",
+    connecting: "Connexion en cours",
+    roomId: "Room ID",
+    shareCode: "Partagez ce code avec votre adversaire",
+    establishing: "Établissement de la connexion...",
+    p2pChess: "🎮 P2P Chess",
+    white: "(Blancs)",
+    black: "(Noirs)",
+    room: "Room",
+    menu: "Menu",
+    yourTurnP2P: "À votre tour",
+    opponentTurn: "Tour de l'adversaire",
+    notYourTurn: "Ce n'est pas votre tour !",
+    youWonP2P: "Vous avez gagné !",
+    youLost: "Vous avez perdu !",
+    drawP2P: "Match nul !",
+    checkYourTurn: "Échec ! À votre tour",
+    checkOpponentTurn: "Échec ! Tour de l'adversaire",
+    roomCreated: "Room créée ! Partagez le Room ID",
+    roomIdCopied: "Room ID copié !",
+    enterRoomIdError: "Veuillez entrer un Room ID",
+    connectionError: "Erreur lors de la connexion à la room",
+    createRoomError: "Erreur lors de la création de la room",
+    p2pConnected: "Connexion P2P établie !",
+    p2pLost: "Connexion P2P perdue",
+    thanksForPlaying: "Merci d'avoir joué !",
   },
 };
 

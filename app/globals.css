@@ -151,10 +151,10 @@
     @apply text-foreground font-bold tracking-tight text-5xl mt-8 mb-4;
   }
   .prose h2 {
-    @apply text-foreground font-bold tracking-tight text-4xl mt-6 mb-3;
+    @apply text-foreground font-bold tracking-tight text-4xl mt-8 mb-6;
   }
   .prose h3 {
-    @apply text-foreground font-bold tracking-tight text-3xl mt-5 mb-2;
+    @apply text-foreground font-bold tracking-tight text-3xl mt-8 mb-6;
   }
   .prose h4 {
     @apply text-foreground font-bold tracking-tight text-2xl mt-4 mb-2;

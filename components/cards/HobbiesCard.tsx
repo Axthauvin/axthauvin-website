@@ -62,9 +62,12 @@ function HobbiesCard() {
         <h3 className="font-semibold text-white tracking-wider mb-4">
           {t("hobbies.title")}
         </h3>
-        <p className="text-sm text-neutral-400 mb-4">
-          {t("hobbies.description")}
-        </p>
+        <p
+          className="text-sm text-neutral-400 mb-4"
+          dangerouslySetInnerHTML={{
+            __html: t("hobbies.description").replace(/\n/g, "<br/>"),
+          }}
+        />
       </div>
 
       <div className="flex gap-4 mt-6 flex-wrap">
