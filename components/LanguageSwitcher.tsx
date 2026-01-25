@@ -1,6 +1,7 @@
 "use client";
 
 import { useI18n, Locale } from "@/lib/i18n";
+import { trackEvent } from "@/lib/umami";
 import { Globe } from "lucide-react";
 import { useState, useRef, useEffect } from "react";
 
@@ -65,6 +66,7 @@ export default function LanguageSwitcher() {
               onClick={() => {
                 setLocale(lang.code);
                 setIsOpen(false);
+                trackEvent("changed language", { language: lang.code });
               }}
               className={`w-full flex items-center gap-3 px-4 py-3 text-sm transition-colors duration-150 ${
                 locale === lang.code

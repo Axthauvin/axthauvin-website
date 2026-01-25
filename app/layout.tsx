@@ -4,6 +4,7 @@ import Footer from "@/components/Footer";
 import { Toaster } from "sonner";
 import { I18nProvider } from "@/lib/i18n";
 import LanguageSwitcher from "@/components/LanguageSwitcher";
+import Script from "next/script";
 
 export const metadata: Metadata = {
   metadataBase: new URL("https://axthauvin.onrender.com"),
@@ -46,6 +47,11 @@ export default function RootLayout({
         <meta
           name="google-site-verification"
           content="DlYHTWv1xnFpn5B_r5ckuQ95lTi1_RaYPuSqD06MLqI"
+        />
+        <Script
+          defer
+          src="https://cloud.umami.is/script.js"
+          data-website-id="3ecb1c96-29ec-496c-884c-04b89573fd95"
         />
       </head>
       <body className="min-h-screen">

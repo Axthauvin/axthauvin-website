@@ -10,6 +10,7 @@ import { SiChessdotcom } from "react-icons/si";
 import { FaSteam } from "react-icons/fa";
 import Book3D from "../Hobbies/Book";
 import { useI18n, useTranslation } from "@/lib/i18n";
+import { trackEvent } from "@/lib/umami";
 
 function HobbiesCard() {
   const { locale } = useI18n();
@@ -29,6 +30,8 @@ function HobbiesCard() {
   };
 
   if (showGame) {
+    trackEvent("opened chess");
+
     return (
       <div className="col-span-1 md:col-span-3">
         <ChessGame
@@ -42,6 +45,7 @@ function HobbiesCard() {
   }
 
   if (openBook) {
+    trackEvent("opened book");
     return (
       <div className="col-span-1 md:col-span-3">
         <Book3D
