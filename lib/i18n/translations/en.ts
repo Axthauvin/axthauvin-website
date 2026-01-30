@@ -34,7 +34,7 @@ const en = {
     title: "Full-stack engineer",
     description:
       "Student at EPITA, intern at Société Générale, I design projects deployed and used in real conditions.",
-    button: "View my resume",
+    button: "Learn more about me",
   },
 
   // Hobbies Card
@@ -342,6 +342,7 @@ Alongside my studies, I work on side-projects, including <a href='https://ecrism
     p2pConnected: "P2P connection established!",
     p2pLost: "P2P connection lost",
     thanksForPlaying: "Thanks for playing!",
+    learnHowBuilt: "Learn how I built this project",
   },
 };
 

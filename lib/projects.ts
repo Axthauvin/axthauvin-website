@@ -33,6 +33,7 @@ export interface Project {
   demo?: string;
   content: string;
   accentColor?: string;
+  hidden?: boolean;
 }
 
 export type Locale = "en" | "fr";
@@ -110,6 +111,7 @@ function parseProjectFile(filePath: string, slug: string): Project | null {
       demo: data.demo,
       content,
       accentColor: data.accentColor,
+      hidden: data.hidden || false,
     } as Project;
   } catch {
     return null;
@@ -144,13 +146,13 @@ export function getAllProjects(locale: Locale = "en"): Project[] {
     .filter((project): project is Project => project !== null);
 
   return projects.sort(
-    (a, b) => new Date(b.date).getTime() - new Date(a.date).getTime()
+    (a, b) => new Date(b.date).getTime() - new Date(a.date).getTime(),
   );
 }
 
 export function getProjectBySlug(
   slug: string,
-  locale: Locale = "en"
+  locale: Locale = "en",
 ): Project | null {
   try {
     // Try to find the file with the requested locale

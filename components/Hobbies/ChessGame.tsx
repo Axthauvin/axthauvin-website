@@ -659,6 +659,22 @@ const ChessGame = ({ onClose, isFullscreen }: ChessGameProps) => {
             </div>
           </button>
         </div>
+        {/* Learn how i created this P2P chess app*/}
+        <div className="mt-6 p-3 bg-neutral-900 border border-neutral-800 rounded-lg hover:border-neutral-700 transition-colors">
+          <a
+            href="/projects/portfolio-chess"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="flex items-center gap-3"
+          >
+            <div className="w-8 h-8 rounded-lg bg-blue-900/20 flex items-center justify-center flex-shrink-0">
+              <ExternalLink size={16} className="text-blue-500" />
+            </div>
+            <p className="text-sm font-medium text-white">
+              {t("chess.learnHowBuilt") || "Learn How I Built This"}
+            </p>
+          </a>
+        </div>
       </Dialog>
     );
   }

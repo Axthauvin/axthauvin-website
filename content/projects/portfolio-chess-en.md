@@ -5,6 +5,7 @@ date: 2026-01-24T14:00:00+02:00
 featured: true
 image: "projects/p2p-chess/icon.png"
 technologies: ["React", "JavaScript", "Firebase", "Stockfish.js", "WebSockets"]
+hidden: true
 author: ["Axel Thauvin"]
 ---
 

@@ -32,7 +32,7 @@ const fr = {
     title: "Ingénieur full-stack",
     description:
       "Étudiant à l’EPITA, stagiaire à la Société Générale, je conçois des solutions déployées et utilisées en conditions réelles.",
-    button: "Voir mon expérience",
+    button: "Voir mon parcours",
   },
 
   // Hobbies Card
@@ -348,6 +348,7 @@ En parallèle de mon cursus, je travaille sur des sides-projects, dont <a href='
     p2pConnected: "Connexion P2P établie !",
     p2pLost: "Connexion P2P perdue",
     thanksForPlaying: "Merci d'avoir joué !",
+    learnHowBuilt: "Découvrez comment j'ai construit ce projet",
   },
 };
 
