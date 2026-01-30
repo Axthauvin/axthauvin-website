@@ -1,7 +1,7 @@
 ---
 title: "ecrismalettre.fr"
 description: "L'outil fait la lettre de motivation parfaite. Dépose ton CV, colle le lien de l'offre, personnalise, et postule en un clin d'œil."
-image: "/projects/ecrismalettre/ecrismalettre-card.png"
+image: "/projects/ecrismalettre/logo.png"
 date: 2025-07-25
 featured: true
 accentColor: "black"

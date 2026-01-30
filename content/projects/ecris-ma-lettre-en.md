@@ -1,7 +1,7 @@
 ---
 title: "ecrismalettre.fr"
 description: "The tool creates the perfect cover letter. Upload your CV, paste the job listing link, customize, and apply in a flash."
-image: "/projects/ecrismalettre/ecrismalettre-card.png"
+image: "/projects/ecrismalettre/logo.png"
 date: 2025-07-25
 featured: true
 accentColor: "black"
