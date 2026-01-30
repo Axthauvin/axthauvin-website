@@ -98,6 +98,14 @@ function parseProjectFile(filePath: string, slug: string): Project | null {
       }
     }
 
+    if (data.github && !links.find((link) => link.type === "github")) {
+      links.push({ type: "github", url: data.github });
+    }
+
+    if (data.demo && !links.find((link) => link.type === "demo")) {
+      links.push({ type: "demo", url: data.demo });
+    }
+
     return {
       slug,
       title: data.title,
