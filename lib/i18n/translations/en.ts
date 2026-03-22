@@ -70,7 +70,7 @@ const en = {
   // CV Page
   cv: {
     back: "Back",
-    url: "/curriculum/axthauvin_cv_2025.pdf",
+    url: "/curriculum/axthauvin_cv_2026_english.pdf",
     pdfVersion: "Download PDF version",
     role: "Computer engineering student",
     location: "Paris, France",

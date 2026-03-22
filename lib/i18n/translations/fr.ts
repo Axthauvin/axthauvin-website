@@ -66,7 +66,7 @@ const fr = {
   // CV Page
   cv: {
     back: "Retour",
-    url: "/curriculum/axthauvin_cv_2025.pdf",
+    url: "/curriculum/axthauvin_cv_2026.pdf",
     pdfVersion: "Télécharger la version PDF",
     role: "Étudiant ingénieur en informatique",
     location: "Paris, France",
