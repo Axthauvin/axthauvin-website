@@ -24,7 +24,7 @@ function HobbiesCard() {
     try {
       if (typeof window !== "undefined") {
         const img = new window.Image();
-        img.src = "/favBook.jpg";
+        img.src = "/favBook-" + locale + ".jpg";
       }
     } catch (_) {}
   };
