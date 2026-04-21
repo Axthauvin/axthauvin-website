@@ -18,11 +18,11 @@ const DEFAULT_COUNTDOWNS: Countdown[] = [
   {
     id: "may-vacation",
     title: "Vacances de mai",
-    date: "2026-05-01T00:00:00",
+    date: "2026-04-39T00:00:00",
   },
   {
     id: "summer-vacation",
-    title: "Summer Vacation",
+    title: "Vacances d'été",
     date: "2026-08-01T00:00:00",
   },
   {
