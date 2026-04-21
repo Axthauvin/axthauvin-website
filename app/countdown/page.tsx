@@ -32,11 +32,6 @@ const DEFAULT_COUNTDOWNS: Countdown[] = [
   },
 ];
 
-export const metadata = {
-  title: "Countdowns",
-  description: "Create and manage your countdowns to important events.",
-};
-
 export default function CountdownPage() {
   const [countdowns, setCountdowns] = useState<Countdown[]>([]);
   const [isModalOpen, setIsModalOpen] = useState(false);
